@@ -39,14 +39,6 @@
         <div class="container">
             <div class="content">
                 <div class="title">Laravel 5</div>
-                JUDE
-
-                <form action="test" method="get">
-
-                    <input type="text" id="name" name="name">
-                        <input type="submit" value="submit">
-
-                </form>
             </div>
         </div>
     </body>
