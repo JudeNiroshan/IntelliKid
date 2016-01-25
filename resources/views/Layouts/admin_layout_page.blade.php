@@ -185,7 +185,7 @@
               <a href="#"><i class="fa fa-arrow-circle-up"></i> <span>Upload</span> <i class="arrow fa fa-chevron-right"></i></a>
               <ul>
                 <li>
-                  <a href="interface.html">Videos</a>
+                  <a href="upload_videos">Videos</a>
                 </li>
                 <li>
                   <a href="jquery-ui.html">Songs</a>
