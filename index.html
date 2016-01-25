@@ -34,22 +34,37 @@ unnecessary burden. All developers in the project must adhere to these coding pr
 <ul>
 <li>Use all lower case letters</li>
 <li>Use '_' as the word separator.</li>
-<li>Global variables should be prepended with a 'g'.</li>
+<li>Global variables should be prepended(starts) with a 'g'.</li>
 <li>Global constants should be all caps with '_' separators.</li>
-<li>Static variables may be prepended with 's'.</li>
+<li>Static variables may be prepended(starts) with a 's'.</li>
 </ul>
 
 <h2>
 <a id="function-definitions" class="anchor" href="#function-definitions" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Function Definitions</h2>
 
+<ul>
+<li>Function names should starts with a lowercase letter.</li>
+<li>Use camel case style.</li>
+<li>
 <p>Function definitions should adhere to the "BSD/Allman style"</p>
 
-<p><code>function fooFunction($arg1, $arg2 = '') {</code>
-      <code>if (condition) {</code>
-        <code>statement;</code>
-      <code>}</code>
-      <code>return $val;</code>
-    <code>}</code></p>
+<p>function fooFunction($arg1, $arg2 = '') {
+  if (condition) {
+    statement;
+  }
+  return $val;
+}</p>
+</li>
+</ul>
+
+<p>Please note the placement of the curly braces. </p>
+
+<h2>
+<a id="comments" class="anchor" href="#comments" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Comments</h2>
+
+<ul>
+<li>C style comments (/* */) and standard C++ comments (//) are both fine. Use of Perl/shell style comments (#) is discouraged.</li>
+</ul>
 
       <footer class="site-footer">
         <span class="site-footer-owner"><a href="https://github.com/JudeNiroshan/IntelliKid">Intellikid</a> is maintained by <a href="https://github.com/JudeNiroshan">JudeNiroshan</a>.</span>
