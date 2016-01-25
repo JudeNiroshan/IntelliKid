@@ -7,7 +7,7 @@ class Unicode_UserController extends Controller{
 
 
 	public function fillUserTable(){
-		//JUDE ADDED
+
 		//$result = DB::table('user')->get();
 
 		$result = DB::table('user')->join('user_account', 'user.id', '=', 'user_account.uid')->get();
