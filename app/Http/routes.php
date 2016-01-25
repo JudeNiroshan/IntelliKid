@@ -12,11 +12,8 @@
 */
 /* ////////////////////////     unicon_Admin Routes    /////////////////////// */
 
-Route::get('unicon_admin_index1', function () {
-    return view('unicon_admin.index')->with('title','Dashboard');
-});
 
-Route::get('unicon_admin_index', 'Unicode_UserController@trackTotalUsers');
+//Route::get('unicon_admin_index', 'Unicode_UserController@trackTotalUsers');
 
 
 Route::get('unicon_admin_view_users', 'Unicode_UserController@fillUserTable');
@@ -161,9 +158,17 @@ Route::get('kids_gallery', function () {
 });
 /* ---------------------------------------------------------------------*/
 
+/* ////////////////////////     Upload Routes     /////////////////////// */
+Route::get('upload_videos', 'UploadVideoController@loadWithDefaultData');
+
+Route::get('upload_videos_fileError', 'UploadVideoController@loadWithFailedReason');
+
+Route::post('upload_videos123', 'BaseUploadController@validator');
+
+Route::get('upload_videos123', 'UploadVideoController@loadWithDefaultData');
 
 
-
+/* ---------------------------------------------------------------------*/
 
 /*
 |--------------------------------------------------------------------------
