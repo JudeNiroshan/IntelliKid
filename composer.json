@@ -10,10 +10,7 @@
 
 		"laravelcollective/html": "^5.2",
 		"php-ffmpeg/php-ffmpeg": "~0.5",
-        "illuminate/html": "^5.0"
 
-		"laravelcollective/html": "~5.0",
-		"php-ffmpeg/php-ffmpeg": "~0.5"
 
     },
     "require-dev": {
