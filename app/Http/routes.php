@@ -231,10 +231,11 @@ Route::get('laravel',function(){
 });
 
 
-Route::get('email_verification_notiece', function(){
-    $token = rand();
 
-    Mail::send('email_body',['name'=> $_SESSION['NAME'],'id'=> $_SESSION['USERID'],'token'=>$token], function($message){
+Route::get('email_verification_notiece', function(){
+   
+
+    Mail::send('email_body',['name'=> $_SESSION['NAME'],'id'=> $_SESSION['USERID']], function($message){
 
         $message->to($_SESSION['EMAIL'],'IntelliKid')->subject('Welcome to IntelliKid!');
     });
@@ -248,17 +249,16 @@ Route::get('default_home', function(){
      return view('parent.home');
 });
 
+
+//make visible a email verification message
 Route::get('email_verifying_message', function(){
 
     $id =  $_REQUEST['id'];
-    $token =  $_REQUEST['token'];
+   
 
     $result = DB::select("select a.reset_token from parent_registration a where a.user_id = '$id'");
 
-    if($result[0]->reset_token==$token){
-        echo "this url already used for reset your paswsword";
-    }
-        else{
+
 
     DB::table('parent_registration')->where('user_id', $id)->update(array('status' => 'ACTIVE'));
 
@@ -267,7 +267,7 @@ Route::get('email_verifying_message', function(){
 
 
     return view('parent.home');
-}
+
 });
 
 
@@ -277,11 +277,26 @@ Route::get('reset_password', function(){
 });
 
 Route::get('reset_password_ajax','RegistrationController@reset_password');
+
+//checking the validity of the reset password URL
 Route::get('reset_password_intellikid_2016_encript_version', function(){
 
+
+     $email = $_SESSION['EMAIL'];
+     $token = $_REQUEST['token'];
+     //$_SESSION['TOKEN'] = "0";
+     $result = DB::select("select a.user_id,a.reset_token from parent_registration a where a.email = '$email' ");
+
+     if($token == $result[0]->reset_token){
+
+        return view('login');
+     }else{
+ $_SESSION['TOKEN'] = $token;
     return view('reset_password');
+     }
 }); 
 
+//update new reseted password
 Route::get('set_new_password','RegistrationController@set_new_password');
 
 

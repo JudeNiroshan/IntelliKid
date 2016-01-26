@@ -83,17 +83,19 @@ class RegistrationController extends Controller
 
 		$email = $request->input('email');
 		 $_SESSION['EMAIL'] = $email;
+		  $token = rand();
 		
-		$result = DB::select("select a.user_id from parent_registration a where a.email = '$email' ");
+		$result = DB::select("select a.user_id,a.reset_token from parent_registration a where a.email = '$email' ");
 
 		if(empty($result))
 			 {  $out_put = 0;
 			 	
 			 }
+			
 			 else{
 
 
-				Mail::send('reset_link',['link'=>'reset_password_intellikid_2016_encript_version' ,'id'=> $result[0]->user_id], function($message){
+				Mail::send('reset_link',['link'=>'reset_password_intellikid_2016_encript_version' ,'id'=> $result[0]->user_id,'token'=>$token], function($message){
 
 				$message->to($_SESSION['EMAIL'],'IntelliKid')->subject('Reset password link of IntelliKid');
 				
@@ -109,8 +111,11 @@ class RegistrationController extends Controller
 
 				$password = $request->input('pw');
 				$email = $_SESSION['EMAIL'];
+				$token = $_SESSION['TOKEN'];
+
+
 				$result = DB::select("select a.user_id from parent_registration a where a.email = '$email' ");
-				DB::table('parent_registration')->where('email', $email)->update(array('u_password' => $password));
+				DB::table('parent_registration')->where('email', $email)->update(array('u_password' => $password,'reset_token'=>$token));
 				$out = 0;
 				
 				 return response()->json(['list' => $result,'email'=>$email]);
