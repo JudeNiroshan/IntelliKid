@@ -1,5 +1,9 @@
 <?php
 
+
+session_start();
+
+use Illuminate\Support\Facades\Input;
 /*
 |--------------------------------------------------------------------------
 | Routes File
@@ -165,6 +169,124 @@ Route::get('kids_gallery', function () {
 
 
 
+
+
+
+
+
+
+
+
+
+//Parent Account routes
+
+
+
+
+Route::get('login',function(){
+    return view('login');
+});
+
+//Redirect to registration page 
+Route::get('register',function(){
+    return view('registration');
+});
+
+//Redirect to parent home
+Route::get('home',function(){
+    return view('parent.home');
+});
+
+//Registering user detils pass to controller  
+Route::get('reg','RegistrationController@registration_user');
+
+//Pass login details
+Route::get('login_confirm','RegistrationController@login');
+
+//set sesion values and redirect to the email confirmation page
+Route::get('session',function(){
+         
+         $id = $_REQUEST['id'];
+
+          $result = DB::select("select * from parent_registration a where a.user_id = '$id'");
+
+          $_SESSION['USERID'] = $id;
+          $_SESSION['STATUS'] = $result[0]->status;
+          $_SESSION['NAME']   = $result[0]->f_name;
+          $_SESSION['EMAIL']  = $result[0]->email;
+
+          return view('parent.home');
+
+});
+
+Route::get('logout', function () {
+
+    session_unset();
+    session_destroy();
+    return view('login');
+
+});
+Route::get('laravel',function(){
+    return view('welcome');
+});
+
+
+Route::get('email_verification_notiece', function(){
+
+    Mail::send('email_body',['name'=> $_SESSION['NAME'],'id'=> $_SESSION['USERID']], function($message){
+
+        $message->to($_SESSION['EMAIL'],'IntelliKid')->subject('Welcome to IntelliKid!');
+    });
+
+    return view('email_verify_notice');
+});
+
+
+Route::get('default_home', function(){
+
+     return view('parent.home');
+});
+
+Route::get('email_verifying_message', function(){
+
+    $id =  $_REQUEST['id'];
+
+    DB::table('parent_registration')->where('user_id', $id)->update(array('status' => 'ACTIVE'));
+
+    $result = DB::select("select * from parent_registration a where a.user_id = '$id'");
+    $_SESSION['STATUS'] = $result[0]->status;
+
+
+    return view('parent.home');
+});
+
+
+Route::get('reset_password', function(){
+
+    return view('reset_password_mail');
+});
+
+Route::get('reset_password_ajax','RegistrationController@reset_password');
+Route::get('reset_password_intellikid_2016_encript_version', function(){
+
+    return view('reset_password');
+}); 
+
+Route::get('set_new_password','RegistrationController@set_new_password');
+
+
+
+
+//end of parent Accounts routes
+
+
+
+
+
+
+
+
+
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -179,3 +301,7 @@ Route::get('kids_gallery', function () {
 Route::group(['middleware' => ['web']], function () {
     //
 });
+
+
+
+
