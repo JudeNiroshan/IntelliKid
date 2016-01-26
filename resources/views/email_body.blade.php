@@ -114,7 +114,7 @@
                                     <br>
                                     <br>
  
-                                        <h1><a href="http://localhost/intellikid/public/email_verifying_message?id={{$id}}" class="btn btn-primary btn-lg" style="margin-left:10%;width:80%" >VERIFY</a></h1>
+                                        <h1><a href="http://localhost/intellikid/public/email_verifying_message?id={{$id}}&token={{$token}}" class="btn btn-primary btn-lg" style="margin-left:10%;width:80%" >VERIFY</a></h1>
    
                                 </a>
                             </li>

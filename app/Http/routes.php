@@ -232,8 +232,9 @@ Route::get('laravel',function(){
 
 
 Route::get('email_verification_notiece', function(){
+    $token = rand();
 
-    Mail::send('email_body',['name'=> $_SESSION['NAME'],'id'=> $_SESSION['USERID']], function($message){
+    Mail::send('email_body',['name'=> $_SESSION['NAME'],'id'=> $_SESSION['USERID'],'token'=>$token], function($message){
 
         $message->to($_SESSION['EMAIL'],'IntelliKid')->subject('Welcome to IntelliKid!');
     });
@@ -250,6 +251,14 @@ Route::get('default_home', function(){
 Route::get('email_verifying_message', function(){
 
     $id =  $_REQUEST['id'];
+    $token =  $_REQUEST['token'];
+
+    $result = DB::select("select a.reset_token from parent_registration a where a.user_id = '$id'");
+
+    if($result[0]->reset_token==$token){
+        echo "this url already used for reset your paswsword";
+    }
+        else{
 
     DB::table('parent_registration')->where('user_id', $id)->update(array('status' => 'ACTIVE'));
 
@@ -258,6 +267,7 @@ Route::get('email_verifying_message', function(){
 
 
     return view('parent.home');
+}
 });
 
 
