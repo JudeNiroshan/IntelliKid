@@ -8,7 +8,7 @@
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <title>{{$title}}</title>
+        <title>{{$title}}</title>  
 
 
         <!-- Bootstrap Core CSS -->
@@ -46,6 +46,14 @@
         <link rel="stylesheet" href="{{ URL::asset('assets/adminPage_assets/css/select2.css') }}">
 
         <link rel="stylesheet" href="{{ URL::asset('assets/adminPage_assets/css/unicorn-login.css') }}">
+
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+        <script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+        <script src="http://cdn.oesmith.co.uk/morris-0.4.1.min.js"></script>
+
+        
+
+
 
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -185,7 +193,7 @@
               <a href="#"><i class="fa fa-arrow-circle-up"></i> <span>Upload</span> <i class="arrow fa fa-chevron-right"></i></a>
               <ul>
                 <li>
-                  <a href="upload_videos">Videos</a>
+                  <a href="interface.html">Videos</a>
                 </li>
                 <li>
                   <a href="jquery-ui.html">Songs</a>
@@ -327,6 +335,8 @@
         <script src="{{ URL::asset('assets/adminPage_assets/js/jquery.gritter.min.js') }}"></script>
         <script src="{{ URL::asset('assets/adminPage_assets/js/jquery-ui.custom.min.js') }}"></script>
         <script src="{{ URL::asset('assets/adminPage_assets/js/respond.min.js') }}"></script>
+
+        <script src="{{ URL::asset('assets/adminPage_assets/js/morris.min.js') }}"></script>
 
 
         <!-- JacvaScripts are placed here-->
