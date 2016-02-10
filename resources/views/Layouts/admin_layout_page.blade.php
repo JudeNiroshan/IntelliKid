@@ -48,7 +48,7 @@
         <link rel="stylesheet" href="{{ URL::asset('assets/adminPage_assets/css/unicorn-login.css') }}">
 
         <script src="http://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
-        <script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+       
         <script src="http://cdn.oesmith.co.uk/morris-0.4.1.min.js"></script>
 
         
@@ -62,7 +62,7 @@
             <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
             <![endif]-->
 
-        <script>
+       <!-- <script>
             (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
                 (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
                 m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
@@ -71,7 +71,7 @@
             ga('create', 'UA-44987299-1', 'bootstrap-hunter.com');
             ga('send', 'pageview');
 
-        </script>    
+        </script> -->   
 
     </head>
     <body>
@@ -193,13 +193,13 @@
               <a href="#"><i class="fa fa-arrow-circle-up"></i> <span>Upload</span> <i class="arrow fa fa-chevron-right"></i></a>
               <ul>
                 <li>
-                  <a href="interface.html">Videos</a>
+                  <a href="upload_videos">Videos</a>
                 </li>
                 <li>
-                  <a href="jquery-ui.html">Songs</a>
+                  <a href="upload_songs">Songs</a>
                 </li>
                 <li>
-                  <a href="jquery-ui.html">Story</a>
+                  <a href="upload_story">Story</a>
                 </li>
                 <li>
                   <a href="jquery-ui.html">Quiz</a>
@@ -273,6 +273,15 @@
         <script src="{{ URL::asset('assets/adminPage_assets/js/unicorn.dashboard.js') }}"></script>
         <script src="{{ URL::asset('assets/adminPage_assets/js/excanvas.min.js') }}"></script>
         <script src="{{ URL::asset('assets/adminPage_assets/js/jquery.min.js') }}"></script>
+
+
+ 
+        <script src="{{ URL::asset('assets/adminPage_assets/audioplayerengine/amazingaudioplayer.js') }}"></script>
+        <link rel="stylesheet" type="text/css" href="{{ URL::asset('assets/adminPage_assets/audioplayerengine/initaudioplayer-1.css') }}">
+        <script src="{{ URL::asset('assets/adminPage_assets/audioplayerengine/initaudioplayer-1.js') }}"></script>
+
+
+
         <script src="{{ URL::asset('assets/adminPage_assets/js/jquery-ui.custom.js') }}"></script>
         <script src="{{ URL::asset('assets/adminPage_assets/js/bootstrap.min.js') }}"></script>
         <script src="{{ URL::asset('assets/adminPage_assets/js/jquery.flot.min.js') }}"></script>

@@ -167,7 +167,47 @@ Route::get('set_new_password','RegistrationController@set_new_password');
 
 
 
+/* ////////////////////////     Upload Routes     /////////////////////// */
+Route::get('upload_videos', 'UploadVideoController@loadWithDefaultData');
 
+Route::get('upload_videos_fileError', 'UploadVideoController@loadWithFailedReason');
+
+Route::post('upload_videos123', 'BaseUploadController@validator');
+
+Route::get('upload_videos123', 'UploadVideoController@loadWithDefaultData');
+
+
+
+
+Route::get('upload_songs', 'UploadSongController@loadWithDefaultData');
+
+Route::get('upload_songs_fileError', 'UploadSongController@loadWithFailedReason');
+
+Route::post('upload_songs123', 'BaseUploadController@validator');
+
+Route::get('upload_songs123', 'UploadSongController@loadWithDefaultData');
+
+
+
+Route::get('upload_story', 'UploadStoryController@loadWithDefaultData');
+
+Route::get('upload_story_fileError', 'UploadstoryController@loadWithFailedReason');
+
+Route::post('upload_story123', 'BaseUploadController@validator');
+
+Route::get('upload_story123', 'UploadstoryController@loadWithDefaultData');
+
+Route::get('refresh', 'UploadSongController@loadWithSelectedCrit');
+
+
+Route::get('test', function(){
+
+    return view('unicon_admin.test')
+    ->with('title','Dashboard');
+
+});
+Route::post('test', 'Test@testing');
+/* ---------------------------------------------------------------------*/
 
 
 
