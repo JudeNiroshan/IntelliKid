@@ -202,7 +202,7 @@
                   <a href="upload_story">Story</a>
                 </li>
                 <li>
-                  <a href="jquery-ui.html">Quiz</a>
+                  <a href="upload_question">Questions</a>
                 </li>
                 <li>
                   <a href="buttons.html">Buttons &amp; icons</a>

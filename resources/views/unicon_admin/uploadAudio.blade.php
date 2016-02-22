@@ -6,11 +6,30 @@
 		
 		var uploadForm = document.getElementById('songs_upload_form');
 		var fileName = document.getElementById('file_name').value;
+		var audio = document.getElementById('audioFileID').value;
 
-		if(fileName !== ''){
-			uploadForm.submit();
-		}else{
+		if(fileName == ''){
+			//document.getElementById('display_error').style.display = "block";
+			var error_message = "Please enter a name";
+			document.getElementById('display_error').innerHTML = error_message;
 			document.getElementById('display_error').style.display = "block";
+			var delay=100; //1 seconds
+
+			setTimeout(function(){
+				$('#display_error').effect("shake");
+			}, delay); 
+			
+		}else if(audio.length == 0){
+			var error_message = "Please Select a audio file";
+			document.getElementById('display_error').innerHTML = error_message;
+			document.getElementById('display_error').style.display = "block";
+			var delay=100; //1 seconds
+
+			setTimeout(function(){
+				$('#display_error').effect("shake");
+			}, delay); 
+		}else{
+			uploadForm.submit();
 		}
 
 		/*$.ajax({
@@ -75,14 +94,14 @@
 											<div id="display_error" style="display:none;" class=" col-sm-3 col-md-3 col-lg-4 alert alert-danger alert-block">
 												<a class="close" data-dismiss="alert" href="#">×</a>
 												
-													Please enter a name for the song
+													
 											</div>	
 									</div>
 
 									<div class="form-group">
 										<label class="col-sm-3 col-md-3 col-lg-2 control-label">Select File</label>
 										<div class="col-sm-3 col-md-3 col-lg-2">
-											<input type="file" name="songFile" required="yes"/>
+											<input type="file" id="audioFileID" name="songFile" required="yes"/>
 										</div>
 										
 

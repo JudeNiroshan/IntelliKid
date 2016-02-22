@@ -57,4 +57,33 @@ class UploadStoryController extends Controller
 
         return null;
     }
+
+    public static function loadWithFailedReason($fail_reason){
+
+
+        $subjects = DB::table('subject')->get();
+
+        $age_groups = DB::table('age_group')->get();
+
+        $path_list_for_name = DB::table('story')->where('active', '=', '1')->get();
+        $story = array();
+        foreach ($path_list_for_name as $row) {
+
+            $temp_id = DB::table('story_image')->where('storyid', '=', $row->id)->get();
+            $story_img = $temp_id[0]->path;
+
+            $story_tile_obj = array('name' => $row->name,
+                'path' => strstr($story_img, 'assets')
+                );
+            array_push($story, $story_tile_obj);
+        }
+
+        return view('unicon_admin.uploadQuestion')
+                ->with('sub',$subjects)
+                ->with('agecat', $age_groups)
+                ->with('error', $fail_reason)
+                ->with('title','Upload | Story')
+                ->with('gallery_data', $story); 
+        
+    }
 }

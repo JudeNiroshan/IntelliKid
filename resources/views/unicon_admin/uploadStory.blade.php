@@ -9,7 +9,8 @@ function submitOfStory(){
 
 	var uploadForm = document.getElementById('story_upload_form');
 	var name = $(":file").val();
-	var story_name = document.getElementById('file').value;
+	
+	var story_name = document.getElementById('fileName').value;
 	
 
 	if(story_name == ''){
@@ -118,6 +119,8 @@ function submitOfStory(){
 					<div class="widget-content nopadding">
 
 						<form action="upload_story123" method="post" id="story_upload_form" enctype="multipart/form-data" class="form-horizontal">
+
+							<input type="hidden" name="song">
 
 							<div class="form-group">
 								<label class="col-sm-3 col-md-3 col-lg-2 control-label">Subject</label>
