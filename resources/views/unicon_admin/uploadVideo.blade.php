@@ -1,6 +1,50 @@
 @extends('Layouts.admin_layout_page')
 @section('body_of_unicon_admin')
 
+<script src="{{ URL::asset('assets/adminPage_assets/js/jquery.min.js') }}"></script>
+	<script type="text/javascript">
+	function submitOfVideos(){
+		
+		var uploadForm = document.getElementById('video_upload_form');
+		var fileName = document.getElementById('file_name').value;
+		var video = document.getElementById('videoFileID').value;
+		var img = document.getElementById('imgFileID').value;
+
+		if(fileName == ''){
+			var error_message = "Please enter a name";
+			document.getElementById('display_error').innerHTML = error_message;
+			document.getElementById('display_error').style.display = "block";
+			var delay=100; //1 seconds
+
+			setTimeout(function(){
+				$('#display_error').effect("shake");
+			}, delay); 
+		}else if(video.length == 0){
+			var error_message = "Please select a video file";
+			document.getElementById('display_error').innerHTML = error_message;
+			document.getElementById('display_error').style.display = "block";
+			var delay=100; //1 seconds
+
+			setTimeout(function(){
+				$('#display_error').effect("shake");
+			}, delay); 
+		}else if(img.length == 0){
+			var error_message = "Please select an image file";
+			document.getElementById('display_error').innerHTML = error_message;
+			document.getElementById('display_error').style.display = "block";
+			var delay=100; //1 seconds
+
+			setTimeout(function(){
+				$('#display_error').effect("shake");
+			}, delay); 
+		}else{
+			//alert('going to submit');
+			uploadForm.submit();
+		}
+	}
+
+	</script>
+
 
 		<div id="content">
 			
@@ -23,7 +67,7 @@
 										<div class="col-sm-3 col-md-3 col-lg-2">
 											<select name="subject">
 												@foreach($sub as $rowSub)
-													<option>{{ $rowSub->subject }}</option>
+													<option value=<?php echo '"'.$rowSub->id.'" '; ?> >{{ $rowSub->subject }}</option>
 							                    @endforeach  
 												
 											</select>
@@ -33,7 +77,7 @@
 										<div class="col-sm-3 col-md-3 col-lg-2">
 											<select name="ageCategory">
 												@foreach($agecat as $rowAge)
-													<option>{{ $rowAge->agefrom }} - {{ $rowAge->ageto }}</option>
+													<option value=<?php echo '"'.$rowAge->id.'" '; ?> >{{ $rowAge->agefrom }} - {{ $rowAge->ageto }}</option>
 							                    @endforeach 
 												
 											</select>
@@ -41,14 +85,39 @@
 									</div>
 									
 									<div class="form-group">
+										<label class="col-sm-3 col-md-3 col-lg-2 control-label">Name</label>
+										<div class="col-sm-3 col-md-3 col-lg-2">
+											<input id="file_name" type="text" name="filename" required="yes"/>
+										</div>
+										
+										<div   class="col-sm-3 col-md-3 col-lg-2"></div>
+
+											<div id="display_error" style="display:none;" class=" col-sm-3 col-md-3 col-lg-4 alert alert-danger alert-block">
+												<a class="close" data-dismiss="alert" href="#">×</a>
+												
+											</div>	
+									</div>
+									<div class="form-group">
 										<label class="col-sm-3 col-md-3 col-lg-2 control-label">Select File</label>
 										<div class="col-sm-3 col-md-3 col-lg-2">
-											<input type="file" name="videoFile" required="yes"/>
+											<input id="videoFileID" type="file" name="videoFile" required="yes"/>
 										</div>
+										
+
+										<label class="col-sm-3 col-md-3 col-lg-2 control-label">Select Image</label>
+										<div class="col-sm-3 col-md-3 col-lg-2">
+											<input id="imgFileID" type="file" name="videoImageFile" required="yes"/>
+										</div>
+
+
+									</div>
+									<div class="form-group">
+										<div class="col-sm-3 col-md-3 col-lg-2"></div>
+										<div class="col-sm-3 col-md-3 col-lg-2"></div>
 										<div class="col-sm-3 col-md-3 col-lg-2"></div>
 										<div class="col-sm-3 col-md-3 col-lg-2">
-											<a href="javascript:{}" 
-											onclick="document.getElementById('video_upload_form').submit();"
+											<a href="#" 
+											onclick="javascript:submitOfVideos();"
 											data-toggle="dropdown"
 											class="btn btn-primary dropdown-toggle"><i
 											class="fa fa-upload icon-white"></i> Upload </a>
@@ -56,6 +125,7 @@
 											
 										</div>
 									</div>
+									
 
 									<div class="form-group">
 										@if(isset($error))
@@ -86,76 +156,7 @@
 					</div>
 				</div>
 
-				<div class="row">
-					<div class="col-xs-12">
-						<div class="widget-box">
-							<div class="widget-title">
-								<span class="icon"> <i class="fa fa-picture-o"></i>
-								</span>
-								<h5>Uploaded Videos</h5>
-							</div>
-							<div class="widget-content">
-								<div class="gallery-masonry">
-									<div class="item">
-										<a href="#" class="thumbnail"> <img src="{{ URL::asset('assets/adminPage_assets/img/demo/sample.jpg') }}"
-											alt="">
-										</a>
-										<div class="actions">
-											<div class="actions-inner">
-												<a title="Edit" href="#" class="tip-top"><i
-													class="fa fa-pencil"></i></a> <a title="Remove" href="#"
-													class="tip-top"><i class="fa fa-trash-o"></i></a>
-											</div>
-										</div>
-									</div>
-									<div class="item">
-										<a href="#" class="thumbnail"> <img src="{{ URL::asset('assets/adminPage_assets/img/demo/sample.jpg') }}"
-											alt="">
-										</a>
-										<div class="actions">
-											<div class="actions-inner">
-												<a title="Edit" href="#" class="tip-top"><i
-													class="fa fa-pencil"></i></a> <a title="Remove" href="#"
-													class="tip-top"><i class="fa fa-trash-o"></i></a>
-											</div>
-										</div>
-									</div>
-									<div class="item">
-										<a href="#" class="thumbnail"> <img src="{{ URL::asset('assets/adminPage_assets/img/demo/sample.jpg') }}"
-											alt="">
-										</a>
-										<div class="actions">
-											<div class="actions-inner">
-												<a title="Edit" href="#" class="tip-top"><i
-													class="fa fa-pencil"></i></a> <a title="Remove" href="#"
-													class="tip-top"><i class="fa fa-trash-o"></i></a>
-											</div>
-										</div>
-									</div>
-									<div class="item">
-										<a href="#" class="thumbnail"> <img src="{{ URL::asset('assets/adminPage_assets/img/demo/sample.jpg') }}"
-											alt="">
-										</a>
-										<div class="actions">
-											<div class="actions-inner">
-												<a title="Edit" href="#" class="tip-top"><i
-													class="fa fa-pencil"></i></a> <a title="Remove" href="#"
-													class="tip-top"><i class="fa fa-trash-o"></i></a>
-											</div>
-										</div>
-									</div>
-									
-								</div>
-								<span style="font-size: 10px; color: #888888;">All Images
-									licensed under <a
-									href="http://creativecommons.org/licenses/by-nd/2.0/deed.en">Creative
-										Commons BY-ND 2.0</a>, <a
-									href="http://www.flickr.com/photos/sbl83/">stilettobootlover_83's</a>
-								</span>
-							</div>
-						</div>
-					</div>
-				</div>
+				@include('unicon_admin.videoGallary');
 			</div>
 		</div>
 @stop  

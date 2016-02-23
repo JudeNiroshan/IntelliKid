@@ -19,35 +19,47 @@ class UploadVideoController extends Controller
 
     	$age_groups = DB::table('age_group')->get();
 
+        $path_list_for_name = DB::table('video')->where('active', '=', '1')->get();
+        $videos = array();
+        foreach ($path_list_for_name as $row) {
+            $video_tile_obj = array('name' => $row->name,
+                                    'path' => strstr($row->path, 'assets'),
+                                    'img_path' => strstr($row->img_path, 'assets'),
+                                    'length' => $row->length );
+            array_push($videos, $video_tile_obj);
+        }
+
+        
+       
     	return view('unicon_admin.uploadVideo')
     			->with('sub',$subjects)
     			->with('agecat', $age_groups)
-    			->with('title','Dashboard');
+    			->with('title','Upload | Videos')
+                ->with('gallery_data', $videos);
     }
 
-    public function loadWithFailedReason($fail_reason){
+    public static function loadWithFailedReason($fail_reason){
 
 
     	$subjects = DB::table('subject')->get();
-
     	$age_groups = DB::table('age_group')->get();
-
+        $videos = array();
+        $path_list_for_name = DB::table('video')->where('active', '=', '1')->get();
+        
+        foreach ($path_list_for_name as $row) {
+            $video_tile_obj = array('name' => $row->name,
+                                    'path' => strstr($row->path, 'assets'),
+                                    'img_path' => strstr($row->img_path, 'assets'),
+                                    'length' => $row->length );
+            array_push($videos, $video_tile_obj);
+        }
 
 		return view('unicon_admin.uploadVideo')
     			->with('sub',$subjects)
     			->with('agecat', $age_groups)
     			->with('error', $fail_reason)
-    			->with('title','Dashboard');	
-    	/*return view('unicon_admin.uploadVideo')
-    			->with('sub',$subjects)
-    			->with('agecat', $age_groups)
-    			->with('error', $fail_reason)
-    			->with('title','Dashboard');*/
-
-    			/*return view('unicon_admin.uploadVideo')
-    			->with('sub',$subjects)
-    			->with('agecat', $age_groups)
-    			->with('error', $reason)
-    			->with('title','Dashboard');*/
+                ->with('gallery_data', $videos)
+    			->with('title','Upload | Videos');	
+    	
     }
 }

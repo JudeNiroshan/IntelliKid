@@ -6,70 +6,72 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-//use App/Http/Controllers/
+use App\Classes\common\FactoryProducer;
+
+//use App\Http\Controllers\com\intellikid\upload\common\UploadUtils;
+
 use DB;
 
 class BaseUploadController extends Controller
 {
-    public function validator(Request $request){
-    	/*print_r($request -> subject);
-    	print_r($request -> ageCategory);*/
-
-    	$file = $request->file('videoFile');
-    	if ($request->hasFile('videoFile')) {
-
-    		print_r("file uploaded successfully");
-            $fileName = $file->getClientOriginalName();
-            $fileFormat = $file->getMimeType();
-            print_r($fileFormat);
 
 
 
-            if(ends_with($fileName, '.mp4')){
-                echo "its an mp4 movie";
-                $destinationPath = storage_path() . '/uploads';
-                print_r($file->getClientOriginalName());  
-                $file->move($destinationPath, $file->getClientOriginalName());
 
-                $msg = "File has successfully uploaded";
-                $subjects = DB::table('subject')->get();
+    public function uploadContent(Request $request){
 
-                $age_groups = DB::table('age_group')->get();
-            }
+        //Get the AbstractFactory
+        $Factory = FactoryProducer::getFactory("upload");
 
-    		
+        
+        if ($request->hasFile('videoFile')) {
+             
+            //Get the Uploader
+            $uploader = $Factory->getUploader("video");
 
-/*            return view('unicon_admin.uploadVideo')
-                            ->with('sub',$subjects)
-                            ->with('agecat', $age_groups)
-                            ->with('title','Dashboard')
-                            ->with('msg', $msg);*/
-    	}else{
-    		//print_r("file is missing");
-    		$reason = "File is missing. Please choose a file less than 500MB in size.";
-    		
-    		$up = new UploadVideoController();
-    		return $up->loadWithFailedReason($reason);
-    		
-    		//return (new UploadVideoController)->loadWithFailedReason($reason);
+            //Dynamic Uploader; uploading...
+            return $uploader->upload($request);
 
 
-    		/*$su]bjects = DB::table('subject')->get();
+        }else if($request->hasFile('songFile')){
 
-    		$age_groups = DB::table('age_group')->get();
+            //Get the Uploader
+            $uploader = $Factory->getUploader("song");
 
-    		return view('unicon_admin.uploadVideo')
-    			->with('sub',$subjects)
-    			->with('agecat', $age_groups)
-    			->with('error', $reason)
-    			->with('title','Dashboard');*/
+            //Dynamic Uploader; uploading...
+            return $uploader->upload($request);
 
-    		
-    	}
-    	 
+            
+        }else if($request->has('story')){
+
+            //Get the Uploader
+            $uploader = $Factory->getUploader("story");
+
+            //Dynamic Uploader; uploading...
+            return $uploader->upload($request);
+
+        }else if($request->has('question')){
+
+            //Get the Uploader
+            $uploader = $Factory->getUploader("question");
+
+            //Dynamic Uploader; uploading...
+            return $uploader->upload($request);
 
 
-    	 
-		
+        }else{
+
+            		/*$reason1 = new UploadVideoUtils();
+                    $reason = $reason1->G_FAIL_FILE_NOT_FOUND;*/
+
+                    $reason = "File is missing. Please choose a file less than 500MB in size.";
+                    return UploadVideoController::loadWithFailedReason($reason);
+
+        }
+
+
+
+
+
     }
 }
