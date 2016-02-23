@@ -462,7 +462,7 @@ block {
                 success: function (data) {
 
                        
-                        swal("Success!", "Get your reset password link from your email!", "success");
+                        swal("Success!", "Password Changed!", "success");
                         setTimeout(function(){
                         
                          document.getElementById("load").innerHTML="";

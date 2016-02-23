@@ -1,19 +1,25 @@
 
-@if (!(isset( $_SESSION['USERID']))   ) 
+@if ((isset( $_SESSION['USERID']))==false   ) 
 
 <script> 
     location.href = "login";
 </script>
 
+
 @endif
 
-@if($_SESSION['STATUS'] == "PENDING")
 
+
+
+
+
+@if(isset($_SESSION['STATUS']) )
+    @if($_SESSION['STATUS']== "PENDING")
 
 <script> 
     location.href = "email_verification_notiece";
 </script>
-
+@endif
 @endif
 
 
@@ -33,10 +39,29 @@
 
         <link rel="shortcut icon" href="{{URL::asset('assets/parent/images/logo1.png') }}" type="image/png" sizes="48x48"/>
 
+        <link rel='stylesheet' href="{{ URL::asset('assets/baby/css/nicdark_style.css')}}">
+        <link rel='stylesheet' href="{{ URL::asset('assets/baby/css/nicdark_responsive.css')}}">
+        <link rel='stylesheet' href="{{ URL::asset('assets/baby/css/revslider/settings.css')}}">
+
+
+         <link rel='stylesheet' href="{{ URL::asset('assets/baby/css/animate.css')}}">
+         <link rel='stylesheet' href="{{ URL::asset('assets/baby/css/fontello.css')}}">
+         <link rel='stylesheet' href="{{ URL::asset('assets/baby/css/magnific-popup.css')}}">
+         <link rel='stylesheet' href="{{ URL::asset('assets/baby/css/nicdark_menu.css')}}">
+        
+         <link rel='stylesheet' href="{{ URL::asset('assets/baby/css/nicdark_shortcodes.css')}}">
+       
+      
+         <link rel='stylesheet' href="{{ URL::asset('assets/baby/font/fontello/fontello.svg')}}">
+         <link rel='stylesheet' href="{{ URL::asset('assets/baby/font/fontello/fontello.ttf')}}">
+
+
+
+
+
         <!-- Stylesheets -->
-        <link rel="stylesheet" href="{{ URL::asset('assets/css/bootstrap.min.css')}}">
-       <!-- <link rel="stylesheet" href="{{ URL::asset('assets/css/bootstrap-extend.min.css')}}">
-        <link rel="stylesheet" href="{{ URL::asset('assets/css/site.min.css')}}">-->
+
+    
 
         <link rel="stylesheet" href="{{ URL::asset('assets/parent/vendor/animsition/animsition.css')}}">
         <link rel="stylesheet" href="{{ URL::asset('assets/parent/vendor/asscrollable/asScrollable.css')}}">
@@ -44,7 +69,9 @@
         <link rel="stylesheet" href="{{ URL::asset('assets/parent/vendor/intro-js/introjs.css')}}">
         <link rel="stylesheet" href="{{ URL::asset('assets/parent/vendor/slidepanel/slidePanel.css')}}">
         <link rel="stylesheet" href="{{ URL::asset('assets/parent/vendor/flag-icon-css/flag-icon.css')}}">
+        
         <link rel="stylesheet" href="{{ URL::asset('assets/parent/vendor/datatables-bootstrap/dataTables.bootstrap.css')}}">
+        <link rel="stylesheet" href="{{ URL::asset('assets/parent/profile/css/bootstrap.min.css')}}">
         <link rel="stylesheet" href="{{ URL::asset('assets/parent/vendor/datatables-fixedheader/dataTables.fixedHeader.css')}}">
         <link rel="stylesheet" href="{{ URL::asset('assets/parent/vendor/datatables-responsive/dataTables.responsive.css')}}">
         <link rel="stylesheet" href="{{ URL::asset('assets/parent/vendor/bootstrap-datepicker/bootstrap-datepicker.css')}}">
@@ -56,6 +83,7 @@
         <link rel="stylesheet" href="{{ URL::asset('assets/parent/fonts/web-icons/web-icons.min.css')}}">
         <link rel="stylesheet" href="{{ URL::asset('assets/parent/fonts/brand-icons/brand-icons.min.css')}}">
         <link rel='stylesheet' href="{{ URL::asset('assets/parent/css.css')}}">
+
      
         <link rel='stylesheet' href="{{ URL::asset('assets/parent/vendor/c3/c3.css')}}">
         <link rel='stylesheet' href="{{ URL::asset('assets/parent/vendor/sparkline/sparkline.css')}}">
@@ -74,158 +102,210 @@
 <!-- new theme -->
 
 
-         <link rel='stylesheet' href="{{ URL::asset('assets/parent/css/bootstrap/bootstrap.min.css')}}">
-         <link rel='stylesheet' href="{{ URL::asset('assets/parent/css/plugins/select_option1.css')}}">
-         <link rel='stylesheet' href="{{ URL::asset('assets/parent/fonts/font-awesome/css/font-awesome.min.css')}}">
-         <link rel='stylesheet' href="{{ URL::asset('assets/parent/css/plugins/fullcalendar.min.css')}}">
-         <link rel='stylesheet' href="{{ URL::asset('assets/parent/options/optionswitch.css')}}">
-         <link rel='stylesheet' href="{{ URL::asset('assets/parent/css/plugins/animate.css')}}">
 
-         <link rel='stylesheet' href="{{ URL::asset('assets/parent/css/style.css')}}">
-         <link rel='stylesheet' href="{{ URL::asset('assets/parent/css/plugins/animate.css')}}">
-         <link rel='stylesheet' href="{{ URL::asset('assets/parent/css/colors/default.css')}}"  id="option_color">
-
+       
 
 
 </head>
-<body>
 
-<!--=== option Switcher ===-->
-<i class="option-switcher-btn fa fa-gear hidden-xs"></i>
-        <div class="option-switcher animated fadeInRight">
-            <div class="option-swticher-header">
-                <div class="option-switcher-heading">Template Options</div>            
-                <div class="theme-close"><i class="fa fa-close"></i></div>
-                 </div>
-                   <div class="option-swticher-body">
-                     <!-- Theme Colors -->
-                      <ul class="list-unstyled">
-                      <li class="theme-default theme-active" data-color="default" data-logo="default-logo"></li>
-                      <li class="theme-grayGreen" data-color="gray-green" data-logo="grayGreen"></li>
-                      <li class="theme-blueOrange" data-color="blue-orange" data-logo="blueOrange"></li>
-                      <li class="theme-grayBlue last" data-color="gray-blue" data-logo="grayBlue"></li>
-                      </ul>
-                     <!-- Layout Styles -->
-                     <div class="row no-col-space layoutStyle">
-                     <div class="col-xs-6">
-                        <a href="javascript:void(0);" class="btn-u  btn-block active-switcher-btn wide-layout-btn">Wide</a>                
-                      </div>
-                     <div class="col-xs-6">
-                    <a href="javascript:void(0);" class="btn-u btn-block boxed-layout-btn">Boxed</a>                
-                </div>
-            </div>
-            <!-- Header Styles -->
-            <div class="row no-col-space headerStyle">
-                <div class="col-xs-6">
-                     <a href="javascript:void(0);" class="btn-u btn-block active-switcher-btn fixed-header-btn">Fixed Top</a>               
-                     </div>
-                     <div class="col-xs-6">
-                     <a href="javascript:void(0);" class="btn-u  btn-block static-header-btn">Static Top</a>               
-                </div>
-            </div>            
-        </div>
+<body id="start_nicdark_framework">
+
+<div class="nicdark_site">
+    <div class="nicdark_site_fullwidth nicdark_clearfix"><div class="nicdark_overlay"></div>
+
+
+<!--START SIDEBAR-->
+<div class="nicdark_right_sidebar nicdark_bg_greydark nicdark_nicescrool">
+
+    <a class="nicdark_right_sidebar_btn_close nicdark_btn_icon small nicdark_bg_red nicdark_radius white nicdark_absolute_right10 nicdark_shadow"><i class="icon-power"></i></a>
+    
+    <!--start CART-->
+    <div class="nicdark_margin020">
+        <div class="nicdark_space20"></div>
+        <h4 class="white">YOUR CHAT ROOM</h4>
+        <div class="nicdark_space20"></div>
+        <div class="nicdark_divider left small"><span class="nicdark_bg_white nicdark_radius"></span></div>
     </div>
-    <!--/option-switcher-->
+  
 
-    <div class="main_wrapper">
-        <div class="header fixed-top">
-            <nav class="navbar navbar-default">
-              <div class="container">
-                <div class="row">
-                    <div class="col-xs-12">
-                        <div class="header_inner">
-                            <!-- Brand and toggle get grouped for better mobile display -->
-                            <div class="navbar-header">
-                              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                                <span class="sr-only">Toggle navigation</span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                              </button>
-                              <a class="navbar-brand logo clearfix"><img style="width:66%" src="" alt="" class="img-responsive" /></a>
-                            
-                            </div>
-                            <!-- Collect the nav links, forms, and other content for toggling -->
-                            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                              <ul class="nav navbar-nav navbar-right">
-                                <li class="active"><a href="index.html">Home</a></li>
-                                <li class="dropdown">
-                                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">##**###<span class="caret"></span></a>
-                                  <ul class="dropdown-menu">
-                                    <li><a href="about.html">#</a></li>
-                                    <li><a href="campus.html">#</a></li>
-                                    <li><a href="stuff.html">#</a></li>
-                                    <li><a href="photo_gallery.html">Photo Gallery</a></li>
-                                  </ul>
-                                <li><a href="news.html">News</a></li>
-                                <li><a href="events_calendar.html">Events</a></li>
-                                <li><a href="logout">Log out</a></li>
-                               
-                                
-                              </ul>
-                            </div><!-- /.navbar-collapse -->
-                        </div>
+
+
+
+
+
+
+
+
+
+
+</div>
+<!--END SIDEBAR--><div class="nicdark_section nicdark_navigation fade-down">
+   
+
+
+
+
+
+
+
+
+    <div class="nicdark_menu_boxed">
+
+
+        <div class="nicdark_section nicdark_bg_greydark nicdark_displaynone_responsive">
+            <div class="nicdark_container nicdark_clearfix">
+
+                <div class="grid grid_6">
+                    <div class="nicdark_focus">
+                     <h6 class="white">
+                       <i class="icon-plus-outline"></i>&nbsp;&nbsp;<a class="white nicdark_mpopup_ajax" href="#">COLLECTOR</a>
+                       </h6>
                     </div>
                 </div>
-              </div><!-- /.container -->
-            </nav><!-- navbar -->
-        </div>
-        
-        <div class="inlineMenu margin-top">
-          <div class="container">
-            <div class="row clearfix">
-              <div class="col-xs-12">
-                <ul class="list-inline">
-                  <li class="dropdown">
-                        <a href="courses.html" class="dropdown-toggle">######</a>
-                        <ul class="dropdown-menu">
-                            <li>
-                                <h3>Search Courses:</h3>
-                            </li>
-                            <li>
-                                <form action="http://themes.iamabdus.com/royal/1.1/courses.html" method="post">
-                                    <input type="text" placeholder="Course Name" id="exampleInputEmail1" class="form-control">
-                                    <button class="btn btn-default btn-block commonBtn" type="submit">Search</button>
-                                </form>
-                            </li>
-                            <li role="separator" class="divider"></li>
-                            <li><a href="courses.html">View all programs (A - Z)</a></li>
-                            <li><a href="courses.html">Full Time Programs</a></li>
-                            <li><a href="courses.html">Part-Time Studies</a></li>
-                            <li role="separator" class="divider second"></li>
-                            <li>
-                                <h3>Areas of Study:</h3>
-                            </li>
-                            
-                            <li><a href="single-courses.html">#</a></li>
-                            <li><a href="single-courses.html">A#</a></li>
-                            <li><a href="single-courses.html">B#</a></li>
-                            <li><a href="single-courses.html">C#</a></li>
-                            <li><a href="single-courses.html">#</a></li>
-                            <li><a href="single-courses.html">E#</a></li>
-                            <li><a href="single-courses.html">#</a></li>
-                            <li><a href="single-courses.html">#</a></li>
-                            <li><a href="single-courses.html">#</a></li>
-                            <li><a href="single-courses.html">#</a></li>
-                            <li><a href="single-courses.html">#</a></li>
-                            <li><a href="single-courses.html">S#</a></li>
-                            <li><a href="single-courses.html">#</a></li>
-                            <li><a href="single-courses.html">#</a></li>
-                            
-                            
-                            
-                      </ul>
-                    </li>
-                  <li><a href="admission.html">#</a></li>
-                  <li><a href="accommodation.html">#</a></li>
-                  <li><a href="international_students.html">I#</a></li>
-                  <li><a href="about.html">W#</a></li>
-                </ul>
-              </div><!-- col-xs-12 -->
-            </div><!-- row clearfix-->
-          </div><!-- container  -->
-        </div><!-- inlineMenu -->
+                  <div class="grid grid_6 right">
+                    <div class="nicdark_focus right">
+                        <h6 class="white">
 
+                      
+                           
+                    @if ((isset( $_SESSION['USERID']))==true   ) 
+
+                           </i>&nbsp;&nbsp;<?php echo $_SESSION['NAME'];?>
+                    @endif
+                          
+                        </h6>
+                    </div>
+                </div>
+
+                <!--info window for languages-->
+                <div id="nicdark_window" class="nicdark_bg_white nicdark_radius zoom-anim-dialog mfp-hide">
+                    
+
+                   
+                </div>
+                <!--end window-->
+
+            </div>
+        </div>
+
+        <div class="nicdark_space3 nicdark_bg_gradient"></div>
+                    
+        <div class="nicdark_section nicdark_bg_grey nicdark_shadow nicdark_radius_bottom">
+            <div class="nicdark_container nicdark_clearfix">
+
+                <div class="grid grid_12 percentage">
+                        
+                        <div class="nicdark_space20"></div>
+
+                        <div class="nicdark_logo nicdark_marginleft10" style="margin-top:-2%">
+                            <a href=""><img alt="" src="{{ URL::asset('assets/images/logoto.png')}}" height="60" width="0"></a>
+                        </div>
+
+                        <a class="nicdark_btn_icon nicdark_zoom nicdark_bg_yellow_hover nicdark_right_sidebar_btn_open nicdark_marginright10 nicdark_bg_orange extrasmall nicdark_radius white right"><i class="icon-mic-outline"></i></a>
+                        
+                        <nav>
+                            <ul class="nicdark_menu nicdark_margin010 nicdark_padding50">
+
+                                <li class="orange">
+                                    <a href="default_home">HOME</a>
+                                    
+                                </li>
+                                <li class="red">
+                                    <a href="#">ACCOUNTS</a>
+                                    <ul class="sub-menu">
+                                    <li><a href="profile">My Account</a></li>
+                                     <li><a href="new_child">Create Child Accounts</a></li>
+                                        <li><a href="veca">Created Child Accounts</a></li>
+                                      
+                                     
+                                    </ul>
+                                </li>
+                                <li class="blue">
+                                    <a href="courses.html">CONTENT</a>
+                                    <ul class="sub-menu">
+                                        <li> <a href="videos">Videos</a></li>
+                                        <li> <a href="all_stories">Story</a></li>
+                                         <li><a href="single-course.html">Single Course</a></li>
+                                    </ul>
+                                </li>
+                                <li class="yellow nicdark_megamenu">
+                                    <a href="#">MEGA MENU</a>
+                                    <ul class="sub-menu">
+                                        <li class="mm_grid mm_grid_3">
+                                            <a href="#">Lorem Ipsum Dolor</a>
+                                            <ul class="sub-menu">
+                                                <li><a href="#">Lorem Ipsum Dolor</a></li>
+                                                <li><a href="#">Lorem Ipsum Dolor</a></li>
+                                                <li><a href="#">Lorem Ipsum Dolor</a></li>
+                                            </ul>
+                                        </li>
+                                        <li class="mm_grid mm_grid_3">
+                                            <a href="#">Lorem Ipsum Dolor</a>
+                                            <ul class="sub-menu">
+                                                <li><a href="#">Lorem Ipsum Dolor</a></li>
+                                                <li><a href="#">Lorem Ipsum Dolor</a></li>
+                                                <li><a href="#">Lorem Ipsum Dolor</a></li>
+                                            </ul>
+                                        </li>
+                                        <li class="mm_grid mm_grid_3">
+                                            <a href="#">Lorem Ipsum Dolor</a>
+                                            <ul class="sub-menu">
+                                                <li><a href="#">Lorem Ipsum Dolor</a></li>
+                                                <li><a href="#">Lorem Ipsum Dolor</a></li>
+                                                <li><a href="#">Lorem Ipsum Dolor</a></li>
+                                            </ul>
+                                        </li>
+                                        <li class="mm_grid mm_grid_3">
+                                            <a href="#">Lorem Ipsum Dolor</a>
+                                            <ul class="sub-menu">
+                                                <li><a href="#">Lorem Ipsum Dolor</a></li>
+                                                <li><a href="#">Lorem Ipsum Dolor</a></li>
+                                                <li><a href="#">Lorem Ipsum Dolor</a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="green">
+                                    <a href="blog-masonry.html">BLOG</a>
+                                    <ul class="sub-menu">
+                                        <li><a href="blog-masonry.html">Masonry Layout</a></li>
+                                        <li>
+                                            <a href="single-post-right-sidebar.html">Single Post</a>
+                                            <ul class="sub-menu">
+                                                <li><a href="single-post-left-sidebar.html">Left Sidebar</a></li>
+                                                <li><a href="single-post-right-sidebar.html">Right Sidebar</a></li>
+                                                <li><a href="single-post-full-width.html">Full Width</a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="orange">
+                                    <a href="events.html">EVENTS</a>
+                                    <ul class="sub-menu">
+                                        <li><a href="events.html">All Events</a></li>
+                                        <li><a href="single-event.html">Single Event</a></li>
+                                    </ul>
+                                </li>
+                                <li class="grey">
+
+                                    <a href=" logout">LOGOUT</a>
+                                </li>
+                            </ul>
+                        </nav>
+    
+                        <div class="nicdark_space20"></div>
+
+                </div>
+
+            </div>
+            <!--end container-->
+
+        </div>
+        <!--end header-->
+
+    </div>
+
+</div>
 
       
             @yield('title')
@@ -233,37 +313,51 @@
            
             @yield('content')
 
+            @yield('js')
 
 
 
-    <div class="footer">
-          <div class="container">
-            <div class="row clearfix">
-              <div class="col-sm-5 col-xs-12">
-                <p class="copyRight">&copy; 2016 Intellikid</p>
-              </div><!-- col-sm-6 col-xs-12 -->
-              <div class="col-sm-7 col-xs-12">
-                <ul class="list-inline footerMenu">
-                  <li><a href="privacy_policy.html">Privacy Policy</a></li>
-                </ul>
-              </div><!-- col-sm-6 col-xs-12 -->
-            </div><!-- row clearfix -->
-          </div><!-- container -->
-        </div><!-- footer -->
 
+<!--start section-->
+<div class="nicdark_section nicdark_bg_greydark2 nicdark_copyrightlogo">
+
+    <!--start nicdark_container-->
+    <div class="nicdark_container nicdark_clearfix">
+
+        <div class="grid grid_6 nicdark_aligncenter_iphoneland nicdark_aligncenter_iphonepotr">
+            <div class="nicdark_space20"></div>
+            <p class="white"> 2016 <span class="grey">IntelliKid</span> <i class="icon-heart-filled red nicdark_zoom"></i></p>
+        </div>
+
+
+        <div class="grid grid_6">
+            <div class="nicdark_focus right nicdark_aligncenter_iphoneland nicdark_aligncenter_iphonepotr">
+                <div class="nicdark_margin10">
+                    <a href="#" class="nicdark_facebook nicdark_press right nicdark_btn_icon small nicdark_radius white"><i class="icon-facebook-1"></i></a>
+                </div>
+                <div class="nicdark_margin10">
+                    <a href="#" class="nicdark_press right nicdark_btn_icon nicdark_bg_red nicdark_shadow small nicdark_radius white"><i class="icon-gplus"></i></a>
+                </div>
+                <div class="nicdark_margin10">
+                    <a href="#" class="nicdark_press right nicdark_btn_icon nicdark_bg_blue nicdark_shadow small nicdark_radius white"><i class="icon-twitter-1"></i></a>
+                </div>
+                <div class="nicdark_margin10">
+                    <a href="#start_nicdark_framework" class="nicdark_zoom nicdark_internal_link right nicdark_btn_icon nicdark_bg_greydark2 small nicdark_radius white"><i class="icon-up-outline"></i></a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!--end nicdark_container-->
+            
 </div>
+<!--end section--> 
 
 
 
 
 
-
-
-
-
-
-
-    
+        <script src="{{ URL::asset('assets/baby/js/plugins/nicescrool/jquery.nicescroll.min.js') }}"></script>
         <script src="{{ URL::asset('assets/vendor/jquery/jquery.js') }}"></script>
         <!--<script src="{{ URL::asset('assets/vendor/bootstrap/bootstrap.js') }}"></script> -->
         <script src="{{ URL::asset('assets/vendor/animsition/jquery.animsition.js') }}"></script>
@@ -289,6 +383,29 @@
         <script src="{{ URL::asset('assets/js/configs/config-tour.js') }}"></script>
 
 
+
+<!-- baby theme js-->
+        <script src="{{ URL::asset('assets/baby/js/main/jquery.min.js') }}"></script>
+        <script src="{{ URL::asset('assets/baby/js/main/jquery-ui.js') }}"></script>
+        <script src="{{ URL::asset('assets/baby/js/main/excanvas.js') }}"></script>
+
+        <script src="{{ URL::asset('assets/baby/js/plugins/inview/jquery.inview.min.js') }}"></script>
+        <script src="{{ URL::asset('assets/baby/js/plugins/revslider/jquery.themepunch.tools.min.js') }}"></script>
+        <script src="{{ URL::asset('assets/baby/js/plugins/revslider/jquery.themepunch.revolution.min.js') }}"></script>
+        <script src="{{ URL::asset('assets/baby/js/plugins/menu/superfish.min.js') }}"></script>
+        <script src="{{ URL::asset('assets/baby/js/plugins/menu/tinynav.min.js') }}"></script>
+
+        <script src="{{ URL::asset('assets/baby/js/plugins/isotope/isotope.pkgd.min.js') }}"></script>
+        <script src="{{ URL::asset('assets/baby/js/plugins/mpopup/jquery.magnific-popup.min.js') }}"></script>
+        <script src="{{ URL::asset('assets/baby/js/plugins/scroolto/scroolto.js') }}"></script>
+        <script src="{{ URL::asset('assets/baby/js/plugins/nicescrool/jquery.nicescroll.min.js') }}"></script>
+
+        <script src="{{ URL::asset('assets/baby/js/plugins/parallax/jquery.parallax-1.1.3.js') }}"></script>
+        <script src="{{ URL::asset('assets/baby/js/plugins/countto/jquery.countTo.js') }}"></script>
+        <script src="{{ URL::asset('assets/baby/js/plugins/countdown/jquery.countdown.js') }}"></script>
+        <script src="{{ URL::asset('assets/baby/js/settings.js') }}"></script>
+      
+       <!-- end of baby theme js-->
 
 
 
@@ -327,11 +444,12 @@
         <script src="{{ URL::asset('assets/parent/vendor/bootstrap-sweetalert/sweet-alert.js') }}"></script>
         <script src="{{ URL::asset('assets/parent/vendor/chartist-js/chartist.min.js') }}"></script>
 
+    
 
 
 <!-- new theme -->
 
-
+<!--
         <script src="{{ URL::asset('assets/parent/js/jquery.min.js') }}"></script>
         <script src="{{ URL::asset('assets/parent/js/bootstrap/bootstrap.min.js') }}"></script>
         <script src="{{ URL::asset('assets/parent/js/plugins/jquery.flexslider.js') }}"></script>
@@ -339,6 +457,160 @@
         <script src="{{ URL::asset('assets/parent/js/plugins/jquery.magnific-popup.js') }}"></script>
         <script src="{{ URL::asset('assets/parent/options/optionswitcher.js') }}"></script>
         <script src="{{ URL::asset('assets/parent/js/custom.js') }}"></script>
+        <script src="{{ URL::asset('assets/js/modernizr.custom.79639.js') }}"></script>
+
+        <script src="{{ URL::asset('assets/dropdown/js/classie.js') }}"></script>
+        <script src="{{ URL::asset('assets/dropdown/js/selectFx.js') }}"></script>
+        <script src="{{ URL::asset('assets/js/modernizr.custom.79639.js') }}"></script>
+        <script src="{{ URL::asset('assets/crop/dist/jquery.cropit.js') }}"></script>
+
+           
+           -->
+
+
+     
+       
+       
+       
+     
+       
+
+
+
+
+        
+       
+      
+       
+
+        <script type="text/javascript">
+  jQuery(document).ready(function() {
+
+
+    //START SLIDE
+    jQuery('.nicdark_slide1').show().revolution(
+    {
+      dottedOverlay:"none",
+      delay:16000,
+      startwidth:1170,
+      startheight:650,
+      hideThumbs:200,
+      
+      thumbWidth:100,
+      thumbHeight:50,
+      thumbAmount:5,
+      
+      navigationType:"none",
+      navigationArrows:"solo",
+      navigationStyle:"preview2",
+      
+      touchenabled:"on",
+      onHoverStop:"on",
+      
+      swipe_velocity: 0.7,
+      swipe_min_touches: 1,
+      swipe_max_touches: 1,
+      drag_block_vertical: false,
+                  
+      parallax:"mouse",
+      parallaxBgFreeze:"on",
+      parallaxLevels:[7,4,3,2,5,4,3,2,1,0],
+                  
+      keyboardNavigation:"off",
+      
+      navigationHAlign:"center",
+      navigationVAlign:"bottom",
+      navigationHOffset:0,
+      navigationVOffset:20,
+
+      soloArrowLeftHalign:"left",
+      soloArrowLeftValign:"center",
+      soloArrowLeftHOffset:20,
+      soloArrowLeftVOffset:0,
+
+      soloArrowRightHalign:"right",
+      soloArrowRightValign:"center",
+      soloArrowRightHOffset:20,
+      soloArrowRightVOffset:0,
+          
+      shadow:0,
+      fullWidth:"on",
+      fullScreen:"off",
+
+      spinner:"spinner4",
+      
+      stopLoop:"off",
+      stopAfterLoops:-1,
+      stopAtSlide:-1,
+
+      shuffle:"off",
+      
+      autoHeight:"off",           
+      forceFullWidth:"off",           
+                  
+      hideTimerBar: "on",         
+                  
+      hideThumbsOnMobile:"off",
+      hideNavDelayOnMobile:1500,            
+      hideBulletsOnMobile:"off",
+      hideArrowsOnMobile:"off",
+      hideThumbsUnderResolution:0,
+      
+      hideSliderAtLimit:0,
+      hideCaptionAtLimit:0,
+      hideAllCaptionAtLilmit:0,
+      startWithSlide:0,
+      videoJsPath:"rs-plugin/videojs/",
+      fullScreenOffsetContainer: "" 
+    });
+    //END SLIDE
+    
+    
+
+    //START PARALLAX SECTIONS
+    $('#nicdark_parallax_big_image').parallax("50%", 0.3);
+    $('#nicdark_parallax_2_btns').parallax("50%", 0.3);
+    $('#nicdark_parallax_countdown').parallax("50%", 0.3);
+    $('#nicdark_parallax_counter').parallax("50%", 0.3);
+    //END PARALLAX SECTIONS
+
+    
+
+    //START COUNTDOWN GRID SECTION
+    //variables
+    var endDate = "June 06, 2015 10:30:00";
+    var grid = "grid_3";
+    //insert the class nicdark_displaynone in the var if you wnat to hide the visualization
+    var display_years = "nicdark_displaynone";
+    var display_days = "";
+    var display_hours = "";
+    var display_minutes = "";
+    var display_seconds = "";
+    //call
+    $(".nicdark_countdown").countdown({
+      date: endDate,
+      render: function(data) {
+        $(this.el).html("<div class=\"grid "+ grid +" "+ display_years +" \"><div class=\"nicdark_textevidence center\"><h1 class=\"subtitle white extrasize\">"+ this.leadingZeros(data.years, 4) +"</h1><div class=\"nicdark_space20\"></div><a class=\"nicdark_btn nicdark_bg_blue small nicdark_shadow nicdark_radius white\">YEARS</a><div class=\"nicdark_space5\"></div></div></div><div class=\"grid "+ grid +" "+ display_days +"  \"><div class=\"nicdark_textevidence center\"><h1 class=\"subtitle white extrasize\">"+ this.leadingZeros(data.days, 3) +"</h1><div class=\"nicdark_space20\"></div><a class=\"nicdark_btn nicdark_bg_blue small nicdark_shadow nicdark_radius white\">DAYS</a><div class=\"nicdark_space5\"></div></div></div><div class=\"grid "+ grid +" "+ display_hours +"  \"><div class=\"nicdark_textevidence center\"><h1 class=\"subtitle white extrasize\">"+ this.leadingZeros(data.hours, 2) +"</h1><div class=\"nicdark_space20\"></div><a class=\"nicdark_btn nicdark_bg_yellow small nicdark_shadow nicdark_radius white\">HOURS</a><div class=\"nicdark_space5\"></div></div></div><div class=\"grid "+ grid +" "+ display_minutes +"  \"><div class=\"nicdark_textevidence center\"><h1 class=\"subtitle white extrasize\">"+ this.leadingZeros(data.min, 2) +"</h1><div class=\"nicdark_space20\"></div><a class=\"nicdark_btn nicdark_bg_green small nicdark_shadow nicdark_radius white\">MINUTES</a><div class=\"nicdark_space5\"></div></div></div><div class=\"grid "+ grid +" "+ display_seconds +"  \"><div class=\"nicdark_textevidence center\"><h1 class=\"subtitle white extrasize\">"+ this.leadingZeros(data.sec, 2) +"</h1><div class=\"nicdark_space20\"></div><a class=\"nicdark_btn nicdark_bg_violet small nicdark_shadow nicdark_radius white\">SECONDS</a><div class=\"nicdark_space5\"></div></div></div>");
+      }
+    });
+    //END COUNTDOWN GRID SECTION
+
+  });
+</script>
+<!--custom js-->
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','../../../../../www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-49425562-7', 'auto');
+  ga('send', 'pageview');
+
+</script>
  
 </body>
 

@@ -48,7 +48,7 @@ class RegistrationController extends Controller
 			 if(empty($result))
 			 {
 			 	 DB::statement(DB::raw(
-                       "INSERT INTO  parent_registration(f_name,l_name,email,u_password,dat_of_birth,age,user_type,craeted_date,status,reset_token)   values ('$f_name ','$l_name','$email','$password','$date_of_birth','$age','PARENT',now(),'PENDING','0') "));  
+                       "INSERT INTO  parent_registration(f_name,l_name,email,u_password,dat_of_birth,age,user_type,craeted_date,status,reset_token,img_path)   values ('$f_name ','$l_name','$email','$password','$date_of_birth','$age','PARENT',now(),'PENDING','0','assets/parent/profile/img/baby.png') "));  
 			 	$out_put = 1;
 			 }
 			 else
@@ -66,6 +66,7 @@ class RegistrationController extends Controller
   			
 			
 	}
+
 
 	public function login(Request $request)
 	{
@@ -121,6 +122,37 @@ class RegistrationController extends Controller
 				 return response()->json(['list' => $result,'email'=>$email]);
 
 	}
+
+
+
+	public function setSession(){
+
+			 
+         $id = $_REQUEST['id'];
+
+          $result = DB::select("select * from parent_registration a where a.user_id = '$id'");
+
+          $_SESSION['USERID'] = $id;
+          $_SESSION['STATUS'] = $result[0]->status;
+          $_SESSION['NAME']   = $result[0]->f_name." ".$result[0]->l_name;
+          $_SESSION['EMAIL']  = $result[0]->email;
+
+
+          return view('parent.home');
+
+
+
+
+
+	}
+
+
+
+
+
+
+	
+
 
 
 }

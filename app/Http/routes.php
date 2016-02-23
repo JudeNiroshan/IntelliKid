@@ -204,20 +204,7 @@ Route::get('reg','RegistrationController@registration_user');
 Route::get('login_confirm','RegistrationController@login');
 
 //set sesion values and redirect to the email confirmation page
-Route::get('session',function(){
-         
-         $id = $_REQUEST['id'];
-
-          $result = DB::select("select * from parent_registration a where a.user_id = '$id'");
-
-          $_SESSION['USERID'] = $id;
-          $_SESSION['STATUS'] = $result[0]->status;
-          $_SESSION['NAME']   = $result[0]->f_name;
-          $_SESSION['EMAIL']  = $result[0]->email;
-
-          return view('parent.home');
-
-});
+Route::get('session','RegistrationController@setSession');
 
 Route::get('logout', function () {
 
@@ -232,17 +219,7 @@ Route::get('laravel',function(){
 
 
 
-Route::get('email_verification_notiece', function(){
-   
-
-    Mail::send('email_body',['name'=> $_SESSION['NAME'],'id'=> $_SESSION['USERID']], function($message){
-
-        $message->to($_SESSION['EMAIL'],'IntelliKid')->subject('Welcome to IntelliKid!');
-    });
-
-    return view('email_verify_notice');
-});
-
+Route::get('email_verification_notiece', 'EmailController@email_verification_notiece');
 
 Route::get('default_home', function(){
 
@@ -251,24 +228,7 @@ Route::get('default_home', function(){
 
 
 //make visible a email verification message
-Route::get('email_verifying_message', function(){
-
-    $id =  $_REQUEST['id'];
-   
-
-    $result = DB::select("select a.reset_token from parent_registration a where a.user_id = '$id'");
-
-
-
-    DB::table('parent_registration')->where('user_id', $id)->update(array('status' => 'ACTIVE'));
-
-    $result = DB::select("select * from parent_registration a where a.user_id = '$id'");
-    $_SESSION['STATUS'] = $result[0]->status;
-
-
-    return view('parent.home');
-
-});
+Route::get('email_verifying_message','EmailController@email_verifying_message');
 
 
 Route::get('reset_password', function(){
@@ -279,24 +239,7 @@ Route::get('reset_password', function(){
 Route::get('reset_password_ajax','RegistrationController@reset_password');
 
 //checking the validity of the reset password URL
-Route::get('reset_password_intellikid_2016_encript_version', function(){
-
-
-     $email = $_SESSION['EMAIL'];
-     $token = $_REQUEST['token'];
-     //$_SESSION['TOKEN'] = "0";
-     $result = DB::select("select a.user_id,a.reset_token from parent_registration a where a.email = '$email' ");
-
-     if($token == $result[0]->reset_token){
-
-        return view('login');
-     }else{
- $_SESSION['TOKEN'] = $token;
-    return view('reset_password');
-     }
-}); 
-
-//update new reseted password
+Route::get('reset_password_intellikid_2016_encript_version', 'EmailController@emailReset');
 Route::get('set_new_password','RegistrationController@set_new_password');
 
 
@@ -304,6 +247,120 @@ Route::get('set_new_password','RegistrationController@set_new_password');
 
 //end of parent Accounts routes
 
+
+//child Account handing
+
+
+
+Route::get('new_child',function(){
+
+    return view('parent.create_new_child');
+});
+Route::get('profile',function(){
+
+    return view('parent.profile.parent_profile');
+});
+
+
+
+
+Route::get('veca','ChildController@SendDataToViewAccountPAge');
+
+Route::get('child_edit','ChildController@SendDataToEditChildAccount');
+Route::get('new_child_register','ChildController@register_child');
+Route::get('child_data_save','ChildController@child_data_save');
+Route::get('child_data_delete','ChildController@child_data_delete');
+
+Route::post('upload123', 'RegistrationController@upload');
+Route::post('file_upload_parser', 'ChildController@upload2');
+
+Route::post('file_upload_save', 'ChildController@child_data_save');
+
+
+Route::get('schedule','scheduleController@ViewAllSelectedItems');
+Route::get('kid_profile','ChildController@SendDataToSelectedAccount');
+Route::get('videos',function(){
+    return view('parent.videos.video_category');
+});
+
+
+
+
+
+
+
+
+Route::get('delete_col_v',function(){
+    
+ $id = $_REQUEST['id'];
+
+ $pid = $_SESSION['USERID'] ;
+
+ DB::statement(DB::raw(
+                       "DELETE FROM  collector where pid = '$pid' and item_id = '$id' and type='video'"));  
+    
+    echo 1;
+
+    
+});
+Route::get('delete_col_s',function(){
+    
+ $id = $_REQUEST['id'];
+ 
+ $pid = $_SESSION['USERID'] ;
+
+ DB::statement(DB::raw(
+                       "DELETE FROM  collector where pid = '$pid' and item_id = '$id' and type='story'"));  
+    
+
+  echo 1;
+    
+});
+
+
+Route::get('story_comment',function(){
+    
+ $id = $_REQUEST['id'];
+ $pid = $_SESSION['USERID'];
+ $comment = $_REQUEST['comment'];
+
+  DB::statement(DB::raw(
+                       "INSERT INTO  comment12(pid,text,item_id,type,date)   values ('$pid','$comment','$id','story',now()) "));  
+
+    echo 1;
+    
+});
+Route::get('video_comment',function(){
+    
+ $id = $_REQUEST['id'];
+ $pid = $_SESSION['USERID'];
+ $comment = $_REQUEST['comment'];
+
+  DB::statement(DB::raw(
+                       "INSERT INTO  comment12(pid,text,item_id,type,date)   values ('$pid','$comment','$id','video',now()) "));  
+
+    echo 1;
+    
+});
+Route::get('search','ParentVideosContoller@search');
+
+
+Route::get('serach_all_videos','ParentVideosContoller@view_all_videos');
+Route::get('view_videos','ParentVideosContoller@view_video');
+Route::get('view_videos_cat','ParentVideosContoller@view_video_cat');
+
+
+
+
+Route::get('all_stories','ParentStoryContoller@all_stories_display');
+Route::get('show_story','ParentStoryContoller@show_story');
+Route::get('add_to_collector','ParentStoryContoller@add_to_collector');
+Route::get('delete_from_collector','ParentStoryContoller@delete_from_collector');
+
+Route::get('delete_from_collector_video','ParentVideosContoller@delete_from_collector_video');
+Route::get('add_to_collector_video','ParentVideosContoller@add_to_collector_video');
+
+//end of the child acoount handing
 
 
 
