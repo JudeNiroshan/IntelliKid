@@ -167,6 +167,20 @@ Route::get('kids_gallery', function () {
 
 
 
+/* ////////////////////////    Admin Routes    /////////////////////// */
+//Redirect to Dashboard page 
+Route::get('unicon_admin_index', 'Unicode_UserController@trackTotalUsers');
+//Redirect to View user page 
+Route::get('unicon_admin_view_users', 'Unicode_UserController@fillUserTable');
+/* ////////////////////////    END OF Admin Routes    /////////////////////// */
+/* ////////////////////////    Kids Routes    /////////////////////// */
+//Redirect to quiz page 
+Route::get('kids_quiz', 'Kids_QuizController@createQuiz');
+//Save exam results to 'exam_result' table
+Route::get('answer', 'Kids_QuizController@answer');
+//Redirect to certificate page 
+Route::get('kids_certificate', 'Kids_QuizController@certificate');
+/* ////////////////////////    END OF Kids Routes    /////////////////////// */
 
 
 
@@ -282,11 +296,11 @@ Route::get('kid_profile','ChildController@SendDataToSelectedAccount');
 Route::get('videos',function(){
     return view('parent.videos.video_category');
 });
+//test model call
 
+Route::get('test','ChildController@my');
 
-
-
-
+//end of test model call
 
 
 
@@ -362,6 +376,26 @@ Route::get('add_to_collector_video','ParentVideosContoller@add_to_collector_vide
 
 //end of the child acoount handing
 
+
+/* ////////////////////////     Upload Routes     /////////////////////// */
+Route::get('upload_videos', 'UploadVideoController@loadWithDefaultData');
+Route::get('upload_videos_fileError', 'UploadVideoController@loadWithFailedReason');
+Route::post('upload_videos123', 'BaseUploadController@uploadContent');
+Route::get('upload_videos123', 'UploadVideoController@loadWithDefaultData');
+Route::get('upload_songs', 'UploadSongController@loadWithDefaultData');
+Route::get('upload_songs_fileError', 'UploadSongController@loadWithFailedReason');
+Route::post('upload_songs123', 'BaseUploadController@uploadContent');
+Route::get('upload_songs123', 'UploadSongController@loadWithDefaultData');
+Route::get('upload_story', 'UploadStoryController@loadWithDefaultData');
+Route::get('upload_story_fileError', 'UploadstoryController@loadWithFailedReason');
+Route::post('upload_story123', 'BaseUploadController@uploadContent');
+Route::get('upload_story123', 'UploadstoryController@loadWithDefaultData');
+Route::get('refresh', 'UploadSongController@loadWithSelectedCrit');
+Route::get('upload_question', 'UploadQuestionController@loadWithDefaultData');
+Route::post('upload_question123', 'BaseUploadController@uploadContent');
+Route::get('test', 'Test@testing');
+Route::post('test', 'Test@testing');
+/* ---------------------------------------------------------------------*/
 
 
 

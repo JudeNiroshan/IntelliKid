@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use DB;
+use App\Child;
+use App\SysParent;
+
 
 class ChildController extends Controller
 {
@@ -283,6 +286,13 @@ else{
    $results =  DB::select("select * from child_Accounts a where a.parent_id = '$id '");
 
     return view('parent.kid_accounts')->with('data',$results);
+	}
+
+	public function my(){
+
+		$data = SysParent::find('1');
+		var_dump($data);
+
 	}
 
 }

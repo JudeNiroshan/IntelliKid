@@ -221,7 +221,7 @@
                                     </ul>
                                 </li>
                                 <li class="blue">
-                                    <a href="courses.html">CONTENT</a>
+                                    <a >CONTENT</a>
                                     <ul class="sub-menu">
                                         <li> <a href="videos">Videos</a></li>
                                         <li> <a href="all_stories">Story</a></li>
