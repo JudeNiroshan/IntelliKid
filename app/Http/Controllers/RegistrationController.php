@@ -137,6 +137,17 @@ class RegistrationController extends Controller
           $_SESSION['NAME']   = $result[0]->f_name." ".$result[0]->l_name;
           $_SESSION['EMAIL']  = $result[0]->email;
 
+          $video_item_que = array();
+	 	  $_SESSION['video_que']  = $video_item_que;
+
+	 	  $story_item_que = array();
+	 	  $_SESSION['story_que']  = $story_item_que;
+
+	 	  $audio_item_que = array();
+	 	  $_SESSION['audio_que']  = $audio_item_que;
+
+	 	  $quiz_item_que = array();
+	 	  $_SESSION['quiz_que']  = $quiz_item_que;
 
           return view('parent.home');
 

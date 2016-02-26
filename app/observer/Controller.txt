@@ -1,0 +1,44 @@
+ public function ob(){
+
+
+		$subject = new Subject('include subject');
+
+		$video = new Video('include video');
+		$song = new Songs('include video');
+
+
+
+		$subject->add($video);
+		$subject->add($song);
+		$subject->vup(1);
+		$subject->vup(2);
+		$subject->notify();
+
+
+
+
+
+
+
+
+   }
+      public function oba(){
+
+
+		$subject = new Subject('include subject');
+
+		$video = new Video('include video');
+		$song = new Songs('include video');
+
+
+
+		$subject->add($video);
+		$subject->add($song);
+		$subject->notify();
+
+		
+
+
+
+   }
+  

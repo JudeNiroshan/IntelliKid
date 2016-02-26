@@ -71,6 +71,133 @@ div.container2{
 
   </style>  
 
+
+
+   <style type="text/css">
+.block {
+      width: 25%;
+      height: 3%;
+      margin: 5% auto;
+      text-align: center;
+    }
+    .loading span {
+      display: inline-block;
+      padding: 8px;
+      -webkit-border-radius: 50%;
+      -moz-border-radius: 50%;
+      -ms-border-radius: 50%;
+      -o-border-radius: 50%;
+      border-radius: 50%;
+    }
+    .ball1 {
+      background: #5FC169;
+      -webkit-animation: move-left 800ms ease-in-out infinite alternate;
+      -moz-animation: move-left 800ms ease-in-out infinite alternate;
+      -ms-animation: move-left 800ms ease-in-out infinite alternate;
+      -animation: move-left 800ms ease-in-out infinite alternate;
+    }
+    .ball2 {
+      background: #5CC3E6;
+      -webkit-animation: move-right 800ms ease-in-out infinite alternate;
+      -moz-animation: move-right 800ms ease-in-out infinite alternate;
+      -ms-animation: move-right 800ms ease-in-out infinite alternate;
+      animation: move-right 800ms ease-in-out infinite alternate;
+    }
+    @-webkit-keyframes move-left {
+      to {
+        -webkit-transform: translate(20px, 0);
+        -ms-transform: translate(20px, 0);
+        -moz-transform: translate(20px, 0);
+        transform: translate(20px, 0);
+        background: #5CC3E6;
+      }
+    }
+    @-moz-keyframes move-left {
+      to {
+        -webkit-transform: translate(20px, 0);
+        -ms-transform: translate(20px, 0);
+        -moz-transform: translate(20px, 0);
+        transform: translate(20px, 0);
+        background: #5CC3E6;
+      }
+    }
+    @-ms-keyframes move-left {
+      to {
+        -webkit-transform: translate(20px, 0);
+        -ms-transform: translate(20px, 0);
+        -moz-transform: translate(20px, 0);
+        transform: translate(20px, 0);
+        background: #5CC3E6;
+      }
+    }
+    @-o-keyframes move-left {
+      to {
+        -webkit-transform: translate(20px, 0);
+        -ms-transform: translate(20px, 0);
+        -moz-transform: translate(20px, 0);
+        transform: translate(20px, 0);
+        background: #5CC3E6;
+      }
+    }
+    @keyframes move-left {
+      to {
+        -webkit-transform: translate(20px, 0);
+        -ms-transform: translate(20px, 0);
+        -moz-transform: translate(20px, 0);
+        transform: translate(20px, 0);
+        background: #5CC3E6;
+      }
+    }
+    @-webkit-keyframes move-right {
+      to {
+        -webkit-transform: translate(-20px, 0);
+        -ms-transform: translate(-20px, 0);
+        -moz-transform: translate(-20px, 0);
+        transform: translate(-20px, 0);
+        background: #5FC169;
+      }
+    }
+    @-moz-keyframes move-right {
+      to {
+        -webkit-transform: translate(-20px, 0);
+        -ms-transform: translate(-20px, 0);
+        -moz-transform: translate(-20px, 0);
+        transform: translate(-20px, 0);
+        background: #5FC169;
+      }
+    }
+    @-ms-keyframes move-right {
+      to {
+        -webkit-transform: translate(-20px, 0);
+        -ms-transform: translate(-20px, 0);
+        -moz-transform: translate(-20px, 0);
+        transform: translate(-20px, 0);
+        background: #0063dc;
+      }
+    }
+    @-o-keyframes move-right {
+      to {
+        -webkit-transform: translate(-20px, 0);
+        -ms-transform: translate(-20px, 0);
+        -moz-transform: translate(-20px, 0);
+        transform: translate(-20px, 0);
+        background: #5FC169;
+      }
+    }
+    @keyframes move-right {
+      to {
+        -webkit-transform: translate(-20px, 0);
+        -ms-transform: translate(-20px, 0);
+        -moz-transform: translate(-20px, 0);
+        transform: translate(-20px, 0);
+        background: #5FC169;
+      }
+    }
+
+
+
+</style>
+
     <link rel="stylesheet" href="assets/parent/dist/jquery.flipster.min.css">
 
     <script src="assets/parent/jquery.min.js"></script>
@@ -95,9 +222,16 @@ div.container2{
 
         @foreach($story as $data)
 
-        <input type="test" hidden value="{{$data->st_id}}" id="st_id" name="st_id"> 
+
+                    <?php 
+                        
+                        $path = $data->path;
+                        $l = strlen($path);
+                        $path = substr($path,34,$l);
+                    ?>
+        <input type="test" hidden value="{{$data->storyid}}" id="st_id" name="st_id"> 
             <li data-flip-title="Red">
-                <img src="{{$data->img_path}}">
+                <img src="{{$path}}" height="500" width="650">
             </li>
             @endforeach
         </ul>
@@ -226,6 +360,7 @@ div.container2{
             <input class="nicdark_btn nicdark_bg_red medium nicdark_shadow nicdark_radius white left" type="submit" value="POST COMMENT" onclick="return comment()">
 
   </div>
+  <div id="load1"><p></p></div>
 
 </div>
 
@@ -249,6 +384,8 @@ if(comment==""){
          return false;
 
 }
+document.getElementById("load1").innerHTML = '<div class="block"> <div class="loading"><span class="ball1"></span><span class="ball2"></span> Loading....</div></div>';
+
 $.ajax({
                 type: "get",
                 url: "story_comment",
@@ -262,6 +399,7 @@ $.ajax({
         
             
               setTimeout(function(){
+                document.getElementById("load1").innerHTML
                       // document.getElementById("load").innerHTML = "";
                        location.reload();
                        
@@ -274,6 +412,7 @@ $.ajax({
                 },
                 error: function (xhr, ajaxOptions, thrownError) {
                    //document.getElementById("load").innerHTML = "";
+                   document.getElementById("load1").innerHTML
                   sweetAlert("Sorry!", "Something went wrong!", "error");
                   return false;
                 }
@@ -292,7 +431,7 @@ $.ajax({
 		
 		 var id = document.getElementById("st_id").value;
 		 
-document.getElementById("load").innerHTML = "Loading.........";
+document.getElementById("load").innerHTML = '<div class="block"> <div class="loading"><span class="ball1"></span><span class="ball2"></span> Loading....</div></div>';
 
  swal({   title: "Are you sure?",   text: "Your are going to remove this from collector!",   type: "warning",   showCancelButton: true,   confirmButtonColor: "#DD6B55",   confirmButtonText: "Yes, remove it!",   cancelButtonText: "No, cancel plx!",   closeOnConfirm: false,   closeOnCancel: false }, function(isConfirm){   
  	if (isConfirm) {   
@@ -334,10 +473,11 @@ document.getElementById("load").innerHTML = "Loading.........";
 
 
  	  } 
- 	else {    
- 	 swal("Cancelled", "Your imaginary file is safe :)", "error"); 
- 	 location.reload();
- 	 document.getElementById("load").innerHTML = "";
+ 	else {   
+     document.getElementById("load").innerHTML = ""; 
+ 	 swal("Cancelled", "", "error"); 
+ 	
+
  	   } });
 
 
@@ -355,7 +495,8 @@ function add_to_collector(){
 	
 var id = document.getElementById("st_id").value;
 		 
-document.getElementById("load").innerHTML = "Loading.........";
+document.getElementById("load").innerHTML = '<div class="block"> <div class="loading"><span class="ball1"></span><span class="ball2"></span> Loading....</div></div>';
+      
 
 
 

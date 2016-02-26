@@ -5,7 +5,11 @@
 
 @endsection
 
+<?php 
 
+
+
+?>
 
 @section('content')
  <link rel="stylesheet" href="{{ URL::asset('assets/parent/profile/css/bootstrap.min.css')}}">
@@ -71,6 +75,131 @@ div.container2{
 .form-group input[type="checkbox"]:checked + .btn-group > label span:last-child {
     display: none;   
 }
+
+
+</style>
+
+   <style type="text/css">
+.block {
+      width: 25%;
+      height: 3%;
+      margin: 5% auto;
+      text-align: center;
+    }
+    .loading span {
+      display: inline-block;
+      padding: 8px;
+      -webkit-border-radius: 50%;
+      -moz-border-radius: 50%;
+      -ms-border-radius: 50%;
+      -o-border-radius: 50%;
+      border-radius: 50%;
+    }
+    .ball1 {
+      background: #5FC169;
+      -webkit-animation: move-left 800ms ease-in-out infinite alternate;
+      -moz-animation: move-left 800ms ease-in-out infinite alternate;
+      -ms-animation: move-left 800ms ease-in-out infinite alternate;
+      -animation: move-left 800ms ease-in-out infinite alternate;
+    }
+    .ball2 {
+      background: #5CC3E6;
+      -webkit-animation: move-right 800ms ease-in-out infinite alternate;
+      -moz-animation: move-right 800ms ease-in-out infinite alternate;
+      -ms-animation: move-right 800ms ease-in-out infinite alternate;
+      animation: move-right 800ms ease-in-out infinite alternate;
+    }
+    @-webkit-keyframes move-left {
+      to {
+        -webkit-transform: translate(20px, 0);
+        -ms-transform: translate(20px, 0);
+        -moz-transform: translate(20px, 0);
+        transform: translate(20px, 0);
+        background: #5CC3E6;
+      }
+    }
+    @-moz-keyframes move-left {
+      to {
+        -webkit-transform: translate(20px, 0);
+        -ms-transform: translate(20px, 0);
+        -moz-transform: translate(20px, 0);
+        transform: translate(20px, 0);
+        background: #5CC3E6;
+      }
+    }
+    @-ms-keyframes move-left {
+      to {
+        -webkit-transform: translate(20px, 0);
+        -ms-transform: translate(20px, 0);
+        -moz-transform: translate(20px, 0);
+        transform: translate(20px, 0);
+        background: #5CC3E6;
+      }
+    }
+    @-o-keyframes move-left {
+      to {
+        -webkit-transform: translate(20px, 0);
+        -ms-transform: translate(20px, 0);
+        -moz-transform: translate(20px, 0);
+        transform: translate(20px, 0);
+        background: #5CC3E6;
+      }
+    }
+    @keyframes move-left {
+      to {
+        -webkit-transform: translate(20px, 0);
+        -ms-transform: translate(20px, 0);
+        -moz-transform: translate(20px, 0);
+        transform: translate(20px, 0);
+        background: #5CC3E6;
+      }
+    }
+    @-webkit-keyframes move-right {
+      to {
+        -webkit-transform: translate(-20px, 0);
+        -ms-transform: translate(-20px, 0);
+        -moz-transform: translate(-20px, 0);
+        transform: translate(-20px, 0);
+        background: #5FC169;
+      }
+    }
+    @-moz-keyframes move-right {
+      to {
+        -webkit-transform: translate(-20px, 0);
+        -ms-transform: translate(-20px, 0);
+        -moz-transform: translate(-20px, 0);
+        transform: translate(-20px, 0);
+        background: #5FC169;
+      }
+    }
+    @-ms-keyframes move-right {
+      to {
+        -webkit-transform: translate(-20px, 0);
+        -ms-transform: translate(-20px, 0);
+        -moz-transform: translate(-20px, 0);
+        transform: translate(-20px, 0);
+        background: #0063dc;
+      }
+    }
+    @-o-keyframes move-right {
+      to {
+        -webkit-transform: translate(-20px, 0);
+        -ms-transform: translate(-20px, 0);
+        -moz-transform: translate(-20px, 0);
+        transform: translate(-20px, 0);
+        background: #5FC169;
+      }
+    }
+    @keyframes move-right {
+      to {
+        -webkit-transform: translate(-20px, 0);
+        -ms-transform: translate(-20px, 0);
+        -moz-transform: translate(-20px, 0);
+        transform: translate(-20px, 0);
+        background: #5FC169;
+      }
+    }
+
 
 
 </style>
@@ -292,7 +421,7 @@ $.ajax({
         
          var id = document.getElementById("video").value;
          
-document.getElementById("load").innerHTML = "Loading.........";
+document.getElementById("load").innerHTML =  '<div class="block"> <div class="loading"><span class="ball1"></span><span class="ball2"></span> Loading....</div></div>';
 
  swal({   title: "Are you sure?",   text: "Your are going to remove this from collector!",   type: "warning",   showCancelButton: true,   confirmButtonColor: "#DD6B55",   confirmButtonText: "Yes, remove it!",   cancelButtonText: "No, cancel plx!",   closeOnConfirm: false,   closeOnCancel: false }, function(isConfirm){   
     if (isConfirm) {   
@@ -307,6 +436,7 @@ document.getElementById("load").innerHTML = "Loading.........";
                 },
            
                 success: function (data) {
+                  
                  if(data== 1){
                 
                        
@@ -334,10 +464,11 @@ document.getElementById("load").innerHTML = "Loading.........";
 
 
       } 
-    else {    
-     swal("Cancelled", "Your imaginary file is safe :)", "error"); 
-     location.reload();
-     document.getElementById("load").innerHTML = "";
+    else {  
+     document.getElementById("load").innerHTML = "";  
+     swal("Cancelled", "", "error"); 
+    
+    
        } });
 
 
@@ -355,7 +486,7 @@ function add_to_collector(){
     
 var id = document.getElementById("video").value;
          
-document.getElementById("load").innerHTML = "Loading.........";
+document.getElementById("load").innerHTML =  '<div class="block"> <div class="loading"><span class="ball1"></span><span class="ball2"></span> Loading....</div></div>';
 
 
 

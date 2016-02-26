@@ -224,7 +224,7 @@
                                     <a >CONTENT</a>
                                     <ul class="sub-menu">
                                         <li> <a href="videos">Videos</a></li>
-                                        <li> <a href="all_stories">Story</a></li>
+                                        <li> <a href="stories">Story</a></li>
                                          <li><a href="single-course.html">Single Course</a></li>
                                     </ul>
                                 </li>
@@ -280,10 +280,10 @@
                                     </ul>
                                 </li>
                                 <li class="orange">
-                                    <a href="events.html">EVENTS</a>
+                                    <a href="events.html">SCHEDULER</a>
                                     <ul class="sub-menu">
-                                        <li><a href="events.html">All Events</a></li>
-                                        <li><a href="single-event.html">Single Event</a></li>
+                                        <li><a href="schedule">Schedule</a></li>
+                                        <li><a href="make_schedule">Make Schedules</a></li>
                                     </ul>
                                 </li>
                                 <li class="grey">
@@ -411,7 +411,7 @@
 
 
         <script src="{{ URL::asset('assets/parent/vendor/datatables/jquery.dataTables.min.js') }}"></script>
-        <script src="{{ URL::asset('assets/parent/vendor/datatables-fixedheader/dataTables.fixedHeader.js') }}">     </script>
+        <script src="{{ URL::asset('assets/parent/vendor/datatables-fixedheader/dataTables.fixedHeader.js') }}"></script>
         <script src="{{ URL::asset('assets/parent/vendor/datatables-bootstrap/dataTables.bootstrap.js') }}"></script>
         <script src="{{ URL::asset('assets/parent/vendor/datatables-responsive/dataTables.responsive.js') }}"></script>
         <script src="{{ URL::asset('assets/parent/vendor/datatables-tabletools/dataTables.tableTools.js') }}"></script>

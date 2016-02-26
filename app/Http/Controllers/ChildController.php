@@ -174,7 +174,7 @@ public function child_data_delete(Request $request){
 
 	}
 
-public function upload2(Request $request){
+public function upload_prifile_pic_and_account_data(Request $request){
 
 
 $fileName = $_FILES["file1"]["name"]; // The file name
@@ -284,6 +284,8 @@ else{
 		$id = $_SESSION['USERID'];
 
    $results =  DB::select("select * from child_Accounts a where a.parent_id = '$id '");
+
+ 
 
     return view('parent.kid_accounts')->with('data',$results);
 	}

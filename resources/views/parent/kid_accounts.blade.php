@@ -108,6 +108,12 @@ $i=0;
             </div>
 
         </div>
+
+        <?php 
+        if($i==4){
+            $i=0;
+        }
+        ?>
         @endforeach
 
        @else

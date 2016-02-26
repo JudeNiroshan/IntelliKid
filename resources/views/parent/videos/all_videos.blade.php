@@ -106,11 +106,11 @@
 <ul class="Vall">
 
 @foreach($videos as $data)
-		<a href="view_videos?id={{$data->id}}&cat={{$data->cat}}"><li class="all">
-			<h1>{{$data->title}}</h1>
+		<a href="view_videos?id={{$data->id}}&cat={{$data->agegroupid}}"><li class="all">
+			<h1>{{$data->name}}</h1>
 			<video width="160"  height="130" controls style="padding-left:5%;" id="myVideo" name="myVideo" />
-  <source src="{{$data->path}}" type="video/mp4" >
-  <source src="assets/parent/videos/" type="video/ogg">
+  <source src="{{$data->img_path}}" type="video/mp4" >
+  
 
 </video>
 
@@ -122,28 +122,60 @@
 	</div>
 	</div>
 
-
+<br>
+                      <br>
+                    <br>
+                    <br>  
 	@else
-	<div class="container" style="margin-left:20%">
+<!--start section-->
+<section class="nicdark_section">
 
-  <div class="panel panel-default" style="width:50%;padding-left:17%;">
+    <!--start nicdark_container-->
+    <div class="nicdark_container nicdark_clearfix">
+
+        <div class="nicdark_space10"></div>
+
+        <div class="grid grid_12 nicdark_bg_grey nicdark_shadow nicdark_radius" style="padding-left:25%">     
+            <div class="nicdark_margin10">
+           
+
+                <div class="grid grid_0 percentage">
+                    <div class="nicdark_margin12 nicdark_relative">
+                        <a href="#" class="nicdark_btn_icon nicdark_bg_orange extrabig nicdark_shadow nicdark_radius_circle white nicdark_absolute nicdark_displaynone_ipadpotr"><i class="icon-download-outline"></i></a>
+                        
+                        <div class="nicdark_activity nicdark_marginleft100 nicdark_disable_marginleft_ipadpotr">
+                            <h4>NO MACHING SEARCH RESULTS FOUND</h4>                        
+                            <div class="nicdark_space20"></div>
+                            <p>Content not avilable</p>
+                        </div>    
+                    </div>
+                </div>
 
 
-  <h3>NOT AVAILABLE</h3>
-	</div>
-	</div>
+            </div>
+        </div>
+
+    </div>
+    <!--end nicdark_container-->
+            <br>
+                    <br>
+                      <br>
+                    <br>
+                      <br>
+                    <br>
+                      <br>
+                    <br>
+                    <br>
+                     <br>
+                      <br>
+                    <br>
+                    
+</section>
+<!--end section-->
 
 	@endif
  
-                    <br>
-                    <br>
-                      <br>
-                    <br>
-                      <br>
-                    <br>
-                      <br>
-                    <br>
-                    <br>
+                  
 
 
  
