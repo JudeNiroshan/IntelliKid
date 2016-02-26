@@ -15,6 +15,10 @@ use Illuminate\Support\Facades\Input;
 |
 */
 /* ////////////////////////     unicon_Admin Routes    /////////////////////// */
+//admin login
+Route::get('admin_login',function(){
+    return view('unicon_admin.login')->with('title','Admin | Login');
+});
 
 Route::get('unicon_admin_index1', function () {
     return view('unicon_admin.index')->with('title','Dashboard');
