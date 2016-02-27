@@ -297,4 +297,20 @@ else{
 
 	}
 
+	public function login_child(){
+
+		$un = $_REQUEST['un'];
+		$pw = $_REQUEST['pw'];
+
+		$data = DB::select("select c_id from child_Accounts where nik_name = '$un' and kid_password = '$pw' ");
+
+		if(empty($data)){
+			return 0;
+		}
+		else{
+		return 1;
+	}
+	}
+
+
 }

@@ -50,7 +50,7 @@
                     
                         <div class="nicdark_space30"></div>
                     
-                        <h1 class="white subtitle">STORY</h1>
+                      
                         <div class="nicdark_space20"></div>
                         <div class="nicdark_divider small"><span class="nicdark_bg_white nicdark_radius"></span></div>
                         <div class="nicdark_space20"></div>
@@ -65,7 +65,9 @@
                         $l = strlen($path);
                         $path = substr($path,34,$l);
                     ?>
-                    <i class="icon-money-1 nicdark_iconbg left big blue"><img alt=""  class="nicdark_radius_left nicdark_opacity" src="{{$path}}"></i>
+
+                 
+                    <i class=" nicdark_iconbg left big blue"><img alt=""  class="nicdark_radius_left nicdark_opacity" src="{{$data->path}}"></i>
                 </div>
                 
                 <div class="nicdark_textevidence nicdark_width_percentage50 nicdark_width100_responsive">

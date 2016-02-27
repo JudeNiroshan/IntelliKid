@@ -18,7 +18,10 @@ class ParentStoryContoller extends Controller
 
 	public function all_stories_display(){
 
-		$stories  = DB::select("select * from story1 a group by a.st_id ");
+		$stories  = DB::select("select * from story a group by a.st_id ");
+
+		var_dump($stories);
+
 		return view('parent.story.view_all_stories')->with('stories',$stories);
 
 	}
@@ -73,7 +76,6 @@ public function view_story_cat(Request $request){
 
 			$msg = "no";
 		}
-
 
 
  		return view('parent.story.show_story')->with('story',$story)->with('msg',$msg)->with('comment',$comments);

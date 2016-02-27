@@ -177,6 +177,8 @@ Route::get('unicon_admin_index', 'Unicode_UserController@trackTotalUsers');
 //Redirect to View user page 
 Route::get('unicon_admin_view_users', 'Unicode_UserController@fillUserTable');
 /* ////////////////////////    END OF Admin Routes    /////////////////////// */
+
+
 /* ////////////////////////    Kids Routes    /////////////////////// */
 //Redirect to quiz page 
 Route::get('kids_quiz', 'Kids_QuizController@createQuiz');
@@ -184,14 +186,15 @@ Route::get('kids_quiz', 'Kids_QuizController@createQuiz');
 Route::get('answer', 'Kids_QuizController@answer');
 //Redirect to certificate page 
 Route::get('kids_certificate', 'Kids_QuizController@certificate');
-/* ////////////////////////    END OF Kids Routes    /////////////////////// */
+
+Route::get('child_login',  function () {
+    return view('kids_views.login');
+});
+Route::get('login_child', 'ChildController@login_child');
 
 
 
-
-
-
-
+////////////////end\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
 
 
@@ -291,6 +294,11 @@ Route::get('delete_col_s','scheduleController@delete_col_s');
 Route::get('make_schedule','scheduleController@make_schedule');
 Route::get('set_schedule','scheduleController@set_schedule');
 Route::get('submit_shedule','scheduleController@submit_shedule');
+Route::get('past_schedule','scheduleController@past_schedule');
+Route::get('delete_schedule','scheduleController@delete_schedule');
+Route::get('calander_process','scheduleController@calander_process');
+Route::get('edit_clander_data','scheduleController@edit_clander_data');
+Route::get('set_past_content_as_new','scheduleController@set_past_content_as_new');
 
 
 /////////////////////////comments\\\\\\\\\\\\\\\\\\\\\\\\\\\\

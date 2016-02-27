@@ -231,7 +231,8 @@ div.container2{
                     ?>
         <input type="test" hidden value="{{$data->storyid}}" id="st_id" name="st_id"> 
             <li data-flip-title="Red">
-                <img src="{{$path}}" height="500" width="650">
+                <img src="{{$data->path}}" height="500" width="650">
+
             </li>
             @endforeach
         </ul>

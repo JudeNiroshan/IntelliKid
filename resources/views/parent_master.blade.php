@@ -139,7 +139,8 @@
 
 
 </div>
-<!--END SIDEBAR--><div class="nicdark_section nicdark_navigation fade-down">
+<!--END SIDEBAR-->
+<div class="nicdark_section nicdark_navigation fade-down">
    
 
 
@@ -225,47 +226,39 @@
                                     <ul class="sub-menu">
                                         <li> <a href="videos">Videos</a></li>
                                         <li> <a href="stories">Story</a></li>
-                                         <li><a href="single-course.html">Single Course</a></li>
+                                        
                                     </ul>
                                 </li>
                                 <li class="yellow nicdark_megamenu">
-                                    <a href="#">MEGA MENU</a>
+                                    <a href="schedule">SCHEDULE</a>
                                     <ul class="sub-menu">
                                         <li class="mm_grid mm_grid_3">
-                                            <a href="#">Lorem Ipsum Dolor</a>
+                                            <a >Schedule content</a>
                                             <ul class="sub-menu">
-                                                <li><a href="#">Lorem Ipsum Dolor</a></li>
-                                                <li><a href="#">Lorem Ipsum Dolor</a></li>
-                                                <li><a href="#">Lorem Ipsum Dolor</a></li>
+                                                <li><a href="schedule">View and edit Content</a></li>
+                                                
+                                            </ul>
+                                        </li>
+                                        
+                                        <li class="mm_grid mm_grid_3">
+                                            <a href="#">Delete Created Schedules</a>
+                                            <ul class="sub-menu">
+                                                <li><a href="delete_schedule">View and Delete</a></li>
+                                              
                                             </ul>
                                         </li>
                                         <li class="mm_grid mm_grid_3">
-                                            <a href="#">Lorem Ipsum Dolor</a>
+                                            <a>Create Schedule</a>
                                             <ul class="sub-menu">
-                                                <li><a href="#">Lorem Ipsum Dolor</a></li>
-                                                <li><a href="#">Lorem Ipsum Dolor</a></li>
-                                                <li><a href="#">Lorem Ipsum Dolor</a></li>
+                                                <li><a href="make_schedule">New Schedule</a></li>
+                                                <li><a href="past_schedule">Create from past records</a></li>
+                                               
                                             </ul>
                                         </li>
-                                        <li class="mm_grid mm_grid_3">
-                                            <a href="#">Lorem Ipsum Dolor</a>
-                                            <ul class="sub-menu">
-                                                <li><a href="#">Lorem Ipsum Dolor</a></li>
-                                                <li><a href="#">Lorem Ipsum Dolor</a></li>
-                                                <li><a href="#">Lorem Ipsum Dolor</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="mm_grid mm_grid_3">
-                                            <a href="#">Lorem Ipsum Dolor</a>
-                                            <ul class="sub-menu">
-                                                <li><a href="#">Lorem Ipsum Dolor</a></li>
-                                                <li><a href="#">Lorem Ipsum Dolor</a></li>
-                                                <li><a href="#">Lorem Ipsum Dolor</a></li>
-                                            </ul>
-                                        </li>
+                                        
                                     </ul>
                                 </li>
-                                <li class="green">
+                                <!--<li class="green">
                                     <a href="blog-masonry.html">BLOG</a>
                                     <ul class="sub-menu">
                                         <li><a href="blog-masonry.html">Masonry Layout</a></li>
@@ -285,7 +278,7 @@
                                         <li><a href="schedule">Schedule</a></li>
                                         <li><a href="make_schedule">Make Schedules</a></li>
                                     </ul>
-                                </li>
+                                </li>-->
                                 <li class="grey">
 
                                     <a href=" logout">LOGOUT</a>

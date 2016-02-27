@@ -46,7 +46,7 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
         <div class="nicdark_space40"></div>
 
         <div class="grid grid_12">
-            <h1 class="subtitle greydark">SCHEDULE</h1>
+            <h1 class="subtitle greydark">SCHEDULE QUEUE</h1>
             <div class="nicdark_space20"></div>
             <h3 class="subtitle grey">SCHEDULE FOR YOUR KID</h3>
             <div class="nicdark_space20"></div>
@@ -219,10 +219,7 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
     <div class="content" style="padding-left: 70%;padding-bottom: 1%">
     
       
-      <button  class="btn right">
-        <span class="left title"><span class="arrow-left"></span>Make a Schedule</span>
-        <span class="right icon icon-gear"></span>
-      </button>
+     <a href="make_schedule" type = "button" class = "btn btn-success">Create Schedule</a>
     </div>    
 </section>
 <!--end section-->

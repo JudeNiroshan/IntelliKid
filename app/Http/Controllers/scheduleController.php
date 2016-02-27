@@ -115,10 +115,31 @@ class scheduleController extends Controller
 
     public function make_schedule(){
 
+
+
+
+
+
       $id = $_SESSION['USERID'];
+      $dates = array();
       $kid_accounts = DB::select("select * from child_accounts where parent_id='$id' ");
 
-       return view('parent.schedule.schedule_allocator')->with('kids',$kid_accounts);
+      $schedule_dates = DB::select("select dueTime from shedule where fk_parent_id='$id'");
+
+      foreach ($schedule_dates as  $date) {
+        
+          $temp = explode(",", $date->dueTime);
+
+          foreach ($temp as $value) {
+                array_push($dates, $value);
+          }
+
+      }
+
+
+       return view('parent.schedule.schedule_allocator')->with('kids',$kid_accounts)->with('dates',$dates);
+
+
 
     }
 
@@ -161,10 +182,10 @@ class scheduleController extends Controller
 
       $vedio_items = array();
       $vedio_items = $_SESSION['video_que'];
-
+     // array_push($vedio_items, 1);
       $story_items = array();
       $story_items = $_SESSION['story_que'];
-
+      //array_push($story_items, 2);
 
       $video_data = array(array(),array());
       $story_data = array(array(),array());
@@ -183,7 +204,7 @@ class scheduleController extends Controller
             $cid = $c_id[$i];
             $video = DB::select("select * from video where id='$v' ");
             $child = DB::select("select f_name,l_name from child_accounts where c_id  = '$cid'");
-             $name = "<b>Name :</b>".$child[0]->f_name." ".$child[0]->l_name."<b>  Video Name:</b> ".$video[0]->name."<br/>";
+            $name = "<b>Name :</b>".$child[0]->f_name." ".$child[0]->l_name."<b>  Video Name:</b> ".$video[0]->name."<br/>";
             array_push($v_warning, $name);
 
           }
@@ -216,31 +237,171 @@ class scheduleController extends Controller
     }
 
 
-public function submit_shedule(){
+      public function submit_shedule(){
 
       
        $c_id   = $_REQUEST['id'];
        $date   = $_REQUEST['date'];
+
+
+
+      $vedio_items = array();
+      $vedio_items = $_SESSION['video_que'];
+
+      $story_items = array();
+      $story_items = $_SESSION['story_que'];
+
+      $video_count = sizeof($vedio_items);
+      $story_count = sizeof($story_items);
+
+
+      if($video_count ==0 && $story_count == 0){
+
+        return 0;
+
+      }else{
 
        $subject   = new Subject();
 
        $video  = new Video($date,$c_id);
        $song   = new Songs($date,$c_id);
 
+       if($video_count != 0 ){
        $subject->add($video);
+     }
+     if($story_count != 0 ){
        $subject->add($song);
+     }
        $subject->notify();
 
        return 1;
-
-     
-    
+     }
 
 
-      
+    }
+    public function past_schedule(){
+
+        return view('parent.schedule.create_paste_schedules');
+
+    }
+
+    public function delete_schedule(){
 
 
     }
 
+    public function calander_process(){
+
+      $id = $_SESSION['USERID'];
+      $dates = array();
+
+      $schedule_dates = DB::select("select * from shedule where fk_parent_id='$id' group by dueTime ");
+
+
+  $events = array();
+foreach($schedule_dates as $s)
+  {
+  $e = array();
+    $e['id'] = $s->id;
+    $e['title'] = 'Schedule';
+    $e['start'] = $s->dueTime;
+     $e['url'] = "edit_clander_data?pid=".$s->fk_parent_id."&date=".$s->dueTime;
+
+
+
+    array_push($events, $e);
+  }
+  echo json_encode($events);
+
+    }
+
+    public function edit_clander_data(){
+
+
+
+      $date = $_REQUEST['date'];
+      $pid  = $_REQUEST['pid'];
+
+
+       $vedio_items = array();
+      //$_SESSION['video_que']=$vedio_items;
+
+     $story_items = array();
+      //$_SESSION['story_que']=$story_items;
+
+
+      $vids = DB::select("select fk_video_id from video_shedule where fk_shedule_id in (select id from shedule where fk_parent_id = '$pid' and dueTime = '$date') group by fk_video_id");
+      $sids = DB::select("select fk_story_id from story_schedule where fk_schedule_id in (select id from shedule where fk_parent_id = '$pid' and dueTime = '$date') group by fk_story_id;");
+         foreach ($vids as $v) {
+
+            array_push($vedio_items, $v->fk_video_id);
+          }
+           foreach ($sids as $s) {
+            array_push($story_items, $s->fk_story_id);
+          }
+
+
+           $_SESSION['c_story_que']= $story_items ;
+
+          $_SESSION['c_video_que'] = $vedio_items ;
+
+          $content_v = array();
+          $content_s = array();
+
+          for($i=0;$i<sizeof($vedio_items);$i++){
+
+          $id = $vedio_items[$i];
+          $data = DB::select("select * from video where id='$id' ");
+
+           $content_v[$i][0]= $id;
+           $content_v[$i][1]= $data[0]->name;
+           $content_v[$i][2]= $data[0]->img_path;
+           $content_v[$i][3]= $data[0]->agegroupid;
+
+        }
+
+          for($k=0;$k<sizeof($story_items);$k++){
+
+          $id = $story_items[$k];
+
+          $data = DB::select("select a.*,m.* from story a,story_image m where a.id='$id' ");
+
+           $content_s[$k][0]= $id;
+           $content_s[$k][1]= $data[0]->name;
+           $content_s[$k][2]= $data[0]->path;
+           $content_s[$k][3]= $data[0]->agegroupid;
+
+        }
+
+
+
+          
+         return view('parent.schedule.calender.view_selected_content')->with('content_v',$content_v)->with('content_s',$content_s);
+
+
+    }
+
+
+    public function set_past_content_as_new(){
+
+
+          $new_story_items=array();
+          $new_video_items=array();
+          $new_story_items =  $_SESSION['c_story_que'];
+          $new_video_items =  $_SESSION['c_video_que'];
+
+
+          unset($_SESSION['video_que']);
+          unset($_SESSION['story_que']);
+          $_SESSION['video_que'] = $new_video_items;
+          $_SESSION['story_que'] = $new_story_items;
+
+
+          return redirect()->action('scheduleController@make_schedule');
+
+
+
+
+    }
 
 }

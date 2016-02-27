@@ -382,7 +382,7 @@ div.pannel {
                   
                      document.getElementById("load").innerHTML = "";
                      document.getElementById("error").setAttribute("class", "alert alert-danger"); 
-                     document.getElementById("error").innerHTML ="Your username or password is incorrect<br> try submitting again.";
+                     document.getElementById("error").innerHTML ="Your username or password is incorrect<br> try again.";
 
                        },1000);
                     
