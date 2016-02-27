@@ -34,9 +34,9 @@ unnecessary burden. All developers in the project must adhere to these coding pr
 <ul>
 <li>Use all lower case letters</li>
 <li>Use '_' as the word separator.</li>
-<li>Global variables should be prepended(starts) with a 'g'.</li>
 <li>Global constants should be all caps with '_' separators.</li>
-<li>Static variables may be prepended(starts) with a 's'.</li>
+<li>Try to use meaningful names as much as possible.</li>
+<li>All variables should be declared at the top of the class.</li>
 </ul>
 
 <h2>
@@ -45,6 +45,7 @@ unnecessary burden. All developers in the project must adhere to these coding pr
 <ul>
 <li>Function names should starts with a lowercase letter.</li>
 <li>Use camel case style.</li>
+<li>Name should be descriptive by itself indicating the purpose of the function.</li>
 <li>Function definitions should adhere to the "BSD/Allman style"</li>
 </ul>
 
@@ -59,11 +60,39 @@ unnecessary burden. All developers in the project must adhere to these coding pr
 
 <p>Please note the placement of the curly braces. </p>
 
+<ul>
+<li>Methods need to be marked with the access modifiers whenever needed</li>
+<li>Overriding methods must use <pre>@Override</pre> annotation above the method with a comment.</li>
+</ul>
+
 <h2>
 <a id="comments" class="anchor" href="#comments" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Comments</h2>
 
 <ul>
 <li>C style comments (/* */) and standard C++ comments (//) are both fine. Use of Perl/shell style comments (#) is discouraged.</li>
+<li>Place a comment in every custom class that used in the application. It should have <pre>@author</pre>, <pre>@desc</pre> and <pre>@created</pre> annotations with a comment block.</li>
+</ul>
+
+<h2>
+<a id="arrays" class="anchor" href="#arrays" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Arrays</h2>
+
+<ul>
+<li>Use the following format for associative arrays:
+<pre>
+$config= [
+'name'=&gt;'Yii',
+'options'=&gt; ['usePHP'=&gt;true],
+];
+</pre>
+</li>
+</ul>
+
+<h2>
+<a id="additional-rules" class="anchor" href="#additional-rules" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Additional Rules</h2>
+
+<ul>
+<li>Control structures, methods blocks, classes and everything should be properly indented using tab spaces.</li>
+<li>Single line if, while, for conditional blocks should use curly braces even though it is not mandatory in language.</li>
 </ul>
 
       <footer class="site-footer">
