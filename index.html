@@ -62,7 +62,16 @@ unnecessary burden. All developers in the project must adhere to these coding pr
 
 <ul>
 <li>Methods need to be marked with the access modifiers whenever needed</li>
-<li>Overriding methods must use <pre>@Override</pre> annotation above the method with a comment.</li>
+<li>Overriding methods must use <code>@Override</code> annotation above the method with a comment.</li>
+</ul>
+
+<h2>
+<a id="classesinterfaces" class="anchor" href="#classesinterfaces" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Classes/Interfaces</h2>
+
+<ul>
+<li>Class/Interface names should always start with a capital letter.</li>
+<li>When using inheritance sub-class should use <code>extends</code> keyword while class is implementing an interface it should use <code>implements</code> keyword</li>
+<li>Try to have classes in different files.</li>
 </ul>
 
 <h2>
@@ -70,7 +79,7 @@ unnecessary burden. All developers in the project must adhere to these coding pr
 
 <ul>
 <li>C style comments (/* */) and standard C++ comments (//) are both fine. Use of Perl/shell style comments (#) is discouraged.</li>
-<li>Place a comment in every custom class that used in the application. It should have <pre>@author</pre>, <pre>@desc</pre> and <pre>@created</pre> annotations with a comment block.</li>
+<li>Place a comment in every custom class that used in the application. It should have <code>@author</code>, <code>@desc</code> and <code>@created</code> annotations with a comment block.</li>
 </ul>
 
 <h2>
@@ -85,6 +94,30 @@ $config= [
 ];
 </pre>
 </li>
+</ul>
+
+<h2>
+<a id="packagingdirectories" class="anchor" href="#packagingdirectories" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Packaging/Directories</h2>
+
+<ul>
+<li>Use lower case</li>
+<li>Use plural form for nouns which represent objects (e.g. validators)</li>
+<li>Use singular form for names representing relevant functionality/features (e.g. web)</li>
+</ul>
+
+<h2>
+<a id="blank-lines" class="anchor" href="#blank-lines" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Blank lines</h2>
+
+<ul>
+<li>Blank lines improve readability by setting off sections of code that are logically related.</li>
+<li>Two blank lines should always be used in the following circumstances:
+ * Between sections of a source file
+ * Between class and interface definitions</li>
+<li>One blank line should always be used in the following circumstances:
+ * Between methods
+ * Between the local variables in a method and its first statement
+ * Before a block (control structures) or single-line comment
+ * Between logical sections inside a method to improve readability</li>
 </ul>
 
 <h2>
