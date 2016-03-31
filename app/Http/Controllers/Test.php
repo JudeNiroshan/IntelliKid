@@ -7,46 +7,33 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Classes\UploadVideoUtils;
-use App\observer\Subject;
-use App\observer\Video;
-use App\observer\Songs;
-use App\observer\Slton;
-
-
+use DB;
 
 class Test extends Controller
 {
-
-	
 	
 	public function testing(){
-		 echo "Testing bro";
 
-		 $some1 = new UploadVideoUtils();
+		$story_text = '';
+       $something = DB::table('story')->select('path')->where('id', '=', 1)->get();
+        
 
-		 $some1->isNullOrEmptyString("LOL");
+        print_r($something);
 
-		 echo "done";
+        echo $something[0]->path;
+
+
+
+
+        $story_file_path =  substr($something[0]->path, 1);
+
+        echo $story_file_path;
+
+
+        $myfile = fopen($story_file_path, "r") or die("Unable to open file!");
+        $story_text = fread($myfile,filesize($story_file_path));
+        fclose($myfile);
+
+        echo $story_text;
 	}
-
-
- public function r1(){
-
- 	$subject   = new Subject();
-
- 	$video  = new Video();
- 	$song  = new Songs();
-
-	$subject->add($video);
-	$subject->add($song);
- 	$subject->notify();
- 		
-
-   }
- 
-
-   
-
-
-
 }

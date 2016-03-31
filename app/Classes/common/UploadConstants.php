@@ -28,5 +28,10 @@ class UploadConstants {
 
 		static $INVALID_SONG_FORMAT 								= 70;
 		static $SONG_FILE_NOT_ATTACHED_TO_REQUEST 					= 80;
+		static $STORY_NOT_ATTACHED_TO_REQUEST 						= 90;
+
+		static $QUESTION_NOT_ATTACHED_TO_REQUEST 					= 100;
+		static $ANSWER_NOT_ATTACHED_TO_REQUEST 						= 110;
+		static $QUESTION_ALREADY_EXIST								= 120;
 
 }

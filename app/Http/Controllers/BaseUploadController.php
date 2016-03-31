@@ -3,27 +3,21 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Classes\common\FactoryProducer;
-
-//use App\Http\Controllers\com\intellikid\upload\common\UploadUtils;
 
 use DB;
 
 class BaseUploadController extends Controller
 {
 
-
-
-
     public function uploadContent(Request $request){
 
         //Get the AbstractFactory
         $Factory = FactoryProducer::getFactory("upload");
 
-        
+
         if ($request->hasFile('videoFile')) {
              
             //Get the Uploader
@@ -35,6 +29,8 @@ class BaseUploadController extends Controller
 
         }else if($request->hasFile('songFile')){
 
+
+            echo "JUDE ADDED INSIDE THE IF CONDITION";
             //Get the Uploader
             $uploader = $Factory->getUploader("song");
 
@@ -61,11 +57,8 @@ class BaseUploadController extends Controller
 
         }else{
 
-            		/*$reason1 = new UploadVideoUtils();
-                    $reason = $reason1->G_FAIL_FILE_NOT_FOUND;*/
-
-                    $reason = "File is missing. Please choose a file less than 500MB in size.";
-                    return UploadVideoController::loadWithFailedReason($reason);
+            $reason = "General Error. Please try again.";
+            return UploadVideoController::loadWithFailedReason($reason);
 
         }
 

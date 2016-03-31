@@ -13,6 +13,7 @@ use DB;
 
 class VideoValidator {
 
+	//@Override
     function validate($request){
 
 		$file = $request->file('videoFile');
@@ -57,7 +58,7 @@ class VideoValidator {
 
            	$path_for_name = $row->path;
            	print_r($path_for_name);
-            $destinationPath = public_path() . "\assets\uploads\\video\\";// 
+            $destinationPath = "\assets\uploads\\video\\";// 
             print_r($file->getClientOriginalName());
 
             if($destinationPath. $file->getClientOriginalName() == $path_for_name){

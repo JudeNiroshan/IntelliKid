@@ -32,15 +32,6 @@
 			uploadForm.submit();
 		}
 
-		/*$.ajax({
-				url: 'refresh',
-				type: 'GET',
-				data: { id: 1 },
-				success: function(response)
-				{
-					alert('123');
-				}
-			});*/
 	}
  
 	</script>
@@ -124,6 +115,7 @@
 											class="btn btn-primary dropdown-toggle"><i
 											class="fa fa-upload icon-white"></i> Upload </a>
 
+											<input type="submit" value="Save"/> 
 											
 										</div>
 									</div>

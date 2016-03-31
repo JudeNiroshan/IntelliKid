@@ -2,6 +2,38 @@
 
 				@if(isset($gallery_data))
 				<div class="row">
+					<script src="{{ URL::asset('assets/adminPage_assets/js/tinymce/tinymce.min.js') }}"></script>
+
+				<script src="{{ URL::asset('assets/adminPage_assets/js/upload.story.js') }}"></script>
+
+					<script type="text/javascript">
+
+				function removeOfStory(clickedId){
+					bootbox.confirm("Do you want to remove this Video?",
+						function(result){
+							var msg='';
+							if(result==true){
+
+								$.ajax({
+
+									type: "get",
+									url: "upload_remove_story",
+
+									data: {Story_ID:clickedId}, 
+									success: function(resultData){
+										
+										$('#story_tile_'+clickedId).hide(500);
+										var elem = document.getElementById('story_tile_'+clickedId);
+										elem.parentNode.removeChild(elem);
+										window.location="http://localhost/IntelliKid/public/upload_story";
+
+									}});
+							}
+
+						});
+				}
+				</script>
+
 					<div class="col-xs-12">
 						<div class="widget-box">
 							<div class="widget-title">
@@ -11,33 +43,33 @@
 							</div>
 							<div class="widget-content">
 								<div class="gallery-masonry">
-									@foreach($gallery_data as $element)
-									<div class="item">
-										
-										 <img height="100" width="150" src="{{ URL::asset($element['path']) }}" />
 
-										<div>
-											<p>{{ $element['name'] }}</p>
-										</div>
-										
-										<!-- <div class="actions">
-											<div class="actions-inner">
-												<a title="Edit" href="#" class="tip-top"><i
-													class="fa fa-pencil"></i></a> <a title="Remove" href="#"
-													class="tip-top"><i class="fa fa-trash-o"></i></a>
+									<div class="row">
+
+											@foreach($gallery_data as $element)
+											<div id="story_tile_<?php echo $element['id']; ?>" style="padding: 5px;border: 0.2px solid;margin: 5px;" class="col-lg-2 item">
+												
+												<div class="col-lg-12">
+												 <img height="100" width="100%" src="{{ URL::asset($element['path']) }}" />
+												</div>
+												<div class="col-lg-12">
+													<center><p>{{ $element['name'] }}</p></center>
+												</div>
+
+												<div class="col-lg-12">
+													<a href="#" onclick="javascript:editModelPopup(<?php echo $element['id']; ?>);" class="btn btn-dark-blue"><i class="icon icon-pencil"></i> Edit</a>
+													<a href="#" onclick="javascript:removeOfStory(<?php echo $element['id']; ?>);" class="btn btn-dark-red"><i class="icon icon-remove"></i> Remove</a>
+												</div>
+												
+												
+												
 											</div>
-										</div> -->
-									</div>
-									@endforeach
-									
+											@endforeach
+										</div>
+
 									
 								</div>
-								<span style="font-size: 10px; color: #888888;">All Images
-									licensed under <a
-									href="http://creativecommons.org/licenses/by-nd/2.0/deed.en">Creative
-										Commons BY-ND 2.0</a>, <a
-									href="http://www.flickr.com/photos/sbl83/">stilettobootlover_83's</a>
-								</span>
+								
 							</div>
 						</div>
 					</div>

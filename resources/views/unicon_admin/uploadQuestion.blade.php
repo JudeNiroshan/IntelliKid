@@ -1,6 +1,7 @@
 @extends('Layouts.admin_layout_page')
 @section('body_of_unicon_admin')
 <script src="{{ URL::asset('assets/adminPage_assets/js/jquery.min.js') }}"></script>
+<script src="{{ URL::asset('assets/adminPage_assets/js/upload.question.js') }}"></script>
 <script type="text/javascript">
 
 var g_file_missing = 0;
@@ -34,10 +35,39 @@ function submitOfQuestion(){
 			$('#display_error_ans_missing').effect("shake", { direction: "left", times: 2, distance: 5}, 600);
 		}, delay); 
 	}else{
-		alert('2222222222');
+		
 		$('#story_upload_form').submit();
 	}
 	
+}
+
+function removeOfQuestion(clickedRow){
+
+
+		bootbox.confirm("Do you want to remove this Question?",
+			function(result){
+				var msg='';
+				if(result==true){
+
+					$.ajax({
+
+						type: "get",
+						url: "upload_remove_question",
+						
+						data: {Q_ID:clickedRow}, 
+						success: function(resultData){
+         					alert(resultData);
+         					$('#question_row_'+clickedRow).hide(500);
+     				}});
+
+					
+					msg='You deleted the question from the database.';
+				}else{
+					msg='Not confirmed. Don\'t worry.';
+				}
+		});
+
+
 }
 
 
@@ -46,7 +76,7 @@ function submitOfQuestion(){
 	$(document).ready(function() {
 		var x = document.getElementsByClassName("close");
 		$(x).click(function(){
-			alert('LOLOLlll');
+			
 		});
 
 
@@ -85,14 +115,7 @@ function submitOfQuestion(){
                     	$('#previewimg' + abc).attr('src', e.target.result);
                     };
 
-                    /*$('#file').click(function(e) {
-                    	var name = $(":file").val();
-                    	if (!name)
-                    	{
-                    		alert("First Image Must Be Selected");
-                    		e.preventDefault();
-                    	}
-                    });*/
+                  
 });
 
 </script>
@@ -108,11 +131,35 @@ function submitOfQuestion(){
 					<div class="widget-title">
 						<span class="icon"> <i class="fa fa-align-justify"></i>
 						</span>
-						<h5>Upload Story...</h5>
+						<h5>Upload Question...</h5>
 					</div>
 					<div class="widget-content nopadding">
 
 						<form action="upload_question123" method="post" id="story_upload_form" enctype="multipart/form-data" class="form-horizontal">
+
+							
+								@if(isset($edit_Q_Status))
+								<div id="great" class="form-group">
+								<div class="col-sm-3 col-md-3 col-lg-2"></div>
+
+								<div class=" col-sm-3 col-md-3 col-lg-5 alert alert-success alert-block">
+									<a class="close" data-dismiss="alert" href="#">×</a>
+									<h4 class="alert-heading">Success!</h4>
+									{{ $edit_Q_Status }}
+								</div>										
+								</div>
+								@elseif(isset($edit_Q_fail))
+									<div id="great" class="form-group">
+									<div class="col-sm-3 col-md-3 col-lg-2"></div>
+
+									<div class=" col-sm-3 col-md-3 col-lg-5 alert alert-danger alert-block">
+										<a class="close" data-dismiss="alert" href="#">×</a>
+										<h4 class="alert-heading">Error!</h4>
+										{{ $edit_Q_fail }}
+									</div>										
+									</div>
+
+								@endif
 
 							<div class="form-group">
 								<label class="col-sm-3 col-md-3 col-lg-2 control-label">Subject</label>
@@ -179,7 +226,7 @@ function submitOfQuestion(){
 								<div>
 									<div class="form-inline">
 										<label class="radio inline">
-											<input type="checkbox" value="1" name="ans1_correct">
+											<input type="checkbox" name="ans1_correct">
 											Correct Answer
 										</label>
 										
@@ -197,7 +244,7 @@ function submitOfQuestion(){
 								<div>
 									<div class="form-inline">
 										<label class="radio inline">
-											<input type="checkbox" value="1" name="ans2_correct">
+											<input type="checkbox" name="ans2_correct">
 											Correct Answer
 										</label>
 										
@@ -215,7 +262,7 @@ function submitOfQuestion(){
 								<div>
 									<div class="form-inline">
 										<label class="radio inline">
-											<input type="checkbox" value="1" name="ans3_correct">
+											<input type="checkbox" name="ans3_correct">
 											Correct Answer
 										</label>
 										
@@ -233,7 +280,7 @@ function submitOfQuestion(){
 								<div>
 									<div class="form-inline">
 										<label class="radio inline">
-											<input type="checkbox" value="1" name="ans4_correct">
+											<input type="checkbox" name="ans4_correct">
 											Correct Answer
 										</label>
 										
@@ -260,7 +307,7 @@ function submitOfQuestion(){
 									data-toggle="dropdown"
 									class="btn btn-primary dropdown-toggle"><i
 									class="fa fa-upload icon-white"></i> Upload </a>
-									
+									<input type="submit" value="login"/> 
 								</div>
 							</div>
 
@@ -305,25 +352,31 @@ function submitOfQuestion(){
 				<table class="table table-bordered table-striped table-hover data-table">
 					<thead>
 						<tr>
-							<th>Question ID</th>
+							<th style="width:4%;">Question ID</th>
 							<th>Question</th>
-							<th>Subject</th>
-							<th>Age Category</th>
-							<th>Likes</th>
-							<th>Views</th>
+							<th style="width:20%;">Subject</th>
+							<th style="width:4%;">Age Category</th>
+							<th style="width:4%;">Likes</th>
+							<th style="width:4%;">Views</th>
+							<th style="width:18%;">Actions</th>
 						</tr>
 					</thead>
 					<tbody>
 
 						@foreach($table_data as $question)
 						
-						<tr class="gradeA">
+						<tr id="question_row_<?php echo $question['question_id']; ?>"class="gradeA">
 							<td>{{ $question['question_id'] }}</td>
 							<td>{{ $question['question'] }}</td>
 							<td>{{ $question['subject'] }}</td>
 							<td>{{ $question['agegroup'] }}</td>
 							<td>{{ $question['likes'] }}</td>
 							<td>{{ $question['views'] }}</td>
+
+							<td>
+								<a href="#" onclick="javascript:editModelPopup(<?php echo $question['question_id']; ?>);" class="btn btn-dark-blue"><i class="fa fa-pencil"></i> Edit</a>
+								<a href="#" onclick="javascript:removeOfQuestion(<?php echo $question['question_id']; ?>);" class="btn btn-dark-red"><i class="fa fa-trash-o"></i> Remove</a>
+							</td>
 						</tr>
 						@endforeach 
 
@@ -337,6 +390,11 @@ function submitOfQuestion(){
 
 	</div>
 </div>
+
+
+<script type="text/javascript">
+	$('#great').fadeOut(4000);
+</script>
 
 
 </div>

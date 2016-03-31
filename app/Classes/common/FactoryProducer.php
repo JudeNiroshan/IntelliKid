@@ -12,6 +12,10 @@ use App\Classes\uploaders\UploadFactory;
 
 class FactoryProducer{
 	
+	/**
+	* @desc  : This methods is used to get a custom factories in the application. This will not include the built-in factories.
+	* @return : Upload
+	*/
 	public static function getFactory($requesting_factory){
 
 		if($requesting_factory == null || trim($requesting_factory) == ''){

@@ -205,7 +205,7 @@
                   <a href="upload_question">Questions</a>
                 </li>
                 <li>
-                  <a href="buttons.html">Buttons &amp; icons</a>
+                  <a href="create_exam">Create Exams</a>
                 </li>
               </ul>
             </li>

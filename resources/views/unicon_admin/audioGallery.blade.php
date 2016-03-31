@@ -20,7 +20,7 @@
 									<ul class="amazingaudioplayer-audios" style="display:none;">
 										
 										@foreach($gallery_data as $element)
-										<li data-artist="Cash Cash" data-title=<?php echo '"'.$element['name'].' "' ;?> data-album="Billboard Debut Single Top100 1st February 2014 [Bubanee]" data-info="" data-image=<?php echo '"'.$path.''.$element['img_path'].' "' ;?> data-duration="205">
+										<li data-title=<?php echo '"'.$element['name'].' "' ;?>  data-info="" data-image=<?php echo '"'.$path.''.$element['img_path'].' "' ;?> data-duration="205">
 											<div class="amazingaudioplayer-source" data-src=<?php echo '"'.$path.''.strstr($element['path'], 'assets').' "' ;?> data-type="audio/mpeg" />
 										</li>
 										@endforeach

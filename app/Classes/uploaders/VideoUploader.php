@@ -66,17 +66,17 @@ class VideoUploader implements Uploader{
         $user_id = 100;
         $name = $request->filename;
 
-        $img_file_path = public_path() . "\assets\uploads\\video\img\\";
-        $img_file->move($img_file_path, $img_file->getClientOriginalName());
+        $img_file_path = "\assets\uploads\\video\img\\";
+        $img_file->move(public_path() . $img_file_path, $img_file->getClientOriginalName());
 
 
-        $destinationPath = public_path() . "\assets\uploads\\video\\";
+        $destinationPath = "\assets\uploads\\video\\";
 
         $temp_id = DB::table('content_type')->select('id')->where('type', '=', 'video')->get();
         $content_type_id = $temp_id[0]->id;
         $timestamp = date('y-m-d H:i:s');
         $content_id = DB::table('content')->insertGetId(array('contenttypeid' => $content_type_id, 'creator' => $user_id, 'datetime' => $timestamp)); 
-        $file->move($destinationPath, $file->getClientOriginalName());
+        $file->move(public_path() . $destinationPath, $file->getClientOriginalName());
 
         DB::table('video')->insert(
             array(
@@ -87,8 +87,6 @@ class VideoUploader implements Uploader{
                 'format' => $video_extension,
                 'subjectid' => $selected_subject,
                 'agegroupid' => $selected_age,
-                'length' => '15:03',
-                'size' => 2546.25,
                 'likes' => 1,
                 'totalviews' => 1,
                 'active' => 1
@@ -104,10 +102,11 @@ class VideoUploader implements Uploader{
         $videos = array();
 
         foreach ($path_list_for_name as $row) {
-            $video_tile_obj = array('name' => $row->name,
+            $video_tile_obj = array(
+                'id' => $row->id,
+                'name' => $row->name,
                 'path' => strstr($row->path, 'assets'),
-                'img_path' => strstr($row->img_path, 'assets'),
-                'length' => $row->length );
+                'img_path' => strstr($row->img_path, 'assets'));
 
             array_push($videos, $video_tile_obj);
         }

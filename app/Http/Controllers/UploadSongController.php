@@ -8,12 +8,17 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use DB;
 
+/**
+* @author : Jude Niroshan
+* @desc : this class is responsible for handling song upload related functions
+* @created : 11/02/2016
+*/
 
 class UploadSongController extends Controller
 {
     public function loadWithDefaultData(){
-    	$subjects = DB::table('subject')->get();
 
+    	$subjects = DB::table('subject')->get();
     	$age_groups = DB::table('age_group')->get();
 
         $path_list_for_name = DB::table('audio')->where('active', '=', '1')->get();
@@ -21,13 +26,10 @@ class UploadSongController extends Controller
         foreach ($path_list_for_name as $row) {
             $song_tile_obj = array('name' => $row->name,
                                     'path' => strstr($row->path, 'assets'),
-                                    'img_path' => strstr($row->img_path, 'assets'),
-                                    'length' => $row->length );
+                                    'img_path' => strstr($row->img_path, 'assets'));
             array_push($songs, $song_tile_obj);
         }
 
-        
-       
     	return view('unicon_admin.uploadAudio')
     			->with('sub',$subjects)
     			->with('agecat', $age_groups)
@@ -37,9 +39,7 @@ class UploadSongController extends Controller
 
     public static function loadWithFailedReason($fail_reason){
 
-
     	$subjects = DB::table('subject')->get();
-
     	$age_groups = DB::table('age_group')->get();
 
         $path_list_for_name = DB::table('audio')->where('active', '=', '1')->get();
@@ -47,8 +47,7 @@ class UploadSongController extends Controller
         foreach ($path_list_for_name as $row) {
             $song_tile_obj = array('name' => $row->name,
                                     'path' => strstr($row->path, 'assets'),
-                                    'img_path' => strstr($row->img_path, 'assets'),
-                                    'length' => $row->length );
+                                    'img_path' => strstr($row->img_path, 'assets') );
             array_push($songs, $song_tile_obj);
         }
 
@@ -63,7 +62,6 @@ class UploadSongController extends Controller
 
     public static function loadWithSelectedCrit(){
         $id = $_GET['id'];
-
         echo 'hit to server side';
     }
 }

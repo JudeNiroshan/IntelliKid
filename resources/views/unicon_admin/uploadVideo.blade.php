@@ -62,6 +62,29 @@
 
 								<form action="upload_videos123" method="post" id="video_upload_form" enctype="multipart/form-data" class="form-horizontal">
 
+
+									@if(isset($edit_V_Success))
+								<div id="great" class="form-group">
+								<div class="col-sm-3 col-md-3 col-lg-2"></div>
+
+								<div class=" col-sm-3 col-md-3 col-lg-5 alert alert-success alert-block">
+									<a class="close" data-dismiss="alert" href="#">×</a>
+									<h4 class="alert-heading">Success!</h4>
+									{{ $edit_V_Success }}
+								</div>										
+								</div>
+								@elseif(isset($edit_V_fail))
+									<div id="great" class="form-group">
+									<div class="col-sm-3 col-md-3 col-lg-2"></div>
+
+									<div class=" col-sm-3 col-md-3 col-lg-5 alert alert-danger alert-block">
+										<a class="close" data-dismiss="alert" href="#">×</a>
+										<h4 class="alert-heading">Error!</h4>
+										{{ $edit_V_fail }}
+									</div>										
+									</div>
+
+								@endif
 									<div class="form-group">
 										<label class="col-sm-3 col-md-3 col-lg-2 control-label">Subject</label>
 										<div class="col-sm-3 col-md-3 col-lg-2">
@@ -159,4 +182,8 @@
 				@include('unicon_admin.videoGallary');
 			</div>
 		</div>
+
+		<script type="text/javascript">
+			$('#great').fadeOut(4000);
+		</script>
 @stop  

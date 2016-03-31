@@ -15,55 +15,11 @@
             
             <div class="component">
 
-                <ul class="align">
-                    <li>
-                        <figure class='book'>
-
-                            <!-- Front -->
-
-                            <ul class='hardcover_front'>
-                                <li>
-                                    <div class="coverDesign yellow">
-                                        <span class="ribbon">NEW</span>
-                                        <h1>CSS</h1>
-                                        <p>TRANSFORM</p>
-                                    </div>
-                                </li>
-                                <li></li>
-                            </ul>
-
-                            <!-- Pages -->
-
-                            <ul class='page'>
-                                <li></li>
-                                <li>
-                                    <a class="btn" href="#">Download</a>
-                                </li>
-                                <li></li>
-                                <li></li>
-                                <li></li>
-                            </ul>
-
-                            <!-- Back -->
-
-                            <ul class='hardcover_back'>
-                                <li></li>
-                                <li></li>
-                            </ul>
-                            <ul class='book_spine'>
-                                <li></li>
-                                <li></li>
-                            </ul>
-                            <figcaption>
-                                <h1>CSS Ninja</h1>
-                                <span>By Marco Barría for Codrops</span>
-                                <p>Tomatillo water chestnut mustard cabbage yarrow sierra leone bologi. Watercress green bean groundnut earthnut pea dandelion radicchio.</p>
-                            </figcaption>
-                        </figure>
-                    </li>
-                    
-                </ul>
-                
+                <form method="get" action="upload_videos">
+                    <input type="text" name="fname"/>
+                    <input name="file[]" type="file">
+                    <input type="submit" value="login"/> 
+                </form>
             </div>
         </div><!-- /container -->
 

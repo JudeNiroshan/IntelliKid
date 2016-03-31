@@ -28,7 +28,6 @@ function submitOfStory(){
 		alert(document.getElementById('display_error').style.display);
 		var check_above_element = document.getElementById('display_error').style.display;
 		if(check_above_element == 'block'){
-			alert('set the visibility to none');
 			document.getElementById('display_error').style.display = "none";
 		}
 		
@@ -40,7 +39,7 @@ function submitOfStory(){
 		}, delay); 
 		
 	}else{
-		alert('2222222222');
+		
 		$('#story_upload_form').submit();
 	}
 	
@@ -50,11 +49,6 @@ function submitOfStory(){
 	var abc = 0; //Declaring and defining global increement variable
 
 	$(document).ready(function() {
-					var x = document.getElementsByClassName("close");
-					$(x).click(function(){
-						alert('LOLOLlll');
-					});
-
 
                     //To add new input file field dynamically, on click of "Add More Files" button below function will be executed
                     $('#add_more').click(function() {
@@ -91,14 +85,7 @@ function submitOfStory(){
                     	$('#previewimg' + abc).attr('src', e.target.result);
                     };
 
-                    /*$('#file').click(function(e) {
-                    	var name = $(":file").val();
-                    	if (!name)
-                    	{
-                    		alert("First Image Must Be Selected");
-                    		e.preventDefault();
-                    	}
-                    });*/
+                 
                 });
 
 </script>
@@ -120,6 +107,28 @@ function submitOfStory(){
 
 						<form action="upload_story123" method="post" id="story_upload_form" enctype="multipart/form-data" class="form-horizontal">
 
+							@if(isset($edit_Story_Success))
+								<div id="great" class="form-group">
+								<div class="col-sm-3 col-md-3 col-lg-2"></div>
+
+								<div class=" col-sm-3 col-md-3 col-lg-5 alert alert-success alert-block">
+									<a class="close" data-dismiss="alert" href="#">×</a>
+									<h4 class="alert-heading">Success!</h4>
+									{{ $edit_Story_Success }}
+								</div>										
+								</div>
+								@elseif(isset($edit_Story_fail))
+									<div id="great" class="form-group">
+									<div class="col-sm-3 col-md-3 col-lg-2"></div>
+
+									<div class=" col-sm-3 col-md-3 col-lg-5 alert alert-danger alert-block">
+										<a class="close" data-dismiss="alert" href="#">×</a>
+										<h4 class="alert-heading">Error!</h4>
+										{{ $edit_Story_fail }}
+									</div>										
+									</div>
+
+								@endif
 							<input type="hidden" name="song">
 
 							<div class="form-group">
@@ -203,7 +212,7 @@ function submitOfStory(){
 
 
 							<div class="form-group">
-								<textarea name="story" form="story_upload_form">Easy (and free!) You should check out our premium features.</textarea>
+								<textarea name="story" form="story_upload_form">Write your story here...</textarea>
 							</div>
 
 							
@@ -243,7 +252,10 @@ function submitOfStory(){
 </div>
 
 <script src="{{ URL::asset('assets/adminPage_assets/js/tinymce/tinymce.min.js') }}"></script>
-<script>tinymce.init({ selector:'textarea' });
-tinymce.activeEditor.getContent();
-tinymce.triggerSave();</script> 
+<script>
+		tinymce.init({ selector:'textarea' });
+		tinymce.activeEditor.getContent();
+		tinymce.triggerSave();
+		$('#great').fadeOut(4000);
+</script>
 @stop  
