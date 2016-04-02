@@ -18,11 +18,76 @@ use Illuminate\Support\Facades\Input;
 
 /* ////////////////////////    Admin Routes    /////////////////////// */
 
+// redirect tp admin login form 
+Route::get('admin_login',function(){
+    return view('unicon_admin.login')->with('title','Admin | Login')->with('status',false);
+});
+
+// login authentication
+Route::post('admin_login_auth', 'Unicode_Login@loginAuthentication');
+
+// logout and redeirect to the login page 
+Route::get('admin_logout', 'Unicode_Login@adminLogout');
+
 //Redirect to Dashboard page 
 Route::get('unicon_admin_index', 'Unicode_UserController@trackTotalUsers');
 
 //Redirect to View user page 
 Route::get('unicon_admin_view_users', 'Unicode_UserController@fillUserTable');
+
+//Redirect to Statistics page 
+Route::get('statistics', 'Unicode_StaticController@showStatistics');
+
+//Ajax call to update the Points system
+Route::get('updatePoints', 'Unicode_PointsController@updatePointsTable');
+
+//Redirect to article page
+Route::get('article', 'Unicode_ArticleController@showArticle');
+
+//Generaate a pdf document
+Route::get('pdfConvert', 'Unicode_PdfController@dispalyPdf');
+
+//Redirect to forum page
+Route::get('forum', 'Unicode_ForumController@dispalyForum');
+
+//Redirect to forum1 page
+Route::get('forum1', 'Unicode_ForumController@dispalyForum1');
+
+//call addcoment from forum1 page to forum controller
+Route::post('add_comment', 'Unicode_ForumController@addComment');
+
+//call add post from forum page to forum table
+Route::post('add_post', 'Unicode_ForumController@addPost');
+
+//Redirect to forum1 page
+Route::get('parent_forum', 'Unicode_ParentForumController@showParentForum');
+
+//ajax call to get article
+Route::get('getArticle', 'Unicode_ParentForumController@getArticle');
+
+//ajax call to get article for admin
+Route::get('getArticle1', 'Unicode_ArticleController@getArticle1');
+
+//call addcoment for parent from forum1 page to forum controller
+Route::post('add_comment_parent', 'Unicode_ParentForumController@addComment');
+
+//call add parent post from forum1 page to forum controller
+Route::post('add_post_parent', 'Unicode_ParentForumController@addParentPost');
+
+//like Admin like a post
+Route::get('isAdminLikePost', 'Unicode_ForumController@isAdminLikePost');
+
+//like Admin dislike a post
+Route::get('isAdminDisLikePost', 'Unicode_ForumController@isAdminDisLikePost');
+
+//like user dislike a post
+Route::get('isUserLikePost', 'Unicode_ParentForumController@isUserLikePost');
+
+//like user dislike a post
+Route::get('isUserDisLikePost', 'Unicode_ParentForumController@isUserDisLikePost');
+
+//upload a pdf file
+Route::post('upload_article', 'Unicode_ArticleController@uploadArticle');
 
 /* ////////////////////////    END OF Admin Routes    /////////////////////// */
 
@@ -41,6 +106,22 @@ Route::get('answer', 'Kids_QuizController@answer');
 //Redirect to certificate page 
 Route::get('kids_certificate', 'Kids_QuizController@certificate');
 
+//redirect to child login
+Route::get('child_login',  function () {
+    return view('kids_views.login');
+});
+
+//check the authendication
+Route::get('login_child', 'ChildController@login_child');
+
+//logout and redirect to child login 
+Route::get('child_logout',  function () {
+    session_unset();
+    session_destroy();
+    return view('kids_views.login');
+});
+
+Route::get('quiz_page',  'Kids_QuizController@getQuiz');
 /* ////////////////////////    END OF Kids Routes    /////////////////////// */
 
 
