@@ -16,6 +16,133 @@
 	
     <script src="{{ URL::asset('assets/adminPage_assets/js/respond.min.js') }}"></script>
 
+
+    <style>
+		
+		.block {
+		      width: 25%;
+		      height: 3%;
+		      margin: 5% auto;
+		      text-align: center;
+		    }
+		    .loading span {
+		      display: inline-block;
+		      padding: 8px;
+		      -webkit-border-radius: 50%;
+		      -moz-border-radius: 50%;
+		      -ms-border-radius: 50%;
+		      -o-border-radius: 50%;
+		      border-radius: 50%;
+		    }
+		    .ball1 {
+		      background: #5FC169;
+		      -webkit-animation: move-left 800ms ease-in-out infinite alternate;
+		      -moz-animation: move-left 800ms ease-in-out infinite alternate;
+		      -ms-animation: move-left 800ms ease-in-out infinite alternate;
+		      -animation: move-left 800ms ease-in-out infinite alternate;
+		    }
+		    .ball2 {
+		      background: #5CC3E6;
+		      -webkit-animation: move-right 800ms ease-in-out infinite alternate;
+		      -moz-animation: move-right 800ms ease-in-out infinite alternate;
+		      -ms-animation: move-right 800ms ease-in-out infinite alternate;
+		      animation: move-right 800ms ease-in-out infinite alternate;
+		    }
+		    @-webkit-keyframes move-left {
+		      to {
+		        -webkit-transform: translate(20px, 0);
+		        -ms-transform: translate(20px, 0);
+		        -moz-transform: translate(20px, 0);
+		        transform: translate(20px, 0);
+		        background: #5CC3E6;
+		      }
+		    }
+		    @-moz-keyframes move-left {
+		      to {
+		        -webkit-transform: translate(20px, 0);
+		        -ms-transform: translate(20px, 0);
+		        -moz-transform: translate(20px, 0);
+		        transform: translate(20px, 0);
+		        background: #5CC3E6;
+		      }
+		    }
+		    @-ms-keyframes move-left {
+		      to {
+		        -webkit-transform: translate(20px, 0);
+		        -ms-transform: translate(20px, 0);
+		        -moz-transform: translate(20px, 0);
+		        transform: translate(20px, 0);
+		        background: #5CC3E6;
+		      }
+		    }
+		    @-o-keyframes move-left {
+		      to {
+		        -webkit-transform: translate(20px, 0);
+		        -ms-transform: translate(20px, 0);
+		        -moz-transform: translate(20px, 0);
+		        transform: translate(20px, 0);
+		        background: #5CC3E6;
+		      }
+		    }
+		    @keyframes move-left {
+		      to {
+		        -webkit-transform: translate(20px, 0);
+		        -ms-transform: translate(20px, 0);
+		        -moz-transform: translate(20px, 0);
+		        transform: translate(20px, 0);
+		        background: #5CC3E6;
+		      }
+		    }
+		    @-webkit-keyframes move-right {
+		      to {
+		        -webkit-transform: translate(-20px, 0);
+		        -ms-transform: translate(-20px, 0);
+		        -moz-transform: translate(-20px, 0);
+		        transform: translate(-20px, 0);
+		        background: #5FC169;
+		      }
+		    }
+		    @-moz-keyframes move-right {
+		      to {
+		        -webkit-transform: translate(-20px, 0);
+		        -ms-transform: translate(-20px, 0);
+		        -moz-transform: translate(-20px, 0);
+		        transform: translate(-20px, 0);
+		        background: #5FC169;
+		      }
+		    }
+		    @-ms-keyframes move-right {
+		      to {
+		        -webkit-transform: translate(-20px, 0);
+		        -ms-transform: translate(-20px, 0);
+		        -moz-transform: translate(-20px, 0);
+		        transform: translate(-20px, 0);
+		        background: #0063dc;
+		      }
+		    }
+		    @-o-keyframes move-right {
+		      to {
+		        -webkit-transform: translate(-20px, 0);
+		        -ms-transform: translate(-20px, 0);
+		        -moz-transform: translate(-20px, 0);
+		        transform: translate(-20px, 0);
+		        background: #5FC169;
+		      }
+		    }
+		    @keyframes move-right {
+		      to {
+		        -webkit-transform: translate(-20px, 0);
+		        -ms-transform: translate(-20px, 0);
+		        -moz-transform: translate(-20px, 0);
+		        transform: translate(-20px, 0);
+		        background: #5FC169;
+		      }
+		    }
+
+
+
+	</style>
+
 	<script>
 		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -28,6 +155,8 @@
 	</script>
 </head> 
 <body>
+
+	<?php $path=URL::asset(''); ?> 
 	<div id="container">
 		<div id="logo">
             <img src="{{ URL::asset('assets/images/logo5.png') }}" width="160" height="90">
@@ -35,26 +164,30 @@
 		<div id="user">
 			<div class="avatar">
 				<div class="inner"></div>
-				<img src="img/demo/av1_1.jpg"/>
+				<img  style="width:80px;" <?php echo 'src="'.$path.'assets/adminPage_assets/forum_style/img/team/img7.jpg"';?>>
 			</div>
+
 			<div class="text">
 				<h4>Hello,<span class="user_name"></span></h4>
 			</div>
 		</div>
 		<div id="loginbox">
 
-			<form id="loginform" action="" onsubmit="return loginValidateForm()">
+			<form id="loginform" action="admin_login_auth" method="post" onsubmit="return loginValidateForm()">
 				<p>Enter username and password to continue.</p>
 				<div class="input-group input-sm">
-					<span class="input-group-addon"><i class="fa fa-user"></i></span><input class="form-control" type="text" id="username" placeholder="Username"/>
+					<span class="input-group-addon"><i class="fa fa-user"></i></span><input class="form-control" type="text" id="username" name="username" placeholder="Username"/>
 				</div>
+				<br/>
 				<div class="input-group">
-					<span class="input-group-addon"><i class="fa fa-lock"></i></span><input class="form-control" type="password" id="password" placeholder="Password"/>
+					<span class="input-group-addon"><i class="fa fa-lock"></i></span><input class="form-control" type="password" id="password" name="password" placeholder="Password"/>
 				</div>
+				<br/>
 				<div class="form-actions clearfix">
-					<div class="pull-right">
+					<!-- <div class="pull-right">
 						<a href="#recoverform" class="flip-link to-recover blue">Lost password?</a>
-					</div>
+					</div> -->
+
 					<input type="submit" class="btn btn-block btn-primary btn-default" value="Login"/>
 				</div>
 			</form>
@@ -99,8 +232,18 @@
 				</div> -->
 			</form>
 
+			@if($status == 1)
+				<script type="text/javascript">
+					sweetAlert("Oops...", "Username or Password is incorrect..!", "error");
+				</script>
+			@endif
+
 
 		</div>
+		 <div class="form-group">
+	            <div id="error" name="error" class="alert-link" style="color:red" ></div>
+	            <div id="load"></div>
+	     </div>
 	</div>
 
     <script src="{{ URL::asset('assets/adminPage_assets/js/jquery.min.js') }}"></script>
@@ -121,6 +264,9 @@
         	sweetAlert("Oops...", "Password Field is Required..!", "error");
             return false;
         }else{
+        	
+    		document.getElementById("load").innerHTML = '<div class="block"> <div class="loading"><span class="ball1"></span><span class="ball2"></span> Loading....</div></div>';
+
         	return true;
         }
     }
@@ -141,6 +287,8 @@
         	return true;
         }
     }
+
+
 
 </script>
 

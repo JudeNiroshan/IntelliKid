@@ -59,8 +59,8 @@
           <body>
             <div id='container'>
               <div class="row">
-                <div class="span3"></div>
-                <div class="span6 ">
+                <div class="span2"></div>
+                <div class="span8 ">
                   <div id='title'>
                     <h1>Maths quiz</h1>
                   </div>
@@ -76,7 +76,7 @@
                     <button class='' id='start'> Start Over</a></button> -->
                   </div>
                 </div>
-                <div class="span3"></div> 
+                <div class="span2"></div> 
               </div>
 
             <script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js'></script>
@@ -89,28 +89,32 @@
                 <script type="text/javascript">
                     (function() {
                     var questions = [
-                    <?php $r=-1; for($i=0;$i<$noOfQuestion-1;$i++){ $r++; ?>
+                    <?php 
+                      $r=-1; 
+                      for($i=0;$i<$noOfQuestion-1;$i++){ 
+                      $r++; ?>
                       {
                         question: <?php echo '"'.$quizAndAns[$i]->question.'"'?>,
-                        choices: [<?=$quizAndAns[$i]->option1?>, 
-                                  <?=$quizAndAns[$i]->option2?>, 
-                                  <?=$quizAndAns[$i]->option3?>,
-                                  <?=$quizAndAns[$i]->option4?>,
-                                  <?=$quizAndAns[$i]->option5?>],
+                        choices: [<?php echo '"'.$quizAndAns[$i]->option1.'"'?>, 
+                                  <?php echo '"'.$quizAndAns[$i]->option2.'"'?>, 
+                                  <?php echo '"'.$quizAndAns[$i]->option3.'"'?>,
+                                  <?php echo '"'.$quizAndAns[$i]->option4.'"'?>,
+                                  <?php echo '"'.$quizAndAns[$i]->option5.'"'?>],
                         correctAnswer: <?=$quizAndAns[$i]->answer?>
                       },
                     <?php } ?>
 
                      {
                       question: <?php echo '"'.$quizAndAns[$r+1]->question.'"'?>,
-                      choices: [<?=$quizAndAns[$r+1]->option1?>, 
-                                <?=$quizAndAns[$r+1]->option2?>, 
-                                <?=$quizAndAns[$r+1]->option3?>,
-                                <?=$quizAndAns[$r+1]->option4?>,
-                                <?=$quizAndAns[$r+1]->option5?>], 
+                      choices: [<?php echo '"'.$quizAndAns[$r+1]->option1.'"'?>, 
+                                <?php echo '"'.$quizAndAns[$r+1]->option2.'"'?>, 
+                                <?php echo '"'.$quizAndAns[$r+1]->option3.'"'?>,
+                                <?php echo '"'.$quizAndAns[$r+1]->option4.'"'?>,
+                                <?php echo '"'.$quizAndAns[$r+1]->option5.'"'?>], 
                       correctAnswer: <?=$quizAndAns[$r+1]->answer?>
                     }];
-                    
+
+                                        
                     var questionCounter = 0; //Tracks question number
                     var selections = []; //Array containing user choices
                     var quiz = $('#quiz'); //Quiz div object
@@ -269,7 +273,8 @@
 
           <script type="text/javascript">
               function myAnswers(numCorrect,numQuestions){
-
+                alert(numCorrect);
+                alert(numQuestions);
                 $.ajax({
                 type: "get",
                 url: "answer",

@@ -1,4 +1,3 @@
-
 @extends('Layouts.kids_master_page')
 @section('body')
 
@@ -70,11 +69,21 @@
                             <div class="container">
                               <br/>
                               <div class="span5 txt2 ">
+                                @if($result[0]->madal == "1st")
+                                    <h5><span style="color:red;" >Summery : </span> congratulations!!, you did this quiz well.</h5>
+                                @elseif($result[0]->madal == "2nd")  
+                                    <h5><span style="color:red;" >Summery : </span> You did this quiz well, Next time do it well.</h5>
+                                @elseif($result[0]->madal == "3rd")  
+                                    <h5><span style="color:red;" >Summery : </span> You have not done this quiz well. </h5>  
+                                @elseif($result[0]->madal == "")  
+                                    <h5><span style="color:red;" >Summery : </span> You have to work hard.</h5> 
+                                @endif         
+
                                 <h5><span style="color:red;" >Name : </span> {{$child_result[0]->lastname}}</h5> 
                                 <h5><span style="color:red;" >Category : </span> {{$result[0]->category}}</h5>
-                                <h5><span style="color:red;" >Results : </span> You got {{$result[0]->num_correct_ans}} questions
-                                out of {{$result[0]->num_question}} right</h5> 
-                                <h5><span style="color:red;" >Summery : </span> congratulations!!, you did this quiz well.</h5>  
+                                <h5><span style="color:red;" >Results : </span> You got {{$result[0]->num_correct_ans}} right
+                                out of {{$result[0]->num_question}} questions</h5> 
+                                 
                               </div>
                               <div class="span3 txt2 ">
                                 
@@ -82,7 +91,9 @@
                                     $path = asset(''); 
                                     
                                 ?>
-                                <img src=<?php echo '"'.$path.'assets/kids_assets/images/'.$result[0]->madal.'.png"';?>  width="100" height="200" alt="" class="ic">
+                                @if($result[0]->madal != "")
+                                 <img src=<?php echo '"'.$path.'assets/kids_assets/images/'.$result[0]->madal.'.png"';?>  width="100" height="200" alt="" class="ic">
+                                @endif
                               </div>
                               
                             </div>

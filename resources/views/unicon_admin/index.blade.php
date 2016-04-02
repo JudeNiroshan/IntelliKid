@@ -3,7 +3,7 @@
 <div id="content">
   <div id="content-header" class="mini">
     <h1>Dashboard</h1>
-    <ul class="mini-stats box-3">
+    <!-- <ul class="mini-stats box-3">
       <li>
         <div class="left sparkline_bar_good">
           <span>2,4,9,7,12,10,12</span>+10%</div>
@@ -16,7 +16,7 @@
               <div class="right">
                 <strong>13</strong>Last Day Users</div>
               </li>
-            </ul>
+            </ul> -->
           </div>
           <div id="breadcrumb">
             <a href="#" title="Go to Home" class="tip-bottom"><i class="fa fa-home"></i> Home</a>
@@ -27,9 +27,9 @@
               <div class="col-xs-12 center" style="text-align: center;">
                 <ul class="quick-actions">
                   <li>
-                    <a href="#">
-                      <i class="fa fa-2x icon-database -text-o fa-puzzle-piece"></i>
-                      Manage Events
+                    <a href="#" data-toggle="modal" data-target="#managePoints">
+                      <i class="fa fa-2x icon-database-text-o fa-puzzle-piece"></i>
+                      Points Plan
                     </a>
                   </li>
                   <li>
@@ -43,6 +43,7 @@
                       <i class="fa fa-2x icon-database fa-users"></i>
                       Manage Users
                     </a>
+
                   </li>
                   <li>
                     <a href="#">
@@ -72,38 +73,12 @@
                   </div>
                   <div class="widget-content">
                     <div class="row">
-                      <div class="col-xs-12 col-sm-3">
-                        <ul class="site-stats">
-                          <li>
-                            <div class="cc">
-                              <i class="fa fa-user"></i>
-                              <strong>{{ $totalusers }}</strong>
-                              <small>Total Users</small>
-                            </div>
-                          </li>
-                          
-                          <li class="divider"></li>
-                          <li>
-                            <div class="cc">
-                              <i class="fa -times fa-thumbs-o-down"></i>
-                              <strong>{{$freezedUsers}}</strong>
-                              <small>Freezed Accounts</small>
-                            </div>
-                          </li>
-                          <li>
-                            <div class="cc">
-                              <i class="fa -times fa-times-circle"></i>
-                              <strong>{{$removedUsers}}</strong>
-                              <small>Removed Accounts</small>
-                            </div>
-                          </li>
-                        </ul>
-                      </div>
+                     
                       <div class="col-xs-12 col-sm-9">
                         <!-- Login cart will display here -->
                         <div class="panel panel-default">
                         <div class="panel-heading">
-                          <i class="fa fa-bar-chart-o fa-fw"></i> Bar Chart Example
+                          <i class="fa fa-bar-chart-o fa-fw"></i> Bar Chart | Daily loggedin time
                           <div class="pull-right">
                             <div class="btn-group">
                               <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
@@ -201,6 +176,10 @@
                             <div class="col-lg-8">
                               
                                 <div id="bar-example"></div>
+                                <div>
+                                  y-axis = Logged in Time <br/>
+                                  x-axis = From Previous 7 day to Current day. 
+                                </div>
                               
                             </div>
                             <!-- /.col-lg-8 (nested) -->
@@ -219,14 +198,85 @@
           
         </div>
       </div>
+
+      <!-- Modal -->
+      <div class="modal fade" id="managePoints" role="dialog">
+        <div class="modal-dialog">
+        
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Manage Points</h4>
+            </div>
+            <div class="modal-body">
+               <div class="widget-content nopadding">
+                  <form action="#" method="get" class="form-horizontal">
+                    <div class="form-group">
+                      <label class="col-sm-4 col-md-4 col-lg-4 control-label">Video</label>
+                      <div class="col-sm-8 col-md-8 col-lg-8">
+                        <select id="mySelectVideo"> 
+                          @for ($i = 0; $i < 10; $i++)
+                            <option <?php if ($points->video == $i ) echo 'selected' ; ?> >{{$i}}</option>
+                          @endfor
+                        </select>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="col-sm-4 col-md-4 col-lg-4 control-label">Audio</label>
+                      <div class="col-sm-8 col-md-8 col-lg-8">
+                        <select id="mySelectAudio">
+                          @for ($i = 0; $i < 10; $i++)
+                            <option <?php if ($points->audio == $i ) echo 'selected' ; ?> >{{$i}}</option>
+                          @endfor
+                        </select>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="col-sm-4 col-md-4 col-lg-4 control-label">Story</label>
+                      <div class="col-sm-8 col-md-8 col-lg-8">
+                        <select id="mySelectStory">
+                          @for ($i = 0; $i < 10; $i++)
+                            <option <?php if ($points->story == $i ) echo 'selected' ; ?> >{{$i}}</option>
+                          @endfor
+                        </select>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="col-sm-4 col-md-4 col-lg-4 control-label">Question</label>
+                      <div class="col-sm-8 col-md-8 col-lg-8">
+                        <select id="mySelectQuestion">
+                          @for ($i = 0; $i < 10; $i++)
+                            <option <?php if ($points->quesion == $i ) echo 'selected' ; ?> >{{$i}}</option>
+                          @endfor
+                        </select>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+
+
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" onclick="updatePoints()" data-dismiss="modal">Update</button>
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+      
+      <!-- End Modal -->
       
 
       <script type="text/javascript">
-      /*
+    /*
      * Play with this code and it'll update in the panel opposite.
      *
      * Why not try some of the options above?
-       */
+     */
+
+
       Morris.Bar({
         element: 'bar-example',
         data: [
@@ -240,10 +290,50 @@
         ],
         xkey: 'y',
         ykeys: ['a'],
-        labels: ['LoggedIn Hours']
+        labels: ['LoggedIn Hours'],
+        
       });
   </script>
+  <script type="text/javascript">
+        
+        function updatePoints(){
 
+                var videoPoints = document.getElementById("mySelectVideo").value;
+                var audioPoints = document.getElementById("mySelectAudio").value;
+                var storyPoints = document.getElementById("mySelectStory").value;
+                var questionPoints = document.getElementById("mySelectQuestion").value;
+
+                  $.ajax({
+                      type: "get",
+                      url: "updatePoints",
+                      data: { 
+                          videoPoints:videoPoints,
+                          storyPoints:storyPoints,
+                          questionPoints:questionPoints,
+                          audioPoints:audioPoints  
+                      },
+                      success: function (data)
+                      {
+                        
+                          swal("Good job!", "Updated uccessfully", "success")
+                           
+
+                      },
+                      error: function (xhr, ajaxOptions, thrownError) 
+                      {
+
+                      
+                      }
+                  });
+                
+            
+            return false;
+            
+            
+            }
+
+            
+  </script>
    
 
   

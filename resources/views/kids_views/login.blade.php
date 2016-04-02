@@ -57,12 +57,12 @@
 
 
 
-	<style>
-		body {
-			background: url("{{asset('assets/kids_assets/image/img4.jpg')}}");
-			background-size: 1400px 900px;
-			background-repeat: no-repeat;
-		}
+  <style>
+    body {
+      background: url("{{asset('assets/kids_assets/image/img4.jpg')}}");
+      background-size: 1400px 900px;
+      background-repeat: no-repeat;
+    }
 
 
 
@@ -188,7 +188,7 @@
 
 
 
-	</style>
+  </style>
 
 </head>
 
@@ -310,7 +310,7 @@
                         setTimeout(function(){
                     
                        document.getElementById("load").innerHTML = "";
-                       window.location.href = "";
+                       window.location.href = "quiz_page";
 
                         },2000);
                     }

@@ -11,6 +11,23 @@
         <title>{{$title}}</title>  
 
 
+        <!-- Forum -->
+         <link rel="stylesheet" href="{{ URL::asset('assets/adminPage_assets/forum_style/css/animate.css') }}"> 
+         <link rel="stylesheet" href="{{ URL::asset('assets/adminPage_assets/forum_style/css/fontello.css') }}">
+         <link rel="stylesheet" href="{{ URL::asset('assets/adminPage_assets/forum_style/css/magnific-popup.css') }}">
+         <link rel="stylesheet" href="{{ URL::asset('assets/adminPage_assets/forum_style/css/nicdark_menu.css') }}">
+         <link rel="stylesheet" href="{{ URL::asset('assets/adminPage_assets/forum_style/css/nicdark_responsive.css') }}">
+         <link rel="stylesheet" href="{{ URL::asset('assets/adminPage_assets/forum_style/css/nicdark_shortcodes.css') }}">
+         <link rel="stylesheet" href="{{ URL::asset('assets/adminPage_assets/forum_style/css/revslider/settings.css') }}">
+         <link rel="stylesheet" href="{{ URL::asset('assets/adminPage_assets/forum_style/css/nicdark_style.css') }}">
+
+        <!-- End Forum -->
+
+        
+        <!-- sweetalert CSS -->
+        <link rel="stylesheet" type="text/css" href="{{ URL::asset('assets/adminPage_assets/css/sweetalert.css') }}">
+
+
         <!-- Bootstrap Core CSS -->
         <link rel="stylesheet" href="{{ URL::asset('assets/adminPage_assets/css/bootstrap.min.css') }}">
 
@@ -51,6 +68,9 @@
        
         <script src="http://cdn.oesmith.co.uk/morris-0.4.1.min.js"></script>
 
+        <link rel="stylesheet" href="http://cdn.oesmith.co.uk/morris-0.5.1.css">
+        <script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+
         
 
 
@@ -62,7 +82,7 @@
             <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
             <![endif]-->
 
-       <!-- <script>
+        <script>
             (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
                 (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
                 m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
@@ -71,7 +91,7 @@
             ga('create', 'UA-44987299-1', 'bootstrap-hunter.com');
             ga('send', 'pageview');
 
-        </script> -->   
+        </script>   
 
     </head>
     <body>
@@ -80,17 +100,17 @@
         <div id="wrapper">
 
                    <div id="header">
-          <h1>
-            <a href="index-2.html">Unicorn Admin</a>
-          </h1>
+          <h2>
+            <a href="unicon_admin_index"><img src="{{ URL::asset('assets/images/logo5.png') }}" width="160" height="70"></a>
+          </h2>
           <a id="menu-trigger" href="#"><i class="fa fa-bars"></i></a>
         </div>
         <div id="user-nav">
           <ul class="btn-group">
-            <li class="btn">
+            <!-- <li class="btn">
               <a title="" href="#"><i class="fa fa-user"></i> <span class="text">Profile</span></a>
-            </li>
-            <li class="btn dropdown" id="menu-messages">
+            </li> -->
+            <!-- <li class="btn dropdown" id="menu-messages">
               <a href="#" data-toggle="dropdown" data-target="#menu-messages" class="dropdown-toggle"><i class="fa fa-envelope"></i> <span class="text">Messages</span> <span class="label label-danger">5</span> <b class="caret"></b></a>
               <ul class="dropdown-menu messages-menu">
                 <li class="title">
@@ -146,12 +166,12 @@
                   </a>
                 </li>
               </ul>
-            </li>
-            <li class="btn">
+            </li> -->
+            <!-- <li class="btn">
               <a title="" href="#"><i class="fa fa-cog"></i> <span class="text">Settings</span></a>
-            </li>
+            </li> -->
             <li class="btn">
-              <a title="" href="login.html"><i class="fa fa-share"></i> <span class="text">Logout</span></a>
+              <a title="" href="admin_logout"><i class="fa fa-share"></i> <span class="text">Logout</span></a>
             </li>
           </ul>
         </div>
@@ -207,9 +227,12 @@
                 <li>
                   <a href="create_exam">Create Exams</a>
                 </li>
+                <!-- <li>
+                  <a href="buttons.html">Buttons &amp; icons</a>
+                </li> -->
               </ul>
             </li>
-            <li class="submenu">
+            <!-- <li class="submenu">
               <a href="#"><i class="fa -list fa-file-text-o"></i> <span>Reports</span> <i class="arrow fa fa-chevron-right"></i></a>
               <ul>
                 <li>
@@ -222,14 +245,20 @@
                   <a href="form-wizard.html">Wizard</a>
                 </li>
               </ul>
-            </li>
+            </li> -->
             <li>
-              <a href="tables.html"><i class="fa fa-bar-chart-o"></i> <span>Statistics</span></a>
+              <a href="statistics"><i class="fa fa-bar-chart-o"></i> <span>Statistics</span></a>
             </li>
             <li>
               <a href="unicon_admin_view_users"><i class="fa -list fa-eye"></i> <span>View users</span></a>
             </li>
-            <li class="submenu">
+            <li>
+              <a href="article"><i class="fa fa-file-text-o"></i> <span>Articles</span></a>
+            </li>
+            <li>
+              <a href="forum"><i class="fa -text-o fa-comments-o"></i> <span>Forums</span></a>
+            </li>
+            <!-- <li class="submenu">
               <a href="#"><i class="fa fa-files-o"></i> <span>Create Exams</span> <i class="arrow fa fa-chevron-right"></i></a>
               <ul>
                 <li>
@@ -248,20 +277,20 @@
                   <a href="messages.html">Messages</a>
                 </li>
               </ul>
-            </li>
+            </li> -->
           </ul>
         </div>
             <!-- #page-wrapper -->
                 @yield('body_of_unicon_admin')
             <!-- /#page-wrapper -->
             <div class="row">
-                <div id="footer" class="col-xs-12">
+                <div id="footer" class="col-xs-12 btn-danger">
                     2016 &copy; IntelliKid. All right reserved</a>
                 </div>
             </div>
 
         </div>
-
+        
 
     <!-- JacvaScripts-->
 
@@ -346,10 +375,19 @@
         <script src="{{ URL::asset('assets/adminPage_assets/js/respond.min.js') }}"></script>
 
         <script src="{{ URL::asset('assets/adminPage_assets/js/morris.min.js') }}"></script>
+        
+<!-- Forum js-->
+          <script src="{{ URL::asset('assets/adminPage_assets/forum_style/js/settings.js') }}"></script>
+        <!-- End Forum js-->
+
+        <!-- sweetalert JS -->
+        <script src="{{ URL::asset('assets/adminPage_assets/js/sweetalert.min.js') }}"></script> 
+
+        
 
 
         <!-- JacvaScripts are placed here-->
-    <!-- /JacvaScripts-->    
+    <!-- /JacvaScripts-->     
 
 
     </body>

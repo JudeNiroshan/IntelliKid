@@ -10,153 +10,98 @@ class Unicode_UserManageController extends Controller{
 
 
 	
-
+	/**
+	*@author: fazeel
+	*@param: user id
+	*
+	*desc:get total,freezed and removed user details by passing the request id to the
+	*	  user manager class, getUserDetails()
+	*
+	*@created: 22/01/16
+	*/
 	public function getUserDetails($id){
 
-		$totalUsers = DB::table('user')->count();
+		//get the total users who are login to the account
+		//$totalUsers = DB::table('user')->count();
 
-		$removedUsers = DB::table('user_account')->where('status','=',0)->count();
+		//get the total removed users who get removed after 2 weeks of freezed account
+		//$removedUsers = DB::table('user_account')->where('status','=',0)->count();
 
-		$freezedUsers = DB::table('user_account')->where('status','=',2)->count();
+		//$freezedUsers = DB::table('user_account')->where('status','=',2)->count();
 
-		//print_r($id);
 
 
 		$carbon = new Carbon();
-		//echo $carbon->now();
 		$dt = Carbon::parse($carbon->now());
 		$year = $dt->year; 
 		$month = $dt->month;
 		$day = $dt->day;
-		$knownDate = Carbon::create($year, $month, $day);          // create testing date
-		Carbon::setTestNow($knownDate);                            // set the mock
-		$today = new Carbon('today');
-		$oneDayBack = new Carbon('-1 days');
-		$twoDayBack = new Carbon('-2 days');
-		$threeDayBack = new Carbon('-3 days');
-		$fourDayBack = new Carbon('-4 days');
-		$fiveDayBack = new Carbon('-5 days');
-		$sixDayBack = new Carbon('-6 days');
-		Carbon::setTestNow();                                      // always clear it !
+		// create testing date
+		$knownDate = Carbon::create($year, $month, $day);          
+		// set the mock
+		Carbon::setTestNow($knownDate);                            
+		
 
-		//echo substr($today,8,2);	
+		$dayBack[0] = new Carbon('today');
+		for($i=1;$i<7;$i++){
+			$dayBack[$i] = new Carbon('-'.$i.' days');
+		}
 
+		// always clear it !
+		Carbon::setTestNow();                                      
+		//track users logged in user deatils to fill the user table in dashboard
 		$loginResult = DB::table('login')->join('user','login.userid','=','user.id')->groupBy('userid')->get();
-
-		$daysInTimeArray =Unicode_UserManageController::checkIntimeValues($id);
-		print_r($daysInTimeArray['oneDayBackTimeLength']);
-
+		//to update the content's points 
+		$points = DB::table('points_plan')->where('id','=',1)->first();
+		//track users logged in time deatils to fill the user table in dashboard
+		$daysInTimeArray =Unicode_UserManageController::checkIntimeValues($id,$dayBack);
 
 		return view('unicon_admin.index')->with('title','Dashboard')
-										 ->with(array('totalusers'=>$totalUsers,
-										 			  'removedUsers'=>$removedUsers,
-										 			  'freezedUsers'=>$freezedUsers,
-										 			  'today' => $today ,
-										 			  'oneDayBack' => $oneDayBack , 'twoDayBack' => $twoDayBack , 'threeDayBack' => $threeDayBack ,
-										 			  'fourDayBack' => $fourDayBack , 'fiveDayBack' => $fiveDayBack , 'sixDayBack' => $sixDayBack ))
+										 ->with('points',$points)
+										 ->with(array(
+										 			  'today' => $dayBack[0] ,
+										 			  'oneDayBack' => $dayBack[1] , 'twoDayBack' => $dayBack[2] , 'threeDayBack' => $dayBack[3] ,
+										 			  'fourDayBack' => $dayBack[4] , 'fiveDayBack' => $dayBack[5] , 'sixDayBack' => $dayBack[6] ))
 										 ->with('loginResult',$loginResult)
-										 ->with(array('todayInTimeLength' => $daysInTimeArray['todayInTimeLength'],
-										 			  'oneDayBackTimeLength' => $daysInTimeArray['oneDayBackTimeLength'],
-										 			  'twoDayBackTimeLength' => $daysInTimeArray['twoDayBackTimeLength'],
-										 			  'threeDayBackTimeLength' => $daysInTimeArray['threeDayBackTimeLength'],
-										 			  'fourDayBackInTimeLength' => $daysInTimeArray['fourDayBackInTimeLength'],
-										 			  'fiveDayBackInTimeLength' => $daysInTimeArray['fiveDayBackInTimeLength'],
-										 			  'sixDayBackInTimeLength' => $daysInTimeArray['sixDayBackInTimeLength'],
-										 			  ));												  
+										 ->with($daysInTimeArray);												  
 		
 	}
 
-	public static function checkIntimeValues($id){
+	/**
+	*@author: fazeel
+	*@param: user id
+	*
+	*desc:get the logged in time each day of one week 
+	*
+	*@created: 23/01/16
+	*/
+	public static function checkIntimeValues($id,$dayBack){
 
-		$carbon = new Carbon();
-		//echo $carbon->now();
-		$dt = Carbon::parse($carbon->now());
-		$year = $dt->year; 
-		$month = $dt->month;
-		$day = $dt->day;
-		$knownDate = Carbon::create($year, $month, $day);          // create testing date
-		Carbon::setTestNow($knownDate);                            // set the mock
-		$today = new Carbon('today');
-		$oneDayBack = new Carbon('-1 days');
-		$twoDayBack = new Carbon('-2 days');
-		$threeDayBack = new Carbon('-3 days');
-		$fourDayBack = new Carbon('-4 days');
-		$fiveDayBack = new Carbon('-5 days');
-		$sixDayBack = new Carbon('-6 days');
-		Carbon::setTestNow();
-
-		$todayInTime = DB::table('login')-> where('userid','=',$id)-> where('Date','=',substr($today,0,10))
-										 -> select('inTime')->get();
-		if(isset($todayInTime[0])){
-			$todayInTimeLength = $todayInTime[0]->inTime;
-		}else{
-			$todayInTimeLength = 0;
-		}								 
-
-
-		$oneDayBackInTime = DB::table('login')-> where('userid','=',$id)-> where('Date','=',substr($oneDayBack,0,10))
-										 -> select('inTime')->get();
-		if(isset($oneDayBackTime[0])){
-			$oneDayBackTimeLength = $oneDayBackTime[0]->inTime;
-		}else{
-			$oneDayBackTimeLength = 0;
-		}								 
-
-
-		$twoDayBackInTime = DB::table('login')-> where('userid','=',$id)-> where('Date','=',substr($twoDayBack,0,10))
-										 -> select('inTime')->get();
-		if(isset($twoDayBackInTime[0])){
-			$twoDayBackTimeLength = $twoDayBackInTime[0]->inTime;
-		}else{
-			$twoDayBackTimeLength = 0;
-		}
-
-		$threeDayBackInTime = DB::table('login')-> where('userid','=',$id)-> where('Date','=',substr($threeDayBack,0,10))
-										 -> select('inTime')->get();
-		if(isset($threeDayBackInTime[0])){
-			$threeDayBackTimeLength = $threeDayBackInTime[0]->inTime;
-		}else{
-			$threeDayBackTimeLength = 0;
-		}
-
-		$fourDayBackInTime = DB::table('login')-> where('userid','=',$id)-> where('Date','=',substr($fourDayBack,0,10))
-										 -> select('inTime')->get();
-		if(isset($fourDayBackInTime[0])){
-			$fourDayBackInTimeLength = $fourDayBackInTime[0]->inTime;
-		}else{
-			$fourDayBackInTimeLength = 0;
+		$dayBackInTime = array();
+		$dayBackInTimeLength = array();
+		for($r=0;$r<7;$r++){
+			//track a particuler user's each day logged in time 
+			$dayBackInTime[$r] = DB::table('login')-> where('userid','=',$id)-> where('Date','=',substr($dayBack[$r],0,10))
+											 -> select('inTime')->first();
+			//to check if there is no login time for a particluler day
+			if(isset($dayBackInTime[$r])){
+				$values = $dayBackInTime[$r];
+				$dayBackInTimeLength[$r] = $values->inTime;
+			}else{
+				$dayBackInTimeLength[$r] = 0;
+			}
 		}	
 
-		$fiveDayBackInTime = DB::table('login')-> where('userid','=',$id)-> where('Date','=',substr($fiveDayBack,0,10))
-										 -> select('inTime')->get();
-		if(isset($fiveDayBackInTime[0])){
-			$fiveDayBackInTimeLength = $fiveDayBackInTime[0]->inTime;
-		}else{
-			$fiveDayBackInTimeLength = 0;
-		}										 
+		return $daysInTimeArray = array('todayInTimeLength' => $dayBackInTimeLength[0],
+								   'oneDayBackTimeLength' => $dayBackInTimeLength[1], 
+								   'twoDayBackTimeLength' => $dayBackInTimeLength[2], 		
+								   'threeDayBackTimeLength' => $dayBackInTimeLength[3], 
+								   'fourDayBackInTimeLength' => $dayBackInTimeLength[4], 
+								   'fiveDayBackInTimeLength' => $dayBackInTimeLength[5], 
+								   'sixDayBackInTimeLength' => $dayBackInTimeLength[6]);		 
 
-		$sixDayBackInTime = DB::table('login')-> where('userid','=',$id)-> where('Date','=',substr($sixDayBack,0,10))
-										 -> select('inTime')->get();
-		if(isset($sixDayBackInTime[0])){
-			$sixDayBackInTimeLength = $sixDayBackInTime[0]->inTime;
-		}else{
-			$sixDayBackInTimeLength = 0;
-		}
-
-		//print_r($oneDayBackTimeLength);
-
-		return $daysInTimeArray = array('todayInTimeLength' => $todayInTimeLength,
-								   'oneDayBackTimeLength' => $oneDayBackTimeLength, 
-								   'twoDayBackTimeLength' => $twoDayBackTimeLength, 
-								   'threeDayBackTimeLength' => $threeDayBackTimeLength, 
-								   'fourDayBackInTimeLength' => $fourDayBackInTimeLength, 
-								   'fiveDayBackInTimeLength' => $fiveDayBackInTimeLength, 
-								   'sixDayBackInTimeLength' => $sixDayBackInTimeLength, );										 
 	} 
 
 	
-	
-
-
     
 }
