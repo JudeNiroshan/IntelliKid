@@ -7,7 +7,7 @@
  
     <meta charset="utf-8">  
     
-    <title>Baby Kids - NicDarkThemes.com</title> <!--insert your title here-->  
+    <title>Forum</title> <!--insert your title here-->  
     <meta name="description" content="nicdark Framework"> <!--insert your description here-->  
     <meta name="author" content="nicdark"> <!--insert your name here-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!--meta responsive-->
@@ -55,6 +55,7 @@
     
 </head>  
 <body id="start_nicdark_framework">
+
 <?php $path=URL::asset(''); ?>
 
 <div class="nicdark_site">
@@ -474,7 +475,7 @@
 
         <div class="nicdark_space50"></div>
 
-		
+        
 
         <!--sidebar-->
         <div class="grid grid_4">
@@ -683,12 +684,12 @@
 
 
         <div class="grid grid_8">
-			<img alt="" class="nicdark_radius nicdark_opacity" style="float:left;width:100%;" 
+            <img alt="" class="nicdark_radius nicdark_opacity" style="float:left;width:100%;" 
                         src="{{ URL::asset('assets/adminPage_assets/forum_style/img/blog/single-post.jpg') }}">
             <div class="nicdark_space20"></div>
                     
                     <a href="#" data-toggle="modal" data-target="#myModal" class="nicdark_btn nicdark_bg_green small nicdark_shadow nicdark_radius white nicdark_press">Add a POST</a>
-			<div class="nicdark_space20"></div>
+            <div class="nicdark_space20"></div>
                 <div class="nicdark_textevidence nicdark_bg_orange nicdark_radius nicdark_shadow">
                   <div class="nicdark_size_big">
                     <p class="white">
@@ -801,11 +802,11 @@
                   <input class="nicdark_btn nicdark_bg_red medium nicdark_shadow nicdark_radius white left"
                   type="submit" value="POST COMMENT"  id="postBtn" onclick="sweetCallFunc()">
                 </form>
-		</div>
-		
-		
+        </div>
+        
+        
 
-		<div class="nicdark_space50"></div>
+        <div class="nicdark_space50"></div>
 
     </div>
     <!--end nicdark_container-->
@@ -1220,17 +1221,17 @@
   <script>
       
       function articleOnclick(article_id){
-       
+            
             $.ajax({
                 type: "get",
-                url: "getArticle",
+                url: "getArticleParent",
                 data: { 
                     article_id:article_id
 
                 },
                 success: function (data)
                 {
-                    
+                
                   
                  // alert(data.pdf_path);
                 //document.getElementById("modal-body-pdf").innerHTML = '<embed  src="{{ URL::asset('+data.pdf_path+') }}" width="100%" height="500px">';

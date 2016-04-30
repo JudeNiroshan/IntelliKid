@@ -3,11 +3,17 @@ namespace App\Http\Controllers;
 use DB;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Routing\UrlGenerator;
 
 
 class Kids_QuizController extends Controller{
 
-    
+    protected $url;
+
+    public function __construct(UrlGenerator $url)
+    {
+        $this->url = $url;
+    }
 
     public function getQuiz(){
 
@@ -20,7 +26,7 @@ class Kids_QuizController extends Controller{
                     ->where('exam_schedule.taken_status','=',0)
                     ->select('dueTime','exam.name as ename','exam.id as eid','exam_schedule.schedule_id','shedule.fk_child_id')
                     ->get();
-        
+                    
         $date_now = Carbon::now()->format('m/d/Y');    
         //$date_now = Carbon::parse('04/06/2016');            
 
@@ -59,6 +65,9 @@ class Kids_QuizController extends Controller{
     public function answer(Request $request){
         $numCorrectAns = $request->input('numCorrect');
         $numQuestions = $request->input('numQuestions');
+        $exam_id = $request->input('exam_id');
+
+        $category = DB::table('exam')->where('id','=', $exam_id)->first();
 
         //calculate child proformance in percentage eg: 4/5*100
         $persentatage = ($numCorrectAns/$numQuestions)*100;
@@ -73,11 +82,13 @@ class Kids_QuizController extends Controller{
             $madal = "3rd";
         }
 
+        print_r("category is : "+$category->name);
+
         $cid = $_SESSION['child_id'] ;
         
         $id = DB::table('exam_result')->insertGetId(
             array('num_question' => $numQuestions, 'num_correct_ans' => $numCorrectAns,
-                  'category' => 'Maths','date_time' => Carbon::now(),'madal' => $madal,'cid'=> $cid)
+                  'category' =>  $category->name,'date_time' => Carbon::now(),'madal' => $madal,'cid'=> $cid)
         );
 
         DB::table('exam_schedule')
@@ -99,5 +110,30 @@ class Kids_QuizController extends Controller{
 
         //print_r($result);
         return view('kids_views.kids_certificate')->with('result',$result)->with('child_result',$child_result); 
+    }
+
+    /**
+    *@author: fazeel
+    *@param: post request -> question_id
+    *@desc: ajax request for get image path
+    *@created: 21/02/16
+    */
+    public function getImage(Request $request){
+        $que_id = $request->input('que_id');
+
+        $result = DB::table('question_image')->where('questionid','=',$que_id)->first();
+
+        if(isset($result)){
+            $path = str_replace("/","\\",$result->path);
+            $image_path = $this->url->to('/')."".$path;
+            $embedPath = '<img  src="'.$image_path.'" width="400px" height="400px">';
+            return response()->json(['embedPath' => $embedPath]);
+
+        }
+
+          $embedPath = '';
+            return response()->json(['embedPath' => $embedPath]);
+
+
     }
 }

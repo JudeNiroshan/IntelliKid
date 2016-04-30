@@ -21,6 +21,11 @@ class Kids_QuizMaker extends Controller{
 
         foreach ($exam_question as $row) {
             $question = DB::table('question')->where('id','=',$row->question_id)->first();
+            $question_image = DB::table('question_image')->where('questionid','=',$row->question_id)->first();
+
+            if($question_image == "" || $question_image == null)
+                $question_image = "";
+
             $options = DB::table('answer')->where('questionid','=',$row->question_id)->get();
 
             $option= array();
@@ -41,13 +46,13 @@ class Kids_QuizMaker extends Controller{
                                "option2" => $option[1],
                                "option3" => $option[2],
                                "option4" => $option[3],
-                               "option5" => "3",
+                               "image_path" =>  $question_image,
                                "answer"  => $answer ];
             
             $i++;                      
         } 
 
-        $quizDetails = DB::table('quiz')->where('exam_id','=',$exam_id)->first(); 
+        /*$quizDetails = DB::table('quiz')->where('exam_id','=',$exam_id)->first(); 
 
         //print_r($quizArray[0]['question']);
 
@@ -60,6 +65,7 @@ class Kids_QuizMaker extends Controller{
                                   'option1' => $quizArray[$v]['option1'],'option2' => $quizArray[$v]['option2'],
                                   'option3' => $quizArray[$v]['option3'],'option4' => $quizArray[$v]['option4'],
                                   'option5' => $quizArray[$v]['option5'],
+                                  'image_path' => $quizArray[$v]['image_path'],
                                   'answer' => $quizArray[$v]['answer'])
                         ); 
                 }
@@ -67,12 +73,13 @@ class Kids_QuizMaker extends Controller{
 
         $quizAndAns = DB::table('quiz')->where('exam_id','=',$exam_id)->get();
 
-        print_r(count($quizAndAns));
-        print_r("<br/>");
-        print_r($quizArray);
+       // print_r(count($quizAndAns));
+        //print_r("<br/>");
+        //print_r($quizArray);*/
 
-        return view('kids_views.template')->with('quizAndAns',$quizAndAns)
-                                          ->with('noOfQuestion',count($quizAndAns));   
+        return view('kids_views.template')->with('quizAndAns',$quizArray)
+                                          ->with('exam_id',$exam_id)
+                                          ->with('noOfQuestion',$track_Num_Que);   
 
     }
 }

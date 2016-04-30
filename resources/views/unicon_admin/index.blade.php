@@ -28,27 +28,27 @@
                 <ul class="quick-actions">
                   <li>
                     <a href="#" data-toggle="modal" data-target="#managePoints">
-                      <i class="fa fa-2x icon-database-text-o fa-puzzle-piece"></i>
+                      <i class="fa fa-bar-chart-o"></i>
                       Points Plan
                     </a>
                   </li>
                   <li>
-                    <a href="#">
-                      <i class="fa fa-2x icon-database fa-file-text-o"></i>
-                      Reports
+                    <a href="unicon_admin_view_users">
+                      <i class="fa -list fa-eye"></i>
+                      View users
                     </a>
                   </li>
                   <li>
-                    <a href="#">
-                      <i class="fa fa-2x icon-database fa-users"></i>
-                      Manage Users
+                    <a href="article">
+                      <i class="fa fa-file-text-o"></i>
+                      Articles
                     </a>
 
                   </li>
                   <li>
-                    <a href="#">
-                      <i class="fa fa-2x fa-bar-chart-o icon-piechart"></i>
-                      Statistics
+                    <a href="forum">
+                      <i class="fa -text-o fa-comments-o"></i>
+                      Forum
                     </a>
                   </li>
                 </ul>

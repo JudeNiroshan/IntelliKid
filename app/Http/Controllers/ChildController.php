@@ -296,20 +296,22 @@ else{
 		var_dump($data);
 
 	}
+	
+public function login_child(Request $request){
 
-	public function login_child(){
+		$un = $request->input('un');
+		$pw = $request->input('pw');
 
-		$un = $_REQUEST['un'];
-		$pw = $_REQUEST['pw'];
-
-		$data = DB::select("select c_id from child_Accounts where nik_name = '$un' and kid_password = '$pw' ");
+		$data = DB::select("select id from user where id = '$un' and password = '$pw' ");
 
 		if(empty($data)){
 			return 0;
 		}
 		else{
-		return 1;
-	}
+			$result = DB::table('user')->where('id','=',$un)->first();
+			$_SESSION['child_id'] = $result->id;
+			return 1;
+		}
 	}
 
 

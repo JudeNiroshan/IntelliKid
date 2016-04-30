@@ -62,10 +62,11 @@
                 <div class="span2"></div>
                 <div class="span8 ">
                   <div id='title'>
-                    <h1>Maths quiz</h1>
+                    <h1>Quiz</h1>
                   </div>
                     <br/>
                     <div id='quiz'></div>
+                    <div id='quiz_image'></div>
                     <div class='text-right button' id='next'><a class="button2" href='#'>Next</a></div>
                     <div class='text-right button' id='prev'><a class="button2" href='#'>Prev</a></div>
                     <div class='text-right button' id='start'> <a class="button2" href='#'>Start Over</a></div>
@@ -94,30 +95,32 @@
                       for($i=0;$i<$noOfQuestion-1;$i++){ 
                       $r++; ?>
                       {
-                        question: <?php echo '"'.$quizAndAns[$i]->question.'"'?>,
-                        choices: [<?php echo '"'.$quizAndAns[$i]->option1.'"'?>, 
-                                  <?php echo '"'.$quizAndAns[$i]->option2.'"'?>, 
-                                  <?php echo '"'.$quizAndAns[$i]->option3.'"'?>,
-                                  <?php echo '"'.$quizAndAns[$i]->option4.'"'?>,
-                                  <?php echo '"'.$quizAndAns[$i]->option5.'"'?>],
-                        correctAnswer: <?=$quizAndAns[$i]->answer?>
+                        question: <?php echo '"'.$quizAndAns[$i]['question'].'"'?>,
+                        choices: [<?php echo '"'.$quizAndAns[$i]['option1'].'"'?>, 
+                                  <?php echo '"'.$quizAndAns[$i]['option2'].'"'?>, 
+                                  <?php echo '"'.$quizAndAns[$i]['option3'].'"'?>,
+                                  <?php echo '"'.$quizAndAns[$i]['option4'].'"'?>],
+                        question_id: <?php echo '"'.$quizAndAns[$i]['id'].'"'?>,
+                        exam_id: <?=$exam_id?>,          
+                        correctAnswer: <?=$quizAndAns[$i]['answer']?>
                       },
                     <?php } ?>
 
                      {
-                      question: <?php echo '"'.$quizAndAns[$r+1]->question.'"'?>,
-                      choices: [<?php echo '"'.$quizAndAns[$r+1]->option1.'"'?>, 
-                                <?php echo '"'.$quizAndAns[$r+1]->option2.'"'?>, 
-                                <?php echo '"'.$quizAndAns[$r+1]->option3.'"'?>,
-                                <?php echo '"'.$quizAndAns[$r+1]->option4.'"'?>,
-                                <?php echo '"'.$quizAndAns[$r+1]->option5.'"'?>], 
-                      correctAnswer: <?=$quizAndAns[$r+1]->answer?>
+                      question: <?php echo '"'.$quizAndAns[$r+1]['question'].'"'?>,
+                      choices: [<?php echo '"'.$quizAndAns[$r+1]['option1'].'"'?>, 
+                                <?php echo '"'.$quizAndAns[$r+1]['option2'].'"'?>, 
+                                <?php echo '"'.$quizAndAns[$r+1]['option3'].'"'?>,
+                                <?php echo '"'.$quizAndAns[$r+1]['option4'].'"'?>],
+                      question_id: <?php echo '"'.$quizAndAns[$r+1]['id'].'"'?>,   
+                      correctAnswer: <?=$quizAndAns[$r+1]['answer']?>
                     }];
 
                                         
                     var questionCounter = 0; //Tracks question number
                     var selections = []; //Array containing user choices
                     var quiz = $('#quiz'); //Quiz div object
+                   // var quiz_image = $('#quiz_image'); //Quiz image div object
                     
                     // Display initial question
                     displayNext();
@@ -182,9 +185,12 @@
                         id: 'question'
                       });
                       
-                      var header = $('<h2>Question ' + (index + 1) + ':</h2>');
+                      var header = $('<h2>Question ' + (index + 1)+' / '+ <?=$noOfQuestion?>+ ':</h2>');
                       qElement.append(header);
-                      
+                      //quiz_image.append(questions[index].question_id).fadeIn();
+
+                      //call ajax to get the image
+                      callImagePath(questions[index].question_id);
                       var question = $('<p>').append(questions[index].question);
                       qElement.append(question);
                       
@@ -222,6 +228,8 @@
                         if(questionCounter < questions.length){
                           var nextQuestion = createQuestionElement(questionCounter);
                           quiz.append(nextQuestion).fadeIn();
+                         
+                          
                           if (!(isNaN(selections[questionCounter]))) {
                             $('input[value='+selections[questionCounter]+']').prop('checked', true);
                           }
@@ -257,7 +265,7 @@
                         }
                       }
                       
-                      myAnswers(numCorrect,questions.length);
+                      myAnswers(numCorrect,questions.length,questions[1].exam_id);
                      // score.append('You got ' + numCorrect + ' questions out of ' +
                                  //  questions.length + ' right!!!');
                       //return score;
@@ -272,35 +280,67 @@
           <div id="content"></div>
 
           <script type="text/javascript">
-              function myAnswers(numCorrect,numQuestions){
-                alert(numCorrect);
-                alert(numQuestions);
-                $.ajax({
-                type: "get",
-                url: "answer",
-                data: { 
-                    numCorrect:numCorrect,
-                    numQuestions:numQuestions  
-                },
-                success: function (data)
-                {
-                  
-                  
-                    
+              function callImagePath(q_id){
 
-                },
-                error: function (xhr, ajaxOptions, thrownError) 
-                {
+                      
+                      $.ajax({
+                      type: "get",
+                      url: "getImage",
+                      data: { 
+                          que_id:q_id
+                      },
+                      success: function (data)
+                      {
+                          document.getElementById("quiz_image").innerHTML = data.embedPath;
+                        
+                      },
+                      error: function (xhr, ajaxOptions, thrownError) 
+                      {
 
-                   
-                
-                }
-            });
-    
+                         
+                      
+                      }
+                  });
           
+                
+            
+            
+                  return false;
       
-      
-      return false;
+              }
+          </script>
+
+
+           <script type="text/javascript">
+              function myAnswers(numCorrect,numQuestions,exam_id){
+                 
+                  $.ajax({
+                      type: "get",
+                      url: "answer",
+                      data: { 
+                          numCorrect:numCorrect,
+                          exam_id:exam_id,
+                          numQuestions:numQuestions  
+                      },
+                      success: function (data)
+                      {
+                        
+                        
+                          
+
+                      },
+                      error: function (xhr, ajaxOptions, thrownError) 
+                      {
+
+                         
+                      
+                      }
+                   });
+          
+                
+            
+            
+                     return false;
       
               }
           </script>

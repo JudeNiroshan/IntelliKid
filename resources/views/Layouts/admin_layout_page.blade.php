@@ -45,7 +45,7 @@
 
 
         <!-- Jquery Gritter -->
-        <link rel="stylesheet" href="{{ URL::asset('assets/adminPage_assets/css/jquery.gritter.css') }}">
+        <!--<link rel="stylesheet" href="{{ URL::asset('assets/adminPage_assets/css/jquery.gritter.css') }}">-->
 
         <!-- Color Picker -->
         <link rel="stylesheet" href="{{ URL::asset('assets/adminPage_assets/css/colorpicker.css') }}">
@@ -175,7 +175,7 @@
             </li>
           </ul>
         </div>
-        <div id="switcher">
+        <!-- <div id="switcher">
           <div id="switcher-inner">
             <h3>Theme Options</h3>
             <h4>Colors</h4>
@@ -197,7 +197,7 @@
           <div id="switcher-button">
             <i class="fa fa-cogs"></i>
           </div>
-        </div>
+        </div> -->
         <div id="sidebar">
           <div id="search">
             <input type="text" placeholder="Search here...">
@@ -246,9 +246,9 @@
                 </li>
               </ul>
             </li> -->
-            <li>
+            <!-- <li>
               <a href="statistics"><i class="fa fa-bar-chart-o"></i> <span>Statistics</span></a>
-            </li>
+            </li> -->
             <li>
               <a href="unicon_admin_view_users"><i class="fa -list fa-eye"></i> <span>View users</span></a>
             </li>
@@ -370,7 +370,7 @@
         <!-- calendar page-->
         <script src="{{ URL::asset('assets/adminPage_assets/js/unicorn.calendar.js') }}"></script>
 
-        <script src="{{ URL::asset('assets/adminPage_assets/js/jquery.gritter.min.js') }}"></script>
+        <!--<script src="{{ URL::asset('assets/adminPage_assets/js/jquery.gritter.min.js') }}"></script>-->
         <script src="{{ URL::asset('assets/adminPage_assets/js/jquery-ui.custom.min.js') }}"></script>
         <script src="{{ URL::asset('assets/adminPage_assets/js/respond.min.js') }}"></script>
 

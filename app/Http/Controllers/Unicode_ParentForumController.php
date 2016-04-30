@@ -4,9 +4,19 @@ namespace App\Http\Controllers;
 use DB;
 use Carbon\Carbon;
 
+use Illuminate\Support\Facades\Input;
 use Illuminate\Http\Request;
+use Illuminate\Routing\UrlGenerator;
+
 
 class Unicode_ParentForumController extends Controller{
+
+	protected $url;
+
+    public function __construct(UrlGenerator $url)
+    {
+        $this->url = $url;
+    }
 
 	/**
 	*@author: fazeel
@@ -226,7 +236,7 @@ class Unicode_ParentForumController extends Controller{
 	*@desc:	ajax call to get article details
 	*@created: 21/02/16
 	*/
-	public function getArticle(Request $request){
+	public function getArticleParent(Request $request){
 		$article_id = $request->input('article_id');
 		
 		$getArticle = DB::table('article')->where('id','=',$article_id)
@@ -236,12 +246,14 @@ class Unicode_ParentForumController extends Controller{
 
 		$pdf_path = str_replace("/","\\",$pdf_path);*/
 
-		$pdf_path = "http://localhost:8000/".$getArticle->pdf_path;
+		$pdf_path = $this->url->to('/')."/".$getArticle->pdf_path;
+
+		
 
 		$embedPath = '<embed  src="'.$pdf_path.'" width="100%" height="500px">';
-
-
-		return response()->json(['title' => $getArticle->title,'embedPath' => $embedPath,'pdf_path' =>$pdf_path,'description' => $getArticle->description ]);
+		
+		
+		return response()->json(['title' => $getArticle->title,'embedPath' => $embedPath,'pdf_path' =>$pdf_path,'description' => $getArticle->description]);
 	}
     
 

@@ -7,7 +7,7 @@
 <div id="content">
   <div id="content-header" class="mini">
     <h1>Article</h1>
-    <ul class="mini-stats box-3">
+    <!-- <ul class="mini-stats box-3">
       <li>
         <div class="left sparkline_bar_good">
           <span>2,4,9,7,12,10,12</span>+10%</div>
@@ -20,7 +20,7 @@
               <div class="right">
                 <strong>13</strong>Last Day Users</div>
               </li>
-            </ul>
+            </ul> -->
           </div>
           <div id="breadcrumb">
             <a href="#" title="Go to Home" class="tip-bottom"><i class="fa fa-home"></i> Home</a>
@@ -90,7 +90,7 @@
                 <h5>Recent Articles</h5>
               </div>
               <div class="widget-content nopadding">
-                <ul class="recent-comments">
+                <ul class="recent-comments" id="article_id">
 
                 <?php
                     $article_count = 1;
@@ -105,6 +105,10 @@
                       </p>
                       
                     </div>
+                    <div class="pull-right">
+                    <a href={{'deleteArticle?did='.$row->id}}> Delete</a>
+                    </div>
+                    <br>
                   </li>
                         <?php $article_count++;?>
                 @endforeach
@@ -229,6 +233,38 @@
           return true;
       }
   </script>
+ <!-- <script>
+      
+      function deleteArticle(article_id){
+       
+            $.ajax({
+                type: "get",
+                url: "deleteArticle",
+                data: { 
+                    article_id:article_id
+
+                },
+                success: function (data)
+                {
+                    
+                  $('#article_id').append("Fazeel");
+
+                },
+                error: function (xhr, ajaxOptions, thrownError) 
+                {
+
+                
+                }
+            });
+
+            
+      
+      return false;
+      
+      
+      }
+  </script>-->
+
   
 @stop            
 

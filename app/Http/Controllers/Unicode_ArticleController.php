@@ -5,8 +5,18 @@ use DB;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Http\Request;
+use Illuminate\Routing\UrlGenerator;
+use File;
 
 class Unicode_ArticleController extends Controller{
+
+	protected $url;
+
+    public function __construct(UrlGenerator $url)
+    {
+        $this->url = $url;
+    }
+
 
 	public function showArticle( ){
 
@@ -24,7 +34,7 @@ class Unicode_ArticleController extends Controller{
 	*/
 	public static function uploadArticle(Request $request){
 
-		print_r("i am here to upload");
+		
 		if(Input::hasFile('file')){
 
 				
@@ -59,15 +69,47 @@ class Unicode_ArticleController extends Controller{
 		$getArticle = DB::table('article')->where('id','=',$article_id)
 											 ->first();
 			
-		/*$pdf_path = public_path()."\\".$getArticle->pdf_path;
+		//$pdf_path = public_path()."\\".$getArticle->pdf_path;
 
-		$pdf_path = str_replace("/","\\",$pdf_path);*/
+		//$pdf_path = str_replace("/","\\",$pdf_path);
 
-		$pdf_path = "http://localhost:8000/".$getArticle->pdf_path;
+
+		$pdf_path = $this->url->to('/')."/".$getArticle->pdf_path;
+
 
 		$embedPath = '<embed  src="'.$pdf_path.'" width="100%" height="500px">';
 
 
 		return response()->json(['title' => $getArticle->title,'embedPath' => $embedPath,'pdf_path' =>$pdf_path,'description' => $getArticle->description]);
+	}
+
+	public function showArticleToJSON( ){
+
+		$resultArticle = DB::table('article')->get();
+		return $resultArticle;
+		
+	}
+
+	
+
+	public function deleteArticle(Request $request){
+		
+		$article_id = $request->input('did');
+
+
+		$getArticle = DB::table('article')->where('id','=',$article_id)
+											 ->first();
+
+
+		$filename = $this->url->to('/')."/".$getArticle->pdf_path;
+
+
+		// Delete a single file
+		File::delete($filename);
+		DB::table('article')->where('id', '=', $article_id)->delete();
+
+		$resultArticle = DB::table('article')->get();       
+		return view('unicon_admin.article')->with('article_details',$resultArticle)->with('title','Article');
+		
 	}
 }

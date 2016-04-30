@@ -63,10 +63,13 @@ Route::post('add_post', 'Unicode_ForumController@addPost');
 Route::get('parent_forum', 'Unicode_ParentForumController@showParentForum');
 
 //ajax call to get article
-Route::get('getArticle', 'Unicode_ParentForumController@getArticle');
+Route::get('getArticleParent', 'Unicode_ParentForumController@getArticleParent');
 
 //ajax call to get article for admin
 Route::get('getArticle1', 'Unicode_ArticleController@getArticle1');
+
+//ajax call to get article for admin
+Route::get('deleteArticle', 'Unicode_ArticleController@deleteArticle');
 
 //call addcoment for parent from forum1 page to forum controller
 Route::post('add_comment_parent', 'Unicode_ParentForumController@addComment');
@@ -102,6 +105,9 @@ Route::get('kids_quiz', 'Kids_QuizController@createQuiz');
 
 //Save exam results to 'exam_result' table
 Route::get('answer', 'Kids_QuizController@answer');
+
+//get question image
+Route::get('getImage', 'Kids_QuizController@getImage');
 
 //Redirect to certificate page 
 Route::get('kids_certificate', 'Kids_QuizController@certificate');
