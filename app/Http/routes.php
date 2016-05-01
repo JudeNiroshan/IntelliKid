@@ -101,7 +101,7 @@ Route::post('upload_article', 'Unicode_ArticleController@uploadArticle');
 /* ////////////////////////    Kids Routes    /////////////////////// */
 
 
----------------------------------- Fazeel -------------------------------
+/*---------------------------------- Fazeel -------------------------------*/
 
 //Redirect to quiz page 
 Route::get('kids_quiz', 'Kids_QuizController@createQuiz');
@@ -133,10 +133,9 @@ Route::get('child_logout',  function () {
 Route::get('quiz_page',  'Kids_QuizController@getQuiz');
 
 
---------------------- Fazeel -------------------------------------------
+/*---------------------------------- Fazeel -------------------------------*/
 
-
-------------------------------Nibras ---------------------------------------
+/*---------------------------------- Nibras -------------------------------*/
 
 Route::get('child_login',function(){
     return view('kids_views.login');
@@ -215,7 +214,7 @@ Route::get('readStory','story_controller@readStory');
 Route::get('like_story','story_controller@likeStory');
 
 
------------------------------ Nibras -----------------------------------------
+/*---------------------------------- Nibras -------------------------------*/
 
 
 
