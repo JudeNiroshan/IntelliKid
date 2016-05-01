@@ -199,8 +199,9 @@
                             <a href=""><img alt="" src="{{ URL::asset('assets/images/logoto.png')}}" height="60" width="0"></a>
                         </div>
 
-                        <a class="nicdark_btn_icon nicdark_zoom nicdark_bg_yellow_hover nicdark_right_sidebar_btn_open nicdark_marginright10 nicdark_bg_orange extrasmall nicdark_radius white right"><i class="icon-mic-outline"></i></a>
-                        
+                     <!--    <a class="nicdark_btn_icon nicdark_zoom nicdark_bg_yellow_hover nicdark_right_sidebar_btn_open nicdark_marginright10 nicdark_bg_orange extrasmall nicdark_radius white right"><i class="icon-mic-outline"></i></a>
+                         -->
+                         
                         <nav>
                             <ul class="nicdark_menu nicdark_margin010 nicdark_padding50">
 
