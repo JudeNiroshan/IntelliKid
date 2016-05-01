@@ -19,27 +19,15 @@ class ScheduleFactory extends AbstractFactory {
 			return null;
 		}	
 
-
-		return null;
-
-	}
-
-
-
-	public function CheckMan($class){
-
-		if($class == null || trim($class) == ''){
-			return null;
+		if($upload_type != null || trim($upload_type) == 'schedulevalidation'){
+			
+			return new ScheduleValidations();
 		}	
 
 
-		if(strtolower(trim($class)) == "schedulevalidation"){
-
-			return new ScheduleValidations();
-
-		}
-
 		return null;
 
 	}
+
+
 }

@@ -116,7 +116,7 @@ class ParentAudioController extends Controller
     	
     	$id        = $_REQUEST['id'];
     	$Factory   = FactoryProducer::getFactory("schedule");
-    	$validator = $Factory->CheckMan("schedulevalidation");
+    	$validator = $Factory->getUploader("schedulevalidation");
     	$value     = $validator->audioAddRemoveChecker($id);
     	
     	return $value;
