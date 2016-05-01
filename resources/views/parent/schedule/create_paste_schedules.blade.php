@@ -155,7 +155,7 @@ a{
 
 </style>
 
-<a href="home" class="btn btn-info" role="button" style="width:10%;margin-left:2%">HOME</a>
+<a href="default_home" class="btn btn-info" role="button" style="width:10%;margin-left:2%">HOME</a>
 
 
         <p> <div id='calendar'></div></p>
