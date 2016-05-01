@@ -100,6 +100,9 @@ Route::post('upload_article', 'Unicode_ArticleController@uploadArticle');
 
 /* ////////////////////////    Kids Routes    /////////////////////// */
 
+
+---------------------------------- Fazeel -------------------------------
+
 //Redirect to quiz page 
 Route::get('kids_quiz', 'Kids_QuizController@createQuiz');
 
@@ -128,6 +131,95 @@ Route::get('child_logout',  function () {
 });
 
 Route::get('quiz_page',  'Kids_QuizController@getQuiz');
+
+
+--------------------- Fazeel -------------------------------------------
+
+
+------------------------------Nibras ---------------------------------------
+
+Route::get('child_login',function(){
+    return view('kids_views.login');
+});
+
+
+
+Route::get('login_child', 'ChildController@login_child');  
+
+Route::get('child_logout',function(){
+	session_unset();
+	session_destroy();
+    return view('kids_views.login');
+});
+
+
+Route::get('events', 'child_controller@viewChildEvents');  
+
+
+
+    
+Route::get('profile','child_controller@viewChildProfileDetails');   
+
+ 
+
+
+Route::get('playground','child_controller@viewChildHome');
+
+
+
+
+Route::get('todoList', 'todolist_Controller@viewTodoList');
+
+Route::post('addTodoList','todoList_controller@addTodoList');  
+
+Route::get('deleteTodoList','todoList_controller@deleteTodoList'); 
+
+Route::get('findTodoList','todoList_controller@findTodoList');
+
+
+
+
+Route::get('achievment','achievment_controller@loadPoints');
+
+Route::post('points','achievment_controller@viewPoints');
+
+
+
+
+Route::get('videos','videos_controller@loadVideoPage'); 
+
+Route::get('play_btn_update_db_onPlay','videos_controller@updateDb_onPlay'); 
+
+Route::get('play_btn_update_db_onEnd','videos_controller@updateDb_onEnd');
+
+Route::get('like_video','videos_controller@likeVideo');
+
+
+
+Route::get('audio','audio_controller@loadAudioPage');
+
+Route::get('audio_play_btn_update_db_onPlay','audio_controller@updateDb_onPlay'); 
+
+Route::get('audio_play_btn_update_db_onEnd','audio_controller@updateDb_onEnd');  
+
+Route::get('like_audio','audio_controller@likeAudio');
+
+
+
+
+
+Route::get('story','story_controller@loadStoryPage');
+
+Route::get('readStory','story_controller@readStory');
+
+Route::get('like_story','story_controller@likeStory');
+
+
+----------------------------- Nibras -----------------------------------------
+
+
+
+
 /* ////////////////////////    END OF Kids Routes    /////////////////////// */
 
 
@@ -352,7 +444,6 @@ Route::get('test', 'Test@testing');
 Route::group(['middleware' => ['web']], function () {
     //
 });
-
 
 
 
