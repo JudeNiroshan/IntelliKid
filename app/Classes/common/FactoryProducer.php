@@ -3,6 +3,7 @@
 namespace App\Classes\common;
 
 use App\Classes\uploaders\UploadFactory;
+use App\Classes\schedule\ScheduleFactory;
 
 /**
 * @author : Jude Niroshan
@@ -12,10 +13,6 @@ use App\Classes\uploaders\UploadFactory;
 
 class FactoryProducer{
 	
-	/**
-	* @desc  : This methods is used to get a custom factories in the application. This will not include the built-in factories.
-	* @return : Upload
-	*/
 	public static function getFactory($requesting_factory){
 
 		if($requesting_factory == null || trim($requesting_factory) == ''){
@@ -27,6 +24,13 @@ class FactoryProducer{
 		if(strtolower(trim($requesting_factory)) == "upload"){
 
 			return new UploadFactory();
+
+		}
+
+
+		if(strtolower(trim($requesting_factory)) == "schedule"){
+
+			return new ScheduleFactory();
 
 		}
 

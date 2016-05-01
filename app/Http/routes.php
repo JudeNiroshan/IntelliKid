@@ -11,11 +11,13 @@
 |
 */
 
+
+
+//use Illuminate\Support\Facades\Input;
+
+
+
 session_start();
-
-use Illuminate\Support\Facades\Input;
-
-
 /* ////////////////////////    Admin Routes    /////////////////////// */
 
 // redirect tp admin login form 
