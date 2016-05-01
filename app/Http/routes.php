@@ -225,7 +225,10 @@ Route::get('like_story','story_controller@likeStory');
 
 
 
-/* ////////////////////////    Parent Routes    /////////////////////// */
+
+
+
+//////////////Parent Accounts\\\\\\\\\\\\\\\\\\\
 
 Route::get('login',function(){
     return view('login');
@@ -242,27 +245,13 @@ Route::get('home',function(){
 });
 
 //Registering user detils pass to controller  
-Route::get('reg','RegistrationController@registration_user');
+Route::get('reg','RegistrationController@registrationUser');
 
 //Pass login details
 Route::get('login_confirm','RegistrationController@login');
 
 //set sesion values and redirect to the email confirmation page
-Route::get('session',function(){
-         
-         $id = $_REQUEST['id'];
-
-          $result = DB::select("select * from parent_registration a where a.user_id = '$id'");
-
-          $_SESSION['USERID'] = $id;
-          $_SESSION['STATUS'] = $result[0]->status;
-          $_SESSION['NAME']   = $result[0]->f_name;
-          $_SESSION['EMAIL']  = $result[0]->email;
-
-          return view('parent.home');
-
-});
-
+Route::get('session','RegistrationController@setSession');
 Route::get('logout', function () {
 
     session_unset();
@@ -275,69 +264,153 @@ Route::get('laravel',function(){
 });
 
 
-
-Route::get('email_verification_notiece', function(){
-   
-
-    Mail::send('email_body',['name'=> $_SESSION['NAME'],'id'=> $_SESSION['USERID']], function($message){
-
-        $message->to($_SESSION['EMAIL'],'IntelliKid')->subject('Welcome to IntelliKid!');
-    });
-
-    return view('email_verify_notice');
+//////////////////////////// Welcome Page Intellikid\\\\\\\\\\\\\\\\\\\\\\
+Route::get('WelcomeIntellikid',function(){
+    return view('IntelliKidWelcome');
 });
+////////////////////////////END\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
 
-Route::get('default_home', function(){
 
-     return view('parent.home');
-});
+Route::get('email_verification_notiece', 'EmailController@emailVerificationNotiece');
+Route::get('default_home', 'RegistrationController@defaultHome');
+
+     
 
 
 //make visible a email verification message
-Route::get('email_verifying_message', function(){
-
-    $id =  $_REQUEST['id'];
-   
-    $result = DB::select("select a.reset_token from parent_registration a where a.user_id = '$id'");
-
-    DB::table('parent_registration')->where('user_id', $id)->update(array('status' => 'ACTIVE'));
-
-    $result = DB::select("select * from parent_registration a where a.user_id = '$id'");
-    $_SESSION['STATUS'] = $result[0]->status;
-
-
-    return view('parent.home');
-
-});
-
-
+Route::get('email_verifying_message','EmailController@emailVerifyingMessage');
 Route::get('reset_password', function(){
 
     return view('reset_password_mail');
 });
 
-Route::get('reset_password_ajax','RegistrationController@reset_password');
+Route::get('reset_password_ajax','RegistrationController@resetPassword');
 
 //checking the validity of the reset password URL
-Route::get('reset_password_intellikid_2016_encript_version', function(){
+Route::get('reset_password_intellikid_2016_encript_version', 'EmailController@emailReset');
+Route::get('set_new_password','RegistrationController@setNewPassword');
+Route::get('profile',function(){
 
-     $email = $_SESSION['EMAIL'];
-     $token = $_REQUEST['token'];
-     //$_SESSION['TOKEN'] = "0";
-     $result = DB::select("select a.user_id,a.reset_token from parent_registration a where a.email = '$email' ");
+    return view('parent.profile.parent_profile');
+});
 
-     if($token == $result[0]->reset_token){
+////////////////////////////Parent Accout\\\\\\\\\\\\\\\\\\\\\\
+Route::get('veca','ChildController@SendDataToViewAccountPAge');
 
-        return view('login');
-     }else{
-        $_SESSION['TOKEN'] = $token;
-        return view('reset_password');
-     }
-}); 
+////////////////////////////END\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
-//update new reseted password
-Route::get('set_new_password','RegistrationController@set_new_password');
+Route::get('Edit_Parent','RegistrationController@EditParent');
+
+//////////////////Parent Child Account\\\\\\\\\\\\\\\\\\\\\\\\\
+Route::get('new_child',function(){
+
+    return view('parent.create_new_child');
+});
+Route::get('veca','ChildController@SendDataToViewAccountPAge');
+Route::get('child_edit','ChildController@SendDataToEditChildAccount');
+Route::get('new_child_register','ChildController@registerChild');
+Route::get('child_data_save','ChildController@childDataSave');
+Route::get('child_data_delete','ChildController@childDataDelete');
+Route::post('upload123', 'RegistrationController@upload');
+Route::post('file_upload_parser', 'ChildController@uploadPrifilePicAndAccountData');
+Route::post('file_upload_save', 'ChildController@childDataSave');
+Route::get('kid_profile','ChildController@SendDataToSelectedAccount');
+
+//test model call
+
+Route::get('test','ChildController@my');
+
+//end of test model call
+
+
+////////////////////////////Parent schedule\\\\\\\\\\\\\\\\\\\\\\\\
+Route::get('schedule','scheduleController@ViewAllSelectedItems');
+Route::get('delete_col_v','scheduleController@deleteColV');
+Route::get('delete_col_s','scheduleController@deleteColS');
+Route::get('delete_col_audio','scheduleController@deleteColAudio');
+Route::get('delete_col_quiz','scheduleController@deleteColQuiz');
+Route::get('make_schedule','scheduleController@makeSchedule');
+Route::get('set_schedule','scheduleController@setSchedule');
+Route::get('submit_shedule','scheduleController@submitShedule');
+Route::get('past_schedule','scheduleController@pastSchedule');
+Route::get('delete_schedule','scheduleController@deleteSchedule');
+Route::get('calander_process','scheduleController@calanderProcess');
+Route::get('edit_clander_data','scheduleController@editClanderData');
+Route::get('set_past_content_as_new','scheduleController@setPastContentAsNew');
+Route::get('delete_schedule','scheduleController@deleteSchedule');
+Route::get('get_date','scheduleController@getDate');
+
+
+
+
+/////////////////////////comments\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+Route::get('story_comment','CommentController@storyComment');
+Route::get('video_comment','CommentController@videoComment');
+
+
+////////////////////////////Parent Videos\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+Route::get('videos',function(){
+    return view('parent.videos.video_category');
+});
+Route::get('serach_all_videos','ParentVideosContoller@viewAllVideos');
+Route::get('view_videos','ParentVideosContoller@viewVideo');
+Route::get('view_videos_cat','ParentVideosContoller@viewVideoCat');
+Route::get('search','ParentVideosContoller@search');
+Route::get('search_cat_videos','ParentVideosContoller@searchCatVideos');
+Route::get('delete_from_collector_video','ParentVideosContoller@deleteFromCollectorVideo');
+Route::get('add_to_collector_video','ParentVideosContoller@addToCollectorVideo');
+
+//////////////////////Parent Story\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+Route::get('stories',function(){
+    return view('parent.story.story_category');
+});
+
+Route::get('all_stories','ParentStoryContoller@allStoriesDisplay');
+Route::get('show_story','ParentStoryContoller@showStory');
+Route::get('add_to_collector','ParentStoryContoller@addToCollector');
+Route::get('delete_from_collector','ParentStoryContoller@deleteFromCollector');
+Route::get('search_story','ParentStoryContoller@searchStory');
+Route::get('view_story_cat','ParentStoryContoller@viewStoryCat');
+Route::get('serach_all_stories','ParentStoryContoller@serachAllVideos');
+Route::get('search_all_story_box','ParentStoryContoller@searchAllStoryBox');
+
+
+
+//////////////////////Parent Songs\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+Route::get('audio',function(){
+    return view('parent.audio.audio_category');
+});
+Route::get('view_audio_category_albums','ParentAudioController@viewAudioCategoryAlbums');
+Route::get('getAudios','ParentAudioController@getAudios');
+Route::get('add_or_remove_from_que','ParentAudioController@AddOrRemoveFromQue');
+Route::get('search_cat_audios','ParentAudioController@searchCatAudios');
+Route::get('getAudiosSearch','ParentAudioController@getAudiosSearch');
+Route::get('AllAudiosView','ParentAudioController@AllAudiosView');
+Route::get('getAllAudios','ParentAudioController@getAllAudios');
+Route::get('getAllAudiosSearch','ParentAudioController@getAllAudiosSearch');
+Route::get('search_All_audios','ParentAudioController@searchAllAudios');
+Route::get('single_view_song','ParentAudioController@SingleViewOfSong');
+Route::get('getSingleAudio','ParentAudioController@getSingleAudio');
+///////////////////////////////END\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+
+
+//////////////////////////////Quiz\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+Route::get('quiz',function(){
+    return view('parent.quiz.quiz_category');
+});
+Route::get('AllQuizView','ParentQuizController@AllQuizView');
+Route::get('show_question','ParentQuizController@showQuestion');
+Route::get('add_to_collector_quiz','ParentQuizController@addToCollectorQuiz');
+Route::get('delete_from_collector_quiz','ParentQuizController@DeleteFromCollectorQuiz');
+Route::get('view_quiz_category_albums','ParentQuizController@viewQuizCategoryAlbums');
+Route::get('search_quetion_box','ParentQuizController@searchQuetionBox');
+Route::get('search_all_quetion_box','ParentQuizController@searchAllQuetionBox');
+
+
+
+//////////////////////////////END\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
 
 /* ////////////////////////    END OF Parent Routes    /////////////////////// */
