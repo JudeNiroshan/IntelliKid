@@ -12,16 +12,16 @@
     <title>Child | Login</title>
 
     <!-- Bootstrap Core CSS -->
-    <link rel="stylesheet" href="{{ URL::asset('assets/kids_assets/css1/bootstrap.min.css') }}">    
+    <link rel="stylesheet" href="{{ URL::asset('assets/kids_assets/css/bootstrap.min1.css') }}">    
 
     <!-- MetisMenu CSS -->
-    <link rel="stylesheet" href="{{ URL::asset('assets/kids_assets/css1/metisMenu.min.css') }}">   
+    <link rel="stylesheet" href="{{ URL::asset('assets/kids_assets/css/metisMenu.min.css') }}">   
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="{{ URL::asset('assets/kids_assets/css1/sb-admin-2.css') }}">   
+    <link rel="stylesheet" href="{{ URL::asset('assets/kids_assets/css/sb-admin-2.css') }}">   
 
     <!-- Custom Fonts -->
-    <link rel="stylesheet" href="{{ URL::asset('assets/kids_assets/css1/font-awesome.min.css') }}">   
+    <link rel="stylesheet" href="{{ URL::asset('assets/kids_assets/css/font-awesome.min.css') }}">   
 
       <link rel="shortcut icon" href="{{URL::asset('assets/parent/images/logo1.png') }}" type="image/png" sizes="48x48"/>
 
@@ -57,12 +57,12 @@
 
 
 
-  <style>
-    body {
-      background: url("{{asset('assets/kids_assets/image/img4.jpg')}}");
-      background-size: 1400px 900px;
-      background-repeat: no-repeat;
-    }
+	<style>
+		body {
+			background: url("{{asset('assets/kids_assets/images/img4.jpg')}}");
+			background-size: 1400px 900px;
+			background-repeat: no-repeat;
+		}
 
 
 
@@ -188,7 +188,7 @@
 
 
 
-  </style>
+	</style>
 
 </head>
 
@@ -242,16 +242,16 @@
 
 <!-- new theme -->
     <!-- jQuery -->
-    <script src="{{ URL::asset('assets/kids_assets/js1/jquery.min.js') }}"></script>  
+    <script src="{{ URL::asset('assets/kids_assets/js/jquery.min1.js') }}"></script>  
 
     <!-- Bootstrap Core JavaScript -->
-    <script src="{{ URL::asset('assets/kids_assets/js1/bootstrap.min.js') }}"></script>  
+    <script src="{{ URL::asset('assets/kids_assets/js/bootstrap.min.js') }}"></script>  
 
     <!-- Metis Menu Plugin JavaScript -->
-    <script src="{{ URL::asset('assets/kids_assets/js1/metisMenu.min.js') }}"></script> 
+    <script src="{{ URL::asset('assets/kids_assets/js/metisMenu.min.js') }}"></script> 
 
     <!-- Custom Theme JavaScript -->
-    <script src="{{ URL::asset('assets/kids_assets/js1/sb-admin-2.js.js') }}"></script>
+    <script src="{{ URL::asset('assets/kids_assets/js/sb-admin-2.js.js') }}"></script>
   
   <script>
     
@@ -310,7 +310,7 @@
                         setTimeout(function(){
                     
                        document.getElementById("load").innerHTML = "";
-                       window.location.href = "quiz_page";
+                       window.location.href = "playground";
 
                         },2000);
                     }
