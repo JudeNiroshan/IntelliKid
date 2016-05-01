@@ -1,5 +1,9 @@
 <?php
-
+/*
+* @author : A.H.A.T.Dias
+* @desc : Concreate class songs
+* @created : 22/02/2016
+*/
 namespace App\observer;
 
 use Illuminate\Http\Request;
@@ -20,6 +24,7 @@ include_once 'Observe.php';
     	}
 
     public function update(){
+      
     	 $u_id   = $_SESSION['USERID'];
 
 
@@ -27,17 +32,17 @@ include_once 'Observe.php';
       $story_items = array();
       $story_items = $_SESSION['story_que'];
 
-		
-               foreach($this->c_id as $c_id){
-    	 		DB::statement(DB::raw("INSERT INTO  shedule(sheduleCategory,fk_parent_id,sheduleDateTime,dueTime,fk_child_id)   values ('story','$u_id',CURDATE(),'$this->date','$c_id')"));  
+		  sleep(2);
+        foreach($this->c_id as $c_id){
+    	 		DB::statement(DB::raw("INSERT INTO  shedule(fk_parent_id,sheduleDateTime,dueTime,fk_child_id,content_id) values('$u_id',CURDATE(),'$this->date','$c_id','3')"));  
 
-    		   $lastInsertedID = DB::select("select id from shedule where sheduleCategory='story' and sheduleDateTime=CURDATE() and fk_parent_id='$u_id' and fk_child_id='$c_id'");
+           $lastInsertedID = DB::select(" SELECT id FROM shedule ORDER BY id DESC LIMIT 1 ");
     		   $lastID =  $lastInsertedID[0]->id;
                foreach($story_items as $sid){
-    		   DB::statement(DB::raw("INSERT INTO  story_schedule(fk_schedule_id,fk_story_id)   values ('$lastID','$sid')")); 
+    		   DB::statement(DB::raw("INSERT INTO  story_schedule(schedule_id,story_id)   values ('$lastID','$sid')")); 
 
+      }
     }
-}
 }
 
 

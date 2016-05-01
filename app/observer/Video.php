@@ -1,5 +1,11 @@
 <?php
 
+/*
+* @author : A.H.A.T.Dias
+* @desc : Concreate class of the observer design pattern
+* @created : 22/02/2016
+*/
+
 namespace App\observer;
 
 use Illuminate\Http\Request;
@@ -14,15 +20,13 @@ include_once 'Observe.php';
 {
 	
 
-    private $date;
+  private $date;
 	private $c_id;
 
     function __construct($date,$c_id) {
     	$this->date = $date;
     	$this->c_id = $c_id;
     	}
-
-
 
     public function update(){
 
@@ -33,14 +37,15 @@ include_once 'Observe.php';
 
             
     		  
-               foreach($this->c_id as $c_id){
+          foreach($this->c_id as $c_id){
 
-    		   DB::statement(DB::raw("INSERT INTO  shedule(sheduleCategory,fk_parent_id,sheduleDateTime,dueTime,fk_child_id)   values ('video','$u_id',CURDATE(),'$this->date','$c_id')"));  
-    		   $lastInsertedID = DB::select("select id from shedule where sheduleCategory='video' and sheduleDateTime=CURDATE() and fk_parent_id='$u_id' and fk_child_id='$c_id' ");
-    		   $lastID =  $lastInsertedID[0]->id;
+    		   DB::statement(DB::raw("INSERT INTO  shedule(fk_parent_id,sheduleDateTime,dueTime,fk_child_id,content_id)   values ('$u_id',CURDATE(),'$this->date','$c_id','1')"));  
+    		   
+               $lastInsertedID = DB::select(" SELECT id FROM shedule ORDER BY id DESC LIMIT 1 ");
+               	   $lastID =  $lastInsertedID[0]->id;
 
                foreach($vedio_items as $vid){
-    		   DB::statement(DB::raw("INSERT INTO  video_shedule(fk_shedule_id,fk_video_id,isActive)   values ('$lastID','$vid','yes')")); 
+    		   DB::statement(DB::raw("INSERT INTO  video_shedule(shedule_id,video_id,isActive)  values ('$lastID','$vid','yes')")); 
                   }
                 }
     		  

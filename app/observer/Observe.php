@@ -1,6 +1,10 @@
 <?php
 
-
+/*
+* @author : A.H.A.T.Dias
+* @desc : Observer interface(abstract class)
+* @created : 22/02/2016
+*/
 namespace App\observer;
 
 use Illuminate\Http\Request;

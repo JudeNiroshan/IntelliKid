@@ -1,5 +1,9 @@
 <?php
-
+/*
+* @author : A.H.A.T.Dias
+* @desc : Subject class of observer design pattern
+* @created : 22/02/2016
+*/
 namespace App\observer;
 
 use Illuminate\Http\Request;
@@ -21,7 +25,7 @@ include_once 'Observe.php';
 		
 	}
 
-	 public  function notify(){
+	public  function notify(){
 
      foreach(self::$que as $aaa){
      $aaa->update($this);
@@ -30,9 +34,6 @@ include_once 'Observe.php';
  	}
 
  	
-
-
-
 
 }
 
