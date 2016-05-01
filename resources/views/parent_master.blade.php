@@ -212,7 +212,7 @@
                                 <li class="red">
                                     <a href="">ACCOUNTS</a>
                                     <ul class="sub-menu">
-                                    <li><a href="profile">My Account</a></li>
+                                    <!-- <li><a href="profile">My Account</a></li> -->
                                      <li><a href="new_child">Create Child Accounts</a></li>
                                         <li><a href="veca">Created Child Accounts</a></li>
                                       

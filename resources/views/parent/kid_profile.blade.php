@@ -73,8 +73,8 @@
             <div class="nicdark_space20"></div>
             
             <div class="nicdark_progressbar nicdark_bg_grey nicdark_radius nicdark_shadow">
-                <h5 class="nicdark_progressbar_title nicdark_bg_yellow nicdark_bg_yellowdark_hover nicdark_radius nicdark_shadow fade-left animate1 animated fadeInLeft" style="width:@if(!empty($points)){{$points[0]->count}} @endif%">
-                    <span class="white nicdark_size_big"><i class="icon-brush"></i>&nbsp;&nbsp;&nbsp;VIDEOS  @if(!empty($points)){{$points[0]->count}}% @endif"</span>
+                <h5 class="nicdark_progressbar_title nicdark_bg_yellow nicdark_bg_yellowdark_hover nicdark_radius nicdark_shadow fade-left animate1 animated fadeInLeft" style="width:@if(!empty($points)){{$points[0]->count}}  @endif%">
+                    <span class="white nicdark_size_big"><i class="icon-brush"></i>&nbsp;&nbsp;&nbsp;VIDEOS  @if(!empty($points)){{$points[0]->count}}% @else 0%@endif</span>
                 </h5>
             </div>
 
@@ -82,7 +82,7 @@
 
             <div class="nicdark_progressbar nicdark_bg_grey nicdark_radius nicdark_shadow">
                 <h5 class="nicdark_progressbar_title nicdark_bg_blue nicdark_bg_bluedark_hover nicdark_radius nicdark_shadow fade-left animate2 animated fadeInLeft" style="width:@if(!empty($points)){{$points[1]->count}} @endif%">
-                    <span class="white nicdark_size_big"><i class="icon-pencil-1"></i>&nbsp;&nbsp;&nbsp;AUDIO   @if(!empty($points)){{$points[1]->count}}% @endif</span>
+                    <span class="white nicdark_size_big"><i class="icon-pencil-1"></i>&nbsp;&nbsp;&nbsp;AUDIO   @if(!empty($points)){{$points[1]->count}}% @else 0%@endif</span>
                 </h5>
             </div>
 
@@ -90,7 +90,7 @@
 
             <div class="nicdark_progressbar nicdark_bg_grey nicdark_radius nicdark_shadow">
                 <h5 class="nicdark_progressbar_title nicdark_bg_green nicdark_bg_greendark_hover nicdark_radius nicdark_shadow fade-left animate3 animated fadeInLeft" style="width:@if(!empty($points)){{$points[2]->count}} @endif%">
-                    <span class="white nicdark_size_big"><i class="icon-puzzle"></i>&nbsp;&nbsp;&nbsp;STORIES  @if(!empty($points)){{$points[2]->count}}% @endif</span>
+                    <span class="white nicdark_size_big"><i class="icon-puzzle"></i>&nbsp;&nbsp;&nbsp;STORIES  @if(!empty($points)){{$points[2]->count}}% @else 0% @endif</span>
                 </h5>
             </div>
             
@@ -98,7 +98,7 @@
 
             <div class="nicdark_progressbar nicdark_bg_grey nicdark_radius nicdark_shadow">
                 <h5 class="nicdark_progressbar_title nicdark_bg_orange nicdark_radius nicdark_bg_orangedark_hover nicdark_shadow fade-left animate4 animated fadeInLeft" style="width:@if(!empty($points)){{$points[3]->count}} @endif%">
-                    <span class="white nicdark_size_big"><i class="icon-dribbble"></i>&nbsp;&nbsp;&nbsp;QUIZ @if(!empty($points)){{$points[3]->count}}% @endif</span>
+                    <span class="white nicdark_size_big"><i class="icon-dribbble"></i>&nbsp;&nbsp;&nbsp;QUIZ @if(!empty($points)){{$points[3]->count}}% @else 0%  @endif</span>
                 </h5>
             </div>
 
