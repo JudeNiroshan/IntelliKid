@@ -1,5 +1,5 @@
 <html><head>
-  <title></title>
+ <title>{{$title}}</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Your description">
@@ -14,10 +14,25 @@
   <link rel="stylesheet" href="{{ URL::asset('assets/kids_assets/css/camera.css') }}">
   <link rel="stylesheet" href="{{ URL::asset('assets/kids_assets/css/style.css') }}">
 
-  <link rel="stylesheet" href="{{ URL::asset('assets/kids_assets/css_style/style.css') }}">
+  <!-- Date picker -->
+  
+  <link rel="stylesheet" href="https://formden.com/static/cdn/bootstrap-iso.css" /> 
+  <link rel="stylesheet" href="https://formden.com/static/cdn/font-awesome/4.4.0/css/font-awesome.min.css" />
+  <style>.bootstrap-iso .formden_header h2, .bootstrap-iso .formden_header p, .bootstrap-iso form{font-family: Arial, Helvetica, sans-serif; color: #450606}.bootstrap-iso form button, .bootstrap-iso form button:hover{color: white !important;} .asteriskField{color: red;}</style>
+
+  
+  <!-- bootstrap table for achievment -->
+  <!-- <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+   -->
+
+  <!-- sweet alert -->
+   
+  <script src="{{ URL::asset('assets/kids_assets/js/sweetalert.min.js') }}"></script>
+  <link rel="stylesheet" href="{{ URL::asset('assets/kids_assets/css/sweetalert.css') }}">
 
 
-  <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Open Sans"/>
 
 
   <script src="{{ URL::asset('assets/kids_assets/js/jquery.js') }}"></script>
@@ -63,6 +78,8 @@
                   
                   }); //
   </script>
+
+  
   <!--[if lt IE 8]>
     <div style='text-align:center'>
       <a href="http://www.microsoft.com/windows/internet-explorer/default.aspx?ocid=ie6_countdown_bannercode"><img src="http://www.theie6countdown.com/images/upgrade.jpg"border="0"alt=""/></a>
@@ -91,14 +108,14 @@
             <div class="top1 clearfix">
               <div class="social_wrapper">
                 <div class="col-md-4">
-                  <img src="{{asset('assets/kids_assets/images/services01.jpg')}}"  class="center-block img-circle img-responsive" height="160" width="160">
+                  <img src="{{asset('assets/kids_assets/images/gallery07.jpg')}}"  class="center-block img-circle img-responsive" height="160" width="160">
                   <h4 class="text-center">
                     <ul style="list-style-type:none">
                       <li class="dropdown sub-menu ">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i>  <b class="caret"></b></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> {{$child->lastname}} <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                           <li>
-                            <a href="#"><i class="fa fa-fw fa-user"></i> Profile</a>
+                            <a href="profile"><i class="fa fa-fw fa-user"></i> Profile</a>
                           </li>
                           <li>
                             <a href="child_logout"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
@@ -179,10 +196,28 @@
   by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 18 Jan 2016 15:28:54 GMT
   -->
 
+  <!-- date picker -->
+  <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+
+  <!-- Include Date Range Picker -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
+
+  <script>
+    $(document).ready(function(){
+      var date_input=$('input[name="date"]'); //our date input has the name "date"
+      var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
+      date_input.datepicker({
+        format: 'mm/dd/yyyy',
+        container: container,
+        todayHighlight: true,
+        autoclose: true,
 
 
+      })
+    })
+  </script>
 
-   
 
 
 </body>
