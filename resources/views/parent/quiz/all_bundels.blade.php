@@ -73,7 +73,7 @@ $k=1;
                         <div class="nicdark_space20"></div>
                         <div class="nicdark_divider small"><span class="nicdark_bg_white nicdark_radius"></span></div>
                         <div class="nicdark_space20"></div>
-                        <h4 class="white subtitle">Questions</h4>
+                        <h4 class="white subtitle">{{$data->name}}</h4>
 
                         <div class="nicdark_space40"></div>
 
