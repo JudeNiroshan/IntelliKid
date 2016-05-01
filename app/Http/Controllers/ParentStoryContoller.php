@@ -16,7 +16,7 @@ class ParentStoryContoller extends Controller
 	*Display all stories in view_all_storeis page
     */
 
-	public function all_stories_display(){
+	public function allStoriesDisplay(){
 
 		$stories  = DB::select("select * from story a group by a.st_id ");
 
@@ -25,7 +25,7 @@ class ParentStoryContoller extends Controller
 		return view('parent.story.view_all_stories')->with('stories',$stories);
 
 	}
-public function view_story_cat(Request $request){
+    public function viewStoryCat(Request $request){
 
 	$id = $request->input('id');
 	$cat = $request->input('cat');
@@ -39,7 +39,7 @@ public function view_story_cat(Request $request){
 
 
 
-}
+   }
 
 
 
@@ -48,7 +48,7 @@ public function view_story_cat(Request $request){
     */
 
 
-	public function show_story(Request $request){
+	public function showStory(Request $request){
 
 		$id 	   = $request->input('id');
 		$pid       = $_SESSION['USERID'];
@@ -63,8 +63,13 @@ public function view_story_cat(Request $request){
 			}
 		}
 
-		$story     = DB::select("select * from story_image a where a.storyid = '$id' ");
-		$comments  = DB::select("select a.text,a.date,k.l_name,k.f_name,k.img_path from comment12 a,parent_registration k where a.pid = k.user_id and a.item_id = '$id' and a.type = 'story'");
+		$story   = DB::select("select * from story_image a where a.storyid = '$id' ");
+		$details = DB::select("select * from story a where a.id = '$id' ");
+
+
+	$comments  = DB::select("select a.text,a.comment_date,k.lastname as l_name,k.firstname as f_name,k.img_path 
+from comment a,user k 
+where a.parent_id = k.id and a.item_id = '$id' and a.type_id = 3");
 		//$check     = DB::select("select * from collector a where a.pid = '$pid' and a.item_id = '$id' and type='story' ");
 
 
@@ -78,16 +83,16 @@ public function view_story_cat(Request $request){
 		}
 
 
- 		return view('parent.story.show_story')->with('story',$story)->with('msg',$msg)->with('comment',$comments);
-
-	}
-
-
+ 		return view('parent.story.show_story')->with('story',$story)->with('msg',$msg)->with('comment',$comments)->with('likes',$details);;
+ 
+	 }
 
 
 
 
-	public function add_to_collector(Request $request){
+
+
+	public function addToCollector(Request $request){
 
       	$id   = $request->input('id');
 
@@ -101,26 +106,13 @@ public function view_story_cat(Request $request){
 		echo 1;
 
 
-		//$type = $request->input('type');
-		//$pid  = $_SESSION['USERID'];
-
-		/*$check = DB::select("select * from collector a where a.pid='$pid' and a.item_id='$id' and a.type='$type' " );
-
-		 if(empty($check)){
-
-		 	DB::statement(DB::raw("INSERT INTO  collector(pid,item_id,type)   values ('$pid','$id','$type') "));  
-		 echo 1;
-		}
-		else{
-			echo 0;
-		}*/
 
 	}
 
 
 
 
-	public function delete_from_collector(Request $request){
+	public function deleteFromCollector(Request $request){
 
 		$id = $request->input('id');
 		
@@ -135,18 +127,12 @@ public function view_story_cat(Request $request){
 		$_SESSION['story_que'] = $story_items;
 
 		
-		 /*$pid = $_SESSION['USERID'];
-		 
-		//$tt = DB::table('collector')->where('pid','=', $pid)->where('item_id','=','$id')->where('type','=','story')->delete();
-		DB::statement(DB::raw(
-                       "DELETE FROM  collector where pid = '$pid' and item_id = '$id' and type='story'"));  
-		
-		*/
+	
 		echo 1;
 
 	}
 
-	public function search_story(){
+	public function searchStory(){
 
    			$cat = $_REQUEST['cat'];
  			$key = $_REQUEST['search'];
@@ -156,7 +142,7 @@ public function view_story_cat(Request $request){
  			 return view('parent.story.view_all_stories')->with('stories',$data )->with('cat',$cat);
 	}
 
-	public function serach_all_videos(){
+	public function serachAllVideos(){
 
 
 			$data  = DB::select("select a.*,k.name from story k,story_image a where a.storyid = k.id group by storyid");
@@ -164,7 +150,7 @@ public function view_story_cat(Request $request){
  			 return view('parent.story.search_all_story')->with('stories',$data );
 
 	}
-	public function search_all_story_box(){
+	public function searchAllStoryBox(){
 			$key = $_REQUEST['search'];
 
 			$data  = DB::select("select a.*,k.name from story k,story_image a where a.storyid = k.id and k.name like '%$key%' group by storyid");

@@ -19,7 +19,7 @@
 </script>
 @endif
 <?php 
-$date = $data[0]->dat_of_birth;
+$date = $data[0]->date_of_birth;
 
 $date = explode("/",$date)
 

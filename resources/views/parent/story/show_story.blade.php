@@ -259,7 +259,8 @@ div.container2{
 <br>
 
 <div class="container">
-
+<p>LIKES:{{$likes[0]->likes}} <span class="glyphicon glyphicon-thumbs-up"></span></p> 
+<p>VIEWS: {{$likes[0]->totalviews}} <span class="glyphicon glyphicon-eye-open"></span></p> 
   <div class="panel panel-default" >
 
 
@@ -286,7 +287,7 @@ div.container2{
                     <span> </span>
                 </label>
                 <label for="fancy-checkbox-primary-custom-icons" class="[ btn btn-default active ]"  >
-                   ADD TO SHEDULE COLLECTOR   
+                   ADD TO SHEDULE QUEUE   
                 </label>
 <div id="load"><p></p></div>
             </div>    
@@ -330,7 +331,7 @@ div.container2{
 			    			<img alt="" class="nicdark_displaynone_ipadpotr nicdark_radius_circle nicdark_absolute" style="width:50px; height: 45px;" src="{{$c->img_path}}">
 			                <div class="nicdark_activity nicdark_marginleft70 nicdark_disable_marginleft_ipadpotr">
 			                    <div class="nicdark_space20"></div>
-			                    <h4 class="subtitle greydark" id="comentor" name="comentor">{{$c->f_name}} {{$c->l_name}}: {{$c->date}}</h4>
+			                    <h4 class="subtitle greydark" id="comentor" name="comentor">{{$c->f_name}} {{$c->l_name}}: {{$c->comment_date}}</h4>
 			                    <div class="nicdark_space20"></div>                       
 			                </div>
 		                </div>
@@ -400,7 +401,7 @@ $.ajax({
         
             
               setTimeout(function(){
-                document.getElementById("load1").innerHTML
+                document.getElementById("load1").innerHTML="";
                       // document.getElementById("load").innerHTML = "";
                        location.reload();
                        
@@ -413,7 +414,7 @@ $.ajax({
                 },
                 error: function (xhr, ajaxOptions, thrownError) {
                    //document.getElementById("load").innerHTML = "";
-                   document.getElementById("load1").innerHTML
+                   document.getElementById("load1").innerHTML="";
                   sweetAlert("Sorry!", "Something went wrong!", "error");
                   return false;
                 }
@@ -474,9 +475,10 @@ document.getElementById("load").innerHTML = '<div class="block"> <div class="loa
 
 
  	  } 
- 	else {   
+ 	else { 
+
      document.getElementById("load").innerHTML = ""; 
- 	 swal("Cancelled", "", "error"); 
+     swal({   title: "Canceled!",   text: "",   timer: 800,   showConfirmButton: false });
  	
 
  	   } });

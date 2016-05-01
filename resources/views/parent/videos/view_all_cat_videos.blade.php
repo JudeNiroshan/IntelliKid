@@ -189,14 +189,14 @@ window.onload = time;
 <script type="text/javascript">
 
 $("input#search").live("keyup", function(e) {
-
+alert(1);
     // Set Search String
     var search_string = $(this).val();
 
     // Do Search
     if(search_string !== ''){
         $.ajax({
-            type: "POST",
+            type: "get",
             url: "search",
             data: { key: search_string },
             cache: false,

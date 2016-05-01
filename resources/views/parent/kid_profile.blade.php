@@ -19,7 +19,7 @@
             <div class="grid grid_12">
                 <div class="nicdark_space100"></div>
                 <div class="nicdark_space100"></div>
-                <h1 class="white subtitle"></h1>
+                <h1 class="white subtitle">{{$data[0]->f_name}} {{$data[0]->l_name}}</h1>
                 <div class="nicdark_space10"></div>
                 <h3 class="subtitle white"></h3>
                 <div class="nicdark_space20"></div>
@@ -53,15 +53,7 @@
             <div class="nicdark_space10"></div>
 
             <div class="nicdark_focus center">
-                <div class="nicdark_margin10">
-                    <a title="YOUTUBE" href="#" class="nicdark_press nicdark_tooltip right nicdark_btn_icon nicdark_bg_red nicdark_shadow small nicdark_radius white"><i class="icon-youtube-play"></i></a>
-                </div>
-                <div class="nicdark_margin10">
-                    <a title="DRIBBBLE" href="#" class="nicdark_press nicdark_tooltip right nicdark_btn_icon nicdark_bg_violet nicdark_shadow small nicdark_radius white"><i class="icon-dribbble-1"></i></a>
-                </div>
-                <div class="nicdark_margin10">
-                    <a title="TWITTER" href="#" class="nicdark_press nicdark_tooltip right nicdark_btn_icon nicdark_bg_blue nicdark_shadow small nicdark_radius white"><i class="icon-twitter-1"></i></a>
-                </div>
+               
             </div>
         </div>
 
@@ -70,7 +62,7 @@
             <div class="nicdark_space20"></div>
             <div class="nicdark_divider left small"><span class="nicdark_bg_blue nicdark_radius"></span></div>
             <div class="nicdark_space20"></div>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce et quam blandit, vehicula leo id, varius mi. Duis ultricies lectus ut pellentesque hendrerit. Duis consequat euismod leo, ac aliquam eros vitae.<br/><br/>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce et quam blandit, vehicula leo id, varius mi. Duis ultricies lectus ut pellentesque hendrerit. Duis consequat euismod leo, ac aliquam eros vitae.<br/><br/>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce et quam blandit, vehicula leo id, varius mi. Duis ultricies lectus ut pellentesque hendrerit. Duis consequat euismod leo, ac aliquam eros vitae.</p>
+            <p>{{$data[0]->bio_data}}</p>
         </div>
 
 
@@ -81,42 +73,37 @@
             <div class="nicdark_space20"></div>
             
             <div class="nicdark_progressbar nicdark_bg_grey nicdark_radius nicdark_shadow">
-                <h5 class="nicdark_progressbar_title nicdark_bg_yellow nicdark_bg_yellowdark_hover nicdark_radius nicdark_shadow fade-left animate1 animated fadeInLeft" style="width:95%">
-                    <span class="white nicdark_size_big"><i class="icon-brush"></i>&nbsp;&nbsp;&nbsp;PAINT · 95%</span>
+                <h5 class="nicdark_progressbar_title nicdark_bg_yellow nicdark_bg_yellowdark_hover nicdark_radius nicdark_shadow fade-left animate1 animated fadeInLeft" style="width:@if(!empty($points)){{$points[0]->count}} @endif%">
+                    <span class="white nicdark_size_big"><i class="icon-brush"></i>&nbsp;&nbsp;&nbsp;VIDEOS  @if(!empty($points)){{$points[0]->count}}% @endif"</span>
                 </h5>
             </div>
 
             <div class="nicdark_space20"></div>
 
             <div class="nicdark_progressbar nicdark_bg_grey nicdark_radius nicdark_shadow">
-                <h5 class="nicdark_progressbar_title nicdark_bg_blue nicdark_bg_bluedark_hover nicdark_radius nicdark_shadow fade-left animate2 animated fadeInLeft" style="width:85%">
-                    <span class="white nicdark_size_big"><i class="icon-pencil-1"></i>&nbsp;&nbsp;&nbsp;DRAWING · 85%</span>
+                <h5 class="nicdark_progressbar_title nicdark_bg_blue nicdark_bg_bluedark_hover nicdark_radius nicdark_shadow fade-left animate2 animated fadeInLeft" style="width:@if(!empty($points)){{$points[1]->count}} @endif%">
+                    <span class="white nicdark_size_big"><i class="icon-pencil-1"></i>&nbsp;&nbsp;&nbsp;AUDIO   @if(!empty($points)){{$points[1]->count}}% @endif</span>
                 </h5>
             </div>
 
             <div class="nicdark_space20"></div>
 
             <div class="nicdark_progressbar nicdark_bg_grey nicdark_radius nicdark_shadow">
-                <h5 class="nicdark_progressbar_title nicdark_bg_green nicdark_bg_greendark_hover nicdark_radius nicdark_shadow fade-left animate3 animated fadeInLeft" style="width:75%">
-                    <span class="white nicdark_size_big"><i class="icon-puzzle"></i>&nbsp;&nbsp;&nbsp;GRAPHIC · 75%</span>
+                <h5 class="nicdark_progressbar_title nicdark_bg_green nicdark_bg_greendark_hover nicdark_radius nicdark_shadow fade-left animate3 animated fadeInLeft" style="width:@if(!empty($points)){{$points[2]->count}} @endif%">
+                    <span class="white nicdark_size_big"><i class="icon-puzzle"></i>&nbsp;&nbsp;&nbsp;STORIES  @if(!empty($points)){{$points[2]->count}}% @endif</span>
                 </h5>
             </div>
             
             <div class="nicdark_space20"></div>
 
             <div class="nicdark_progressbar nicdark_bg_grey nicdark_radius nicdark_shadow">
-                <h5 class="nicdark_progressbar_title nicdark_bg_orange nicdark_radius nicdark_bg_orangedark_hover nicdark_shadow fade-left animate4 animated fadeInLeft" style="width:65%">
-                    <span class="white nicdark_size_big"><i class="icon-dribbble"></i>&nbsp;&nbsp;&nbsp;QUIZ · 65%</span>
+                <h5 class="nicdark_progressbar_title nicdark_bg_orange nicdark_radius nicdark_bg_orangedark_hover nicdark_shadow fade-left animate4 animated fadeInLeft" style="width:@if(!empty($points)){{$points[3]->count}} @endif%">
+                    <span class="white nicdark_size_big"><i class="icon-dribbble"></i>&nbsp;&nbsp;&nbsp;QUIZ @if(!empty($points)){{$points[3]->count}}% @endif</span>
                 </h5>
             </div>
 
             <div class="nicdark_space20"></div>
-
-            <div class="nicdark_progressbar nicdark_bg_grey nicdark_radius nicdark_shadow">
-                <h5 class="nicdark_progressbar_title nicdark_bg_red nicdark_bg_reddark_hover nicdark_radius nicdark_shadow fade-left animate4 animated fadeInLeft" style="width:55%">
-                    <span class="white nicdark_size_big"><i class="icon-music-outline"></i>&nbsp;&nbsp;&nbsp;MUSIC · 55%</span>
-                </h5>
-            </div>    
+  
 
         </div>
 
@@ -140,11 +127,11 @@
             <div class="grid grid_12">
                 <div class="nicdark_space40"></div>
                 <div class="nicdark_space50"></div>
-                <h2 class="white subtitle center">Art is not a handicraft, it is the transmission of feeling the artist has experienced.</h2>
+                <h2 class="white subtitle center"></h2>
                 <div class="nicdark_space20"></div>
                 <div class="nicdark_divider big center"><span class="nicdark_bg_white nicdark_radius"></span></div>
                 <div class="nicdark_space20"></div>
-                <h1 class="signature white center">Nikolaevich Tolstoy</h1>                
+                <h1 class="signature white center">CONTENT</h1>                
                 <div class="nicdark_space40"></div>
                 <div class="nicdark_space50"></div>
             </div>
@@ -216,45 +203,39 @@
 			
 		</div>
 	</div>
-
+<?php 
+$color = ["nicdark_bg_violet","nicdark_bg_blue"];
+$i=0;
+?>
 </section>
 <!--end section-->        </div>
 
         <div class="grid grid_4">
-            <h3 class="subtitle greydark">MY LESSONS</h3>
+            <h3 class="subtitle greydark">UP COMING LESSONS</h3>
             <div class="nicdark_space20"></div>
             <div class="nicdark_divider left small"><span class="nicdark_bg_blue nicdark_radius"></span></div>
             <div class="nicdark_space20"></div>
             
             <ul class="nicdark_list border">    
+            
+               @if(!empty($schedule))
+                @foreach($schedule as $sh)
+               
                 <li class="nicdark_border_grey">
-                    <p>DRAWING LESSON IN ALL CLASSES <a href="#" class="nicdark_btn nicdark_bg_blue extrasmall nicdark_radius nicdark_shadow white right">9:00</a></p> 
+                    <p>SCHEDULE DATE : <a href="edit_clander_data?pid={{$sh->fk_parent_id}}&date={{$sh->dueTime}}" class="nicdark_btn {{$color[$i]}} extrasmall nicdark_radius nicdark_shadow white right">{{$sh->dueTime}}</a></p> 
                     <div class="nicdark_space15"></div>
                 </li>
 
-                <li class="nicdark_border_grey">
-                    <div class="nicdark_space15"></div>
-                    <p>BASIC NICE ART VIDEOS <a href="#" class="nicdark_btn nicdark_bg_violet extrasmall nicdark_radius nicdark_shadow white right">11:00</a></p>   
-                    <div class="nicdark_space15"></div>
-                </li>
-                    
-                <li class="nicdark_border_grey">
-                    <div class="nicdark_space15"></div>
-                    <p>SOME WATER COLOR PRACTICE <a href="#" class="nicdark_btn nicdark_bg_blue extrasmall nicdark_radius nicdark_shadow white right">14:00</a></p>   
-                    <div class="nicdark_space15"></div>
-                </li>
+                <?php
+                $i++;
+                    if($i==2){
+                        $i=0;
+                    }
 
-                <li class="nicdark_border_grey">
-                    <div class="nicdark_space15"></div>
-                    <p>WONDERFUL STENCIL TEST PAINTING <a href="#" class="nicdark_btn nicdark_bg_violet extrasmall nicdark_radius nicdark_shadow white right">15:00</a></p>    
-                    <div class="nicdark_space15"></div>
-                </li>
-
-                <li class="nicdark_border_grey">
-                    <div class="nicdark_space15"></div>
-                    <p>COLOR WITH FRUIT AND VEGETABLES <a href="#" class="nicdark_btn nicdark_bg_blue extrasmall nicdark_radius nicdark_shadow white right">17:00</a></p>    
-                </li> 
-
+                ?>
+                @endforeach
+            @endif
+              
             </ul>
 
         </div>

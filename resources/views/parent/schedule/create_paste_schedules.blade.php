@@ -12,9 +12,22 @@
         <link rel="stylesheet" href="{{ URL::asset('assets/css/bootstrap.min.css')}}">
 
 
+  <link rel='stylesheet' href="{{ URL::asset('assets/baby/css/nicdark_style.css')}}">
+        <link rel='stylesheet' href="{{ URL::asset('assets/baby/css/nicdark_responsive.css')}}">
+        <link rel='stylesheet' href="{{ URL::asset('assets/baby/css/revslider/settings.css')}}">
 
 
+         <link rel='stylesheet' href="{{ URL::asset('assets/baby/css/animate.css')}}">
+         <link rel='stylesheet' href="{{ URL::asset('assets/baby/css/fontello.css')}}">
+         <link rel='stylesheet' href="{{ URL::asset('assets/baby/css/magnific-popup.css')}}">
+         <link rel='stylesheet' href="{{ URL::asset('assets/baby/css/nicdark_menu.css')}}">
+        
+         <link rel='stylesheet' href="{{ URL::asset('assets/baby/css/nicdark_shortcodes.css')}}">
+       
+      
 
+        <link rel="stylesheet" href="{{ URL::asset('assets/parent/profile/css/bootstrap.min.css')}}">
+    
 
 
 <script>
@@ -66,7 +79,7 @@ today = yyyy+'-'+mm+'-'+dd;
 <style>
 
 	body {
-		margin: 40px 10px;
+		margin: 40px 0px;
 		padding: 0;
 		font-family: "Lucida Grande",Helvetica,Arial,Verdana,sans-serif;
 		font-size: 14px;
@@ -142,13 +155,38 @@ a{
 
 </style>
 
-<a href="home" class="btn btn-info" role="button" style="width:10%">HOME</a>
+<a href="home" class="btn btn-info" role="button" style="width:10%;margin-left:2%">HOME</a>
 
 
         <p> <div id='calendar'></div></p>
      
 <br><br><br><br><br>
 
+
+<!--start section-->
+<div class="nicdark_section nicdark_bg_greydark2 nicdark_copyrightlogo">
+
+    <!--start nicdark_container-->
+    <div class="nicdark_container nicdark_clearfix">
+
+        <div class="grid grid_6 nicdark_aligncenter_iphoneland nicdark_aligncenter_iphonepotr">
+            <div class="nicdark_space20"></div>
+            <p class="white"> 2016 <span class="grey">IntelliKid</span> <i class="icon-heart-filled red nicdark_zoom"></i></p>
+        </div>
+
+
+        <div class="grid grid_6">
+            <div class="nicdark_focus right nicdark_aligncenter_iphoneland nicdark_aligncenter_iphonepotr">
+               
+                
+            </div>
+        </div>
+
+    </div>
+    <!--end nicdark_container-->
+            
+</div>
+<!--end section--> 
 
 
 

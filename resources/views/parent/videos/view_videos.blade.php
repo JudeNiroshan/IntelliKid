@@ -26,7 +26,7 @@ div.scroll {
    
     margin-right: 15%;
     margin-left: 70%;
-    margin-top: -33.5%;
+    margin-top: -30.5%;
     border-style: solid;
     border-color: gray;
 
@@ -229,17 +229,18 @@ $i=0;
 
    <div class="scroll">
 <div class="row" style="margin-left:2%;margin-top:2%">
-
+@if(!empty($all_videos))
 @foreach($all_videos as $v)
 
 
-<a href="view_videos?id={{$v->id}}&cat={{$v->cat}}" >
-<img src="uploads/02.jpg" alt="Mountain View" style="width:180px;height:80px;">
-<p>{{$v->title}}{{$v->cat}}</p>
+<a href="view_videos?id={{$v->id}}&cat={{$v->agegroupid}}" >
+<img src="{{$v->img_path}}" alt="Mountain View" style="width:180px;height:80px;">
+<p>{{$v->name}}{{$v->agegroupid}}</p>
 </a>
 
 
 @endforeach
+@endif
    </div>
 
 
@@ -251,9 +252,12 @@ $i=0;
 <!-- Palnne for the add videos to the bucket-->
 
 <div class="container">
-
+<p>LIKES:{{$selected_video[0]->likes}} <span class="glyphicon glyphicon-thumbs-up"></span></p> 
+<p>VIEWS: {{$selected_video[0]->totalviews}} <span class="glyphicon glyphicon-eye-open"></span></p> 
   <div class="panel panel-default" >
-  
+
+
+
   @if($msg == "has")
    <div class="[ form-group ]">
             <input type="checkbox" name="fancy-checkbox-danger-custom-icons" id="fancy-checkbox-danger-custom-icons" autocomplete="off" id="add" name="add" onclick="add_to_collector2()"  checked="" />
@@ -263,7 +267,7 @@ $i=0;
                     <span> </span>
                 </label>
                 <label for="fancy-checkbox-danger-custom-icons" class="[ btn btn-default active ]"  >
-                   REMOVE FROM SHEDULE COLLECTOR   
+                   REMOVE FROM SHEDULE QUEUE   
                 </label>
 <div id="load"><p></p></div>
             </div>    
@@ -298,7 +302,7 @@ $i=0;
    <ul class="nicdark_list border">
 
 
-              
+@if(!empty($comment))       
 @foreach($comment as $c)
                 <li class="nicdark_border_grey">
                   <!--comment-->
@@ -307,7 +311,7 @@ $i=0;
                 <img alt="" class="nicdark_displaynone_ipadpotr nicdark_radius_circle nicdark_absolute" style="width:50px; height: 45px;" src="{{$c->img_path}}">
                       <div class="nicdark_activity nicdark_marginleft70 nicdark_disable_marginleft_ipadpotr">
                           <div class="nicdark_space20"></div>
-                          <h4 class="subtitle greydark" id="comentor" name="comentor">{{$c->f_name}} {{$c->l_name}}: {{$c->date}}</h4>
+                          <h4 class="subtitle greydark" id="comentor" name="comentor">{{$c->f_name}} {{$c->l_name}}: {{$c->comment_date}}</h4>
                           <div class="nicdark_space20"></div>                       
                       </div>
                     </div>
@@ -320,7 +324,7 @@ $i=0;
                 </li>
 
             @endforeach 
-
+@endif
                 </ul>
 
 
@@ -330,7 +334,7 @@ $i=0;
 
 <!-- Palnne for add a comment-->
 <div class="container2">
- <h3>Your Comment</h3>
+ <h3>Your Comment </h3>
   <div class="panel panel-default" >
     <div class="nicdark_space20"></div>
             <textarea class="nicdark_bg_grey nicdark_radius nicdark_shadow grey small subtitle" placeholder="COMMENTS" id="comments" rows="9"></textarea>
@@ -338,6 +342,7 @@ $i=0;
             <input class="nicdark_btn nicdark_bg_red medium nicdark_shadow nicdark_radius white left" type="submit" value="POST COMMENT" onclick="return comment()">
 
   </div>
+    <div id="load1"><p></p></div>
 </div>
 
 <br>
@@ -354,7 +359,6 @@ $i=0;
 <br>
 <br>
 <br>
-
 <br>
 <br>
 <br>
@@ -375,6 +379,7 @@ if(comment==""){
          return false;
 
 }
+document.getElementById("load1").innerHTML = '<div class="block"> <div class="loading"><span class="ball1"></span><span class="ball2"></span> Loading....</div></div>';
 $.ajax({
                 type: "get",
                 url: "video_comment",
@@ -388,6 +393,7 @@ $.ajax({
         
             
               setTimeout(function(){
+                  document.getElementById("load1").innerHTML="";
                       // document.getElementById("load").innerHTML = "";
                        location.reload();
                        
@@ -400,6 +406,7 @@ $.ajax({
                 },
                 error: function (xhr, ajaxOptions, thrownError) {
                    //document.getElementById("load").innerHTML = "";
+                    document.getElementById("load1").innerHTML="";
                   sweetAlert("Sorry!", "Something went wrong!", "error");
                   return false;
                 }
@@ -465,9 +472,9 @@ document.getElementById("load").innerHTML =  '<div class="block"> <div class="lo
 
       } 
     else {  
+
      document.getElementById("load").innerHTML = "";  
-     swal("Cancelled", "", "error"); 
-    
+     swal({   title: "Canceled!",   text: "",   timer: 800,   showConfirmButton: false });
     
        } });
 

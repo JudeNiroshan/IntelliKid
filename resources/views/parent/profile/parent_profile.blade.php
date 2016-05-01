@@ -14,9 +14,9 @@
      <script src="{{ URL::asset('assets/baby/upload/js/jquery.imgareaselect.min.js') }}"></script>
 
     <!-- profile js/css -->
-     <link rel="stylesheet" href="{{ URL::asset('assets/parent/profile/css/animate.min.css')}}">
-     <link rel="stylesheet" href="{{ URL::asset('assets/parent/profile/css/custom.css')}}">
-     <link rel="stylesheet" href="{{ URL::asset('assets/parent/profile/css/icheck/flat/green.css')}}">
+     <link rel="stylesheet" href="assets/parent/profile/css/animate.min.css">
+     <link rel="stylesheet" href="assets/parent/profile/css/custom.css">
+     <link rel="stylesheet" href="assets/parent/profile/css/icheck/flat/green.css">
      
 
      <script src="{{ URL::asset('assets/parent/profile/js/jquery.min.js') }}"></script>
@@ -33,19 +33,7 @@
                                     <div class="clearfix"></div>
                                 </div>
                                 
-                                
-                                
-                                
-                                
-                                
-                                
-                                
-                                
-                                
-                                
-                                
-                                
-                                
+         
                                 
                                 <div class="x_content">
 
@@ -420,11 +408,11 @@
 
 
   <!-- Core  -->
-<script src="{{ URL::asset('assets/parent/profile/js/bootstrap.min.js') }}"></script>
-<script src="{{ URL::asset('assets/parent/profile/js/cropping/cropper.min.js') }}"></script>
-<script src="{{ URL::asset('assets/parent/profile/js/cropping/main.js') }}"></script>
-    <script src="assets/parent/profile/js/datatables/js/jquery.dataTables.js"></script>
-        <script src="assets/parent/profile/js/datatables/tools/js/dataTables.tableTools.js"></script>
+<script src="assets/parent/profile/js/bootstrap.min.js"></script>
+<script src="assets/parent/profile/js/cropping/cropper.min.js"></script>
+<script src="assets/parent/profile/js/cropping/main.js"></script>
+<script src="assets/parent/profile/js/datatables/js/jquery.dataTables.js"></script>
+<script src="assets/parent/profile/js/datatables/tools/js/dataTables.tableTools.js"></script>
 
 
 
@@ -432,6 +420,8 @@
 
 
 @section('js')
+
+
 
     <script>
            

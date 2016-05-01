@@ -9,16 +9,16 @@
 
 @section('content')
      
-     <script src="{{ URL::asset('assets/baby/upload/js/jquery-pack.js') }}"></script>
-     <script src="{{ URL::asset('assets/baby/upload/js/jquery.imgareaselect.min.js') }}"></script>
+     <script src="assets/baby/upload/js/jquery-pack.js"></script>
+     <script src="assets/baby/upload/js/jquery.imgareaselect.min.js"></script>
 
     <!-- profile js/css -->
-     <link rel="stylesheet" href="{{ URL::asset('assets/parent/profile/css/animate.min.css')}}">
-     <link rel="stylesheet" href="{{ URL::asset('assets/parent/profile/css/custom.css')}}">
-     <link rel="stylesheet" href="{{ URL::asset('assets/parent/profile/css/icheck/flat/green.css')}}">
+     <link rel="stylesheet" href="assets/parent/profile/css/animate.min.css">
+     <link rel="stylesheet" href="assets/parent/profile/css/custom.css">
+     <link rel="stylesheet" href="assets/parent/profile/css/icheck/flat/green.css">
      
 
-     <script src="{{ URL::asset('assets/parent/profile/js/jquery.min.js') }}"></script>
+     <script src="assets/parent/profile/js/jquery.min.js"></script>
      
 
 
@@ -433,7 +433,7 @@ _("progressBar").value = 0;
      formdata.append("day", day);
      formdata.append("year", year);
      formdata.append("password", password);
-   
+   console.log(formdata);
 
     var ajax = new XMLHttpRequest();
     ajax.upload.addEventListener("progress", progressHandler, false);
@@ -444,6 +444,7 @@ _("progressBar").value = 0;
     ajax.send(formdata);
    } 
 }
+
 function progressHandler(event){
     _("loaded_n_total").innerHTML = "Uploaded "+event.loaded+" bytes of "+event.total;
     var percent = (event.loaded / event.total) * 100;
@@ -479,9 +480,9 @@ function abortHandler(event){
 
 
   <!-- Core  -->
-<script src="{{ URL::asset('assets/parent/profile/js/bootstrap.min.js') }}"></script>
-<script src="{{ URL::asset('assets/parent/profile/js/cropping/cropper.min.js') }}"></script>
-<script src="{{ URL::asset('assets/parent/profile/js/cropping/main.js') }}"></script>
+<script src="assets/parent/profile/js/bootstrap.min.js"></script>
+<script src="assets/parent/profile/js/cropping/cropper.min.js"></script>
+<script src="assets/parent/profile/js/cropping/main.js"></script>
 
 
 

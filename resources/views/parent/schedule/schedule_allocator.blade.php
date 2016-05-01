@@ -433,13 +433,17 @@ color: white;
 
 
 <div class="alert alert-warning v_warning" style="display: none">
-  <strong>Warning!</strong> This videos don't match with your child age category,but you can set this to your schedule
+  <strong>Warning!</strong> These videos don't match with your child age category,but you can set this to your schedule
   <p  id="v_warning" name="v_warning"></p>
 </div>
 
 <div class="alert alert-warning s_warning" style=" display: none">
-  <strong>Warning!</strong> This stories don't match with your child age category,but you can set this to your schedule
+  <strong>Warning!</strong> These stories don't match with your child age category,but you can set this to your schedule
   <p  id="s_warning" name="s_warning"></p>
+</div>
+<div class="alert alert-warning a_warning" style=" display: none">
+  <strong>Warning!</strong> These audios don't match with your child age category,but you can set this to your schedule
+  <p  id="a_warning" name="a_warning"></p>
 </div>
 <div class="alert alert-success success " id="success" style=" display: none">
   <strong>Success!</strong> Setup completed.Please submit!!
@@ -455,40 +459,15 @@ color: white;
 
 
 </form>
+
+
         <script>
 
- var bdates = new Array();
-    <?php foreach($dates as $key => $val){ ?>
-        bdates.push('<?php echo $val; ?>');
-    <?php } ?>
 
 $(document).ready(function() {
 //alert(bdates);
 
-//a array of dates that should be blocked
-var forbidden=bdates;
-//alert(forbidden);
 
- var nowDate = new Date();
-var today = new Date(nowDate.getFullYear(), nowDate.getMonth(), nowDate.getDate(), 0, 0, 0, 0);
-$('#dateR').datepicker({
-     clearBtn : true,
-     
-     startDate: today,
-     constrainInput: true,
-    beforeShowDay:function(Date){
-        //
-        var curr_day = Date.getDate();
-        var curr_month = Date.getMonth()+1;
-        var curr_year = Date.getFullYear();        
-        var curr_date='0'+curr_month+'/'+curr_day+'/'+curr_year;        
-
-        if (forbidden.indexOf(curr_date)>-1) return false;        
-    }
-});
-
-
-  
     
     
     
@@ -525,7 +504,7 @@ $('input:checkbox[name="check[]"]').each(function() {
 var name = [];
 var age = [];
 for(var i=0;i<vals.length;i++){
-  var t = document.getElementById(vals[i]).value;
+   var t = document.getElementById(vals[i]).value;
    var a = document.getElementById(vals[i]+"age").value;
   name.push(t);
   age.push(a);
@@ -534,6 +513,7 @@ for(var i=0;i<vals.length;i++){
 
 $(".s_warning").hide();
 $(".v_warning").hide();
+$(".a_warning").hide();
 $(".success").hide();
 
 
@@ -548,13 +528,13 @@ document.getElementById("load").innerHTML =  '<div class="block"> <div class="lo
                 },
            
                 success: function (data) {
-                   //alert(data.v_warning);
+                  
                     
                      
                     
                       
                   console.log(data);
-                if(data.s_warning.length != 0 && data.v_warning.length != 0){
+                if(data.s_warning.length != 0 && data.v_warning.length != 0 && data.a_warning.length != 0 ){
              
                         setTimeout(function(){
 
@@ -568,14 +548,33 @@ document.getElementById("load").innerHTML =  '<div class="block"> <div class="lo
                         
                           $(".s_warning").fadeIn(1000);
                           document.getElementById("s_warning").innerHTML = data.s_warning;
+
+                          $(".a_warning").fadeIn(1000);
+                          document.getElementById("a_warning").innerHTML = data.a_warning;
+
                           document.getElementById("load").innerHTML="";
                      
+                        
+                        },2000);
+                      }
+
+                       if(data.a_warning.length != 0){
+
+                     
+               
+                        setTimeout(function(){
+                         
+
+                          $(".a_warning").fadeIn(1000);
+                         document.getElementById("a_warning").innerHTML = data.a_warning;
+                         document.getElementById("load").innerHTML="";
+                      
 
                         },2000);
                       }
 
 
-                 if(data.s_warning.length != 0){
+                  if(data.s_warning.length != 0){
              
                         setTimeout(function(){
                           
@@ -583,11 +582,11 @@ document.getElementById("load").innerHTML =  '<div class="block"> <div class="lo
                          document.getElementById("s_warning").innerHTML = data.s_warning;
                          document.getElementById("load").innerHTML="";
                      
-
+                         
                         },2000);
                       }
 
-                       else if(data.v_warning.length != 0){
+                 if(data.v_warning.length != 0){
 
                          
                
@@ -596,12 +595,15 @@ document.getElementById("load").innerHTML =  '<div class="block"> <div class="lo
 
                           $(".v_warning").fadeIn(1000);
                          document.getElementById("v_warning").innerHTML = data.v_warning;
-                        document.getElementById("load").innerHTML="";
-                      
+                         document.getElementById("load").innerHTML="";
+                    
+                    
 
                         },2000);
                       }
-                      else{
+
+               
+                else{
 
                          setTimeout(function(){
                         document.getElementById("load").innerHTML="";
@@ -611,8 +613,6 @@ document.getElementById("load").innerHTML =  '<div class="block"> <div class="lo
                         },2000);
 
                       }
-
-
 
                         
                  return true;
@@ -695,6 +695,7 @@ if( msg=="false"){
 var name = [];
 var str = "";
 for(var i=0;i<vals.length;i++){
+
   var t = document.getElementById(vals[i]).value;
   name.push(t);
 
@@ -709,6 +710,90 @@ for(var i=0;i<vals.length;i++){
 
 var  s = '<p>'+str+'</p>';
 document.getElementById("names").innerHTML=s;
+
+
+
+
+
+
+
+
+
+
+ var bdates = new Array();
+    <?php foreach($dates as $key => $val){ ?>
+        bdates.push('<?php echo $val; ?>');
+
+    <?php } ?>
+
+
+var forbidden = bdates;
+
+
+
+
+  $.ajax({
+                type: "get",
+                url: "get_date",
+                async: false,
+                data:{
+                    cids:vals
+                },
+           
+                success: function (data) {
+
+             
+                 //
+                 // forbidden = data;
+                
+                  //$('#dateR').load(document.URL +  ' #dateR');
+
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                   
+                  sweetAlert("Sorry!", "Something went wrong!", "error");
+                  return false;
+                }
+            });
+
+
+//alert(forbidden);
+
+
+
+
+
+ var nowDate = new Date();
+var today = new Date(nowDate.getFullYear(), nowDate.getMonth(), nowDate.getDate(), 0, 0, 0, 0);
+$('#dateR').datepicker({
+     clearBtn : true, 
+     startDate: today,
+     constrainInput: true,
+    beforeShowDay:function(Date){
+        //
+
+        var curr_day = Date.getDate();
+        var curr_month = Date.getMonth()+1;
+        var curr_year = Date.getFullYear();        
+        var curr_date='0'+curr_month+'/'+curr_day+'/'+curr_year; 
+         var curr_date1='03'+'/'+'0'+curr_day+'/'+curr_year;
+          var curr_date2='03'+'/'+curr_day+'/'+curr_year;
+         var curr_date3='04'+'/'+curr_day+'/'+curr_year;
+         var curr_date4='04'+'/'+'0'+curr_day+'/'+curr_year;   
+
+//console.log(forbidden);
+
+        if (forbidden.indexOf(curr_date)>-1 || forbidden.indexOf(curr_date1)>-1 || forbidden.indexOf(curr_date2)>-1   || forbidden.indexOf(curr_date3)>-1  || forbidden.indexOf(curr_date4)>-1 ) return false;        
+    },
+    onSelect: function (dateText) {
+            jQuery(this).change();
+        }
+});
+
+
+
+
+
 
 
 
@@ -813,9 +898,9 @@ document.getElementById("load").innerHTML =  '<div class="block"> <div class="lo
                  if(data== 1){
                 
                        
-                        
-                          setTimeout(function(){
-                            swal("successfully!", "Schedule completed!", "success");
+                      swal("successfully!", "Schedule completed!", "success");
+                      setTimeout(function(){
+                          
                        document.getElementById("load").innerHTML = "";
                        location.reload();
                        

@@ -17,14 +17,14 @@
 				
 				
 				<!--start first-->
-				<li data-transition="fade" data-slotamount="7" data-masterspeed="500" data-saveperformance="on"  data-title="FRIENDS">
+				<li data-transition="fade" data-slotamount="7" data-masterspeed="500" data-saveperformance="on"  data-title="">
 					<img src="{{ URL::asset('assets/baby/img/slide/img3.jpg')}}"  alt="" data-lazyload="{{ URL::asset('assets/baby/img/slide/img3.jpg')}}" data-bgposition="center bottom" data-bgfit="cover" data-bgrepeat="no-repeat">
 				</li>
 				<!--end first-->
 
 
 				<!--start second-->
-				<li data-transition="fade" data-slotamount="7" data-masterspeed="1000" data-saveperformance="on"  data-title="LESSON">
+				<li data-transition="fade" data-slotamount="7" data-masterspeed="1000" data-saveperformance="on"  data-title="">
 					<img src="{{ URL::asset('assets/baby/img/slide/img8.jpg')}}"  alt="" data-lazyload="{{ URL::asset('assets/baby/img/slide/img8.jpg')}}" data-bgposition="center top" data-bgfit="cover" data-bgrepeat="no-repeat">
 				</li>
 				<!--end second-->
@@ -46,33 +46,33 @@
 			    <div class="nicdark_textevidence nicdark_width_percentage25 nicdark_bg_blue nicdark_shadow nicdark_radius_left">
 			        <div class="nicdark_textevidence">
 			            <div class="nicdark_margin30">
-			                <h2 class="white subtitle"><a class="white" href="new_child">ACCOUNTS</a></h2>
+			                <h2 class="white subtitle"><a class="white" href="veca">ACCOUNTS</a></h2>
 			           </div>
-			            <i class="nicdark_zoom icon-pencil-2 nicdark_iconbg left extrabig blue nicdark_displaynone_ipadland nicdark_displaynone_ipadpotr"></i>
+			            <i class="nicdark_zoom  nicdark_iconbg left extrabig blue nicdark_displaynone_ipadland nicdark_displaynone_ipadpotr"></i>
 			        </div>
 			    </div>
 			    <div class="nicdark_textevidence nicdark_width_percentage25 nicdark_bg_yellow nicdark_shadow">
 			        <div class="nicdark_textevidence">
 			            <div class="nicdark_margin30">
-			                <h2 class="white subtitle"><a class="white" href="schedule">SCHEDULE</a></h2>
+			                <h2 class="white subtitle"><a class="white" href="schedule">CONTENT</a></h2>
 			           </div>
-			            <i class="nicdark_zoom icon-money-1 nicdark_iconbg left extrabig yellow nicdark_displaynone_ipadland nicdark_displaynone_ipadpotr"></i>
+			            <i class="nicdark_zoom  nicdark_iconbg left extrabig yellow nicdark_displaynone_ipadland nicdark_displaynone_ipadpotr"></i>
 			        </div>
 			    </div>
 			    <div class="nicdark_textevidence nicdark_width_percentage25 nicdark_bg_orange nicdark_shadow">
 			        <div class="nicdark_textevidence">
 			            <div class="nicdark_margin30">
-			                <h2 class="white subtitle"><a class="white" href="events.html">EVENTS</a></h2>
+			                <h2 class="white subtitle"><a class="white" href="make_schedule">NEW PROCESS</a></h2>
 			           </div>
-			            <i class="nicdark_zoom icon-music-2 nicdark_iconbg left extrabig orange nicdark_displaynone_ipadland nicdark_displaynone_ipadpotr"></i>
+			            <i class="nicdark_zoom  nicdark_iconbg left extrabig orange nicdark_displaynone_ipadland nicdark_displaynone_ipadpotr"></i>
 			        </div>
 			    </div>
 			    <div class="nicdark_textevidence nicdark_width_percentage25 nicdark_bg_green nicdark_shadow nicdark_radius_right">
 			        <div class="nicdark_textevidence">
 			            <div class="nicdark_margin30">
-			                <h2 class="white subtitle"><a class="white" href="teachers.html">HELP</a></h2>
+			                <h2 class="white subtitle"><a class="white" href="past_schedule">CALENDER</a></h2>
 			           </div>
-			            <i class="nicdark_zoom icon-graduation-cap-1 nicdark_iconbg left extrabig green nicdark_displaynone_ipadland nicdark_displaynone_ipadpotr"></i>
+			            <i class="nicdark_zoom nicdark_iconbg left extrabig green nicdark_displaynone_ipadland nicdark_displaynone_ipadpotr"></i>
 			        </div>
 			    </div>
 			    <div class="nicdark_space5"></div>
@@ -83,10 +83,12 @@
     <!--end nicdark_container-->
      
 </section>
+
+
 <!--end section--><!--start section-->
+<!--
 <section class="nicdark_section">
 
-    <!--start nicdark_container-->
     <div class="nicdark_container nicdark_clearfix">
 
 
@@ -218,14 +220,22 @@
         <div class="nicdark_space50"></div>
 
     </div>
-    <!--end nicdark_container-->
-            
+  
 </section>
+-->
+
+
+
+
+
+
+
 <!--end section--><!--start section-->
+<!--
 <div id="nicdark_parallax_2_btns" class="nicdark_section nicdark_imgparallax nicdark_parallax_img2">
 
 
-    <!--start nicdark_container-->
+  
     <div class="nicdark_container nicdark_clearfix">
 
         <div class="nicdark_space40"></div>
@@ -242,12 +252,27 @@
         <div class="nicdark_space50"></div>
 
     </div>
-    <!--end nicdark_container-->
+  
 
             
 </div>
-<!--end section--><!--start section-->
+
 <section class="nicdark_section">
+
+
+
+
+-->
+
+
+
+
+<?php 
+    $color = array("nicdark_bg_green","nicdark_bg_blue","nicdark_bg_yellow","nicdark_bg_orange");
+    $img = array("assets/baby/img/events/img1.jpg","assets/baby/img/events/img2.jpg","assets/baby/img/events/img3.jpg","assets/baby/img/events/img4.jpg");
+    $i=0;
+?>
+
 
     <!--start nicdark_container-->
     <div class="nicdark_container nicdark_clearfix">
@@ -266,21 +291,26 @@
         </div>
 
 
+       
+@if(!empty($dates))
+    @foreach($dates as $d)
+
+       
         <div class="grid grid_3">
                     
             <!--archive1-->
-            <div class="nicdark_archive1 nicdark_bg_green nicdark_radius nicdark_shadow">
+            <div class="nicdark_archive1 {{$color[$i]}} nicdark_radius nicdark_shadow">
 
-                <a href="single-event.html" class="nicdark_btn nicdark_bg_greydark white medium nicdark_radius nicdark_absolute_left">07<br/><small>FEB</small></a>
+                <a href="single-event.html" class="nicdark_btn nicdark_bg_greydark white medium nicdark_radius nicdark_absolute_left">{{$d->s_date}}<br/><small></small></a>
 
-                <img alt="" src="{{ URL::asset('assets/baby/img/events/img1.jpg')}}">
+                <img alt=""  src="{{$img[$i]}}">
                 
                 <div class="nicdark_textevidence nicdark_bg_greydark">
-                    <h4 class="white nicdark_margin20">A DAY IN THE PARK</h4>
+                    <h4 class="white nicdark_margin20"></h4>
                 </div>
                 
                 <div class="nicdark_margin20">
-                    <h5 class="white"><i class="icon-pin-outline"></i> Times Square</h5>
+                   <!-- <h5 class="white"><i class="icon-pin-outline"></i> Central Park (NY)</h5>
                     <div class="nicdark_space10"></div>
                     <h5 class="white"><i class="icon-clock-1"></i> 9:00 To 14:00</h5>
                     <div class="nicdark_space20"></div>
@@ -288,7 +318,8 @@
                     <div class="nicdark_space20"></div>
                     <p class="white">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque tincidunt rutrum.</p>
                     <div class="nicdark_space20"></div>
-                    <a href="single-event.html" class=" nicdark_press nicdark_btn nicdark_bg_greendark white nicdark_radius nicdark_shadow medium">CHECK IT</a>
+                    -->
+                    <a href="edit_clander_data?pid={{$d->fk_parent_id}}&date={{$d->dueTime}}" class="nicdark_press nicdark_btn {{$color[$i]}}dark white nicdark_radius nicdark_shadow medium">CHECK IT</a>
                 </div>
 
             </div>
@@ -296,95 +327,29 @@
 
         </div>
 
-        <div class="grid grid_3">
-                    
-            <!--archive1-->
-            <div class="nicdark_archive1 nicdark_bg_blue nicdark_radius nicdark_shadow">
+        <?php $i++;
+        if($i==4){
+            $i=0;
+        }
+        ?>
 
-                <a href="single-event.html" class="nicdark_btn nicdark_bg_greydark white medium nicdark_radius nicdark_absolute_left">08<br/><small>FEB</small></a>
+    @endforeach
 
-                <img alt="" src="{{ URL::asset('assets/baby/img/events/img2.jpg')}}">
-                
-                <div class="nicdark_textevidence nicdark_bg_greydark">
-                    <h4 class="white nicdark_margin20">ART SESSION</h4>
-                </div>
-                
-                <div class="nicdark_margin20">
-                    <h5 class="white"><i class="icon-pin-outline"></i> Our School</h5>
-                    <div class="nicdark_space10"></div>
-                    <h5 class="white"><i class="icon-clock-1"></i> 9:00 To 14:00</h5>
-                    <div class="nicdark_space20"></div>
-                    <div class="nicdark_divider left small"><span class="nicdark_bg_white nicdark_radius"></span></div>
-                    <div class="nicdark_space20"></div>
-                    <p class="white">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque tincidunt rutrum.</p>
-                    <div class="nicdark_space20"></div>
-                    <a href="single-event.html" class="nicdark_press nicdark_btn nicdark_bg_bluedark white nicdark_radius nicdark_shadow medium">CHECK IT</a>
-                </div>
+    @else
 
-            </div>
-            <!--archive1-->
-
+   <div class="grid grid_12">
+            
+            <h3 class="subtitle grey">NO CREATED SHEDULE </h3>
+            <div class="nicdark_space20"></div>
+           
         </div>
 
-        <div class="grid grid_3">
-                    
-            <!--archive1-->
-            <div class="nicdark_archive1 nicdark_bg_yellow nicdark_radius nicdark_shadow">
 
-                <a href="single-event.html" class="nicdark_btn nicdark_bg_greydark white medium nicdark_radius nicdark_absolute_left">09<br/><small>FEB</small></a>
+@endif
 
-                <img alt=""  src="{{ URL::asset('assets/baby/img/events/img3.jpg')}}">
-                
-                <div class="nicdark_textevidence nicdark_bg_greydark">
-                    <h4 class="white nicdark_margin20">WATERCOLOR PRACTICE</h4>
-                </div>
-                
-                <div class="nicdark_margin20">
-                    <h5 class="white"><i class="icon-pin-outline"></i> Secondary School</h5>
-                    <div class="nicdark_space10"></div>
-                    <h5 class="white"><i class="icon-clock-1"></i> 9:00 To 14:00</h5>
-                    <div class="nicdark_space20"></div>
-                    <div class="nicdark_divider left small"><span class="nicdark_bg_white nicdark_radius"></span></div>
-                    <div class="nicdark_space20"></div>
-                    <p class="white">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque tincidunt rutrum.</p>
-                    <div class="nicdark_space20"></div>
-                    <a href="single-event.html" class="nicdark_press nicdark_btn nicdark_bg_yellowdark white nicdark_radius nicdark_shadow medium">CHECK IT</a>
-                </div>
 
-            </div>
-            <!--archive1-->
 
-        </div>
 
-        <div class="grid grid_3">
-                    
-            <!--archive1-->
-            <div class="nicdark_archive1 nicdark_bg_orange nicdark_radius nicdark_shadow">
-
-                <a href="single-event.html" class="nicdark_btn nicdark_bg_greydark white medium nicdark_radius nicdark_absolute_left">10<br/><small>FEB</small></a>
-
-                <img alt=""  src="{{ URL::asset('assets/baby/img/events/img4.jpg')}}">
-                
-                <div class="nicdark_textevidence nicdark_bg_greydark">
-                    <h4 class="white nicdark_margin20">SPORT TRAINING</h4>
-                </div>
-                
-                <div class="nicdark_margin20">
-                    <h5 class="white"><i class="icon-pin-outline"></i> Central Park (NY)</h5>
-                    <div class="nicdark_space10"></div>
-                    <h5 class="white"><i class="icon-clock-1"></i> 9:00 To 14:00</h5>
-                    <div class="nicdark_space20"></div>
-                    <div class="nicdark_divider left small"><span class="nicdark_bg_white nicdark_radius"></span></div>
-                    <div class="nicdark_space20"></div>
-                    <p class="white">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque tincidunt rutrum.</p>
-                    <div class="nicdark_space20"></div>
-                    <a href="single-event.html" class="nicdark_press nicdark_btn nicdark_bg_orangedark white nicdark_radius nicdark_shadow medium">CHECK IT</a>
-                </div>
-
-            </div>
-            <!--archive1-->
-
-        </div>
 
         <div class="nicdark_space50"></div>
 
@@ -429,6 +394,13 @@
     </div>
             
 </section>
+
+<?php
+
+$c = array("nicdark_bg_blue","nicdark_bg_green","nicdark_bg_violet","nicdark_bg_orange","nicdark_bg_red","nicdark_bg_yellow");
+
+$cs = array("nicdark_bg_green","nicdark_bg_orange","nicdark_bg_blue","nicdark_bg_red","nicdark_bg_yellow","nicdark_bg_violet");
+?>
 <!--end section--><!--start section-->
 <section class="nicdark_section">
 
@@ -439,221 +411,219 @@
         <div class="nicdark_space50"></div>
 
         <div class="grid grid_12">
-            <h1 class="subtitle greydark">OUR ACTIVITIES</h1>
+            <h1 class="subtitle greydark">YOUR ALL SCHEDULED CONTENT</h1>
             <div class="nicdark_space20"></div>
-            <h3 class="subtitle grey">FOLLOW OUR MOST IMPORTANT ACTIVITIES</h3>
+            <h3 class="subtitle grey">FOLLOW YOUR MOST IMPORTANT ITEMS</h3>
             <div class="nicdark_space20"></div>
             <div class="nicdark_divider left big"><span class="nicdark_bg_blue nicdark_radius"></span></div>
             <div class="nicdark_space10"></div>
         </div>
 
         
+        
         <div class="nicdark_masonry_btns">
             <div class="nicdark_margin10">
                 <a data-filter="*" class="nicdark_bg_grey2_hover nicdark_transition nicdark_btn nicdark_bg_grey small nicdark_shadow nicdark_radius grey">ALL</a>
             </div>
             <div class="nicdark_margin10">
-                <a data-filter=".educational" class="nicdark_bg_grey2_hover nicdark_transition nicdark_btn nicdark_bg_grey small nicdark_shadow nicdark_radius grey">EDUCATIONAL</a>
+                <a data-filter=".video" class="nicdark_bg_grey2_hover nicdark_transition nicdark_btn nicdark_bg_grey small nicdark_shadow nicdark_radius grey">VIDEOS</a>
             </div>
             <div class="nicdark_margin10">
-                <a data-filter=".excursions" class="nicdark_bg_grey2_hover nicdark_transition nicdark_btn nicdark_bg_grey small nicdark_shadow nicdark_radius grey">VIDEOS</a>
+                <a data-filter=".story" class="nicdark_bg_grey2_hover nicdark_transition nicdark_btn nicdark_bg_grey small nicdark_shadow nicdark_radius grey">STORIES</a>
+            </div>
+            <div class="nicdark_margin10">
+                <a data-filter=".audio" class="nicdark_bg_grey2_hover nicdark_transition nicdark_btn nicdark_bg_grey small nicdark_shadow nicdark_radius grey">Songs</a>
+            </div>
+             <div class="nicdark_margin10">
+                <a data-filter=".quiz" class="nicdark_bg_grey2_hover nicdark_transition nicdark_btn nicdark_bg_grey small nicdark_shadow nicdark_radius grey">Question bundles</a>
             </div>
             <div class="nicdark_space10"></div>
         </div>
 
 
         <!--start nicdark_masonry_container-->
-        <div class="nicdark_masonry_container">
+
+         <div class="nicdark_masonry_container">
 
 
-            <div class="grid grid_4 nicdark_masonry_item educational">
-                <div class="nicdark_archive1 nicdark_bg_blue nicdark_radius nicdark_shadow">
+
+
+<?php 
+$index =0;
+for($i=0;$i<sizeof($content_v);$i++) {?>
+
+            <div class="grid grid_2 nicdark_masonry_item video">
+                <div class="nicdark_archive1 {{$c[$index]}} nicdark_radius nicdark_shadow">
                     
-                    <a href="single-post-right-sidebar.html" class="nicdark_zoom nicdark_btn_icon nicdark_bg_blue nicdark_border_bluedark white medium nicdark_radius_circle nicdark_absolute_left"><i class="icon-link-outline"></i></a>
-
-                    <img alt=""  src="img/blog/img1.jpg">
-                    
+                    <!--<a href="single-post-right-sidebar.html" class="nicdark_zoom nicdark_btn_icon nicdark_bg_blue nicdark_border_bluedark white medium nicdark_radius_circle nicdark_absolute_left"><i class="icon-link-outline"></i></a>
+                    -->                 
                     <div class="nicdark_margin20">
-                        <h4 class="white">EDUCATIONAL</h4>
+                        <h4 class="white"> <img alt=""  src="{{$content_v[$i][2]}}"></h4>
                         <div class="nicdark_space20"></div>
                         <div class="nicdark_divider left small"><span class="nicdark_bg_white nicdark_radius"></span></div>
                         <div class="nicdark_space20"></div>
-                        <p class="white">Lorem ipsum dolor sit amet, consectetur adcing elit Lorem ipsum dolor sit amet, consectetur adip iscing elit psum dolor sit amet.</p>
+                        <p class="white">{{$content_v[$i][1]}}</p>
                         <div class="nicdark_space20"></div>
-                        <a href="single-post-right-sidebar.html" class="white nicdark_btn"><i class="icon-doc-text-1 "></i> Read More</a>                        
+                        <a href="view_videos?id={{$content_v[$i][0]}}&cat={{$content_v[$i][3]}}" class="white nicdark_btn"><i class="icon-doc-text-1 "></i> View</a>                        
                     </div>
 
-                    <i class="icon-camera-outline nicdark_iconbg right medium blue"></i>
+                   
+                
 
                 </div>
             </div>
-            <div class="grid grid_4 nicdark_masonry_item excursions">
-                <div class="nicdark_archive1 nicdark_bg_green nicdark_radius nicdark_shadow">
+           
+
+
+<?php 
+$index++;
+    if($index==7){
+        $index=0;
+    }
+
+}?>
+
+
+<?php 
+$indexs =0;
+for($i=0;$i<sizeof($content_s);$i++) {?>
+
+            <div class="grid grid_2 nicdark_masonry_item story">
+                <div class="nicdark_archive1 {{$cs[$indexs]}} nicdark_radius nicdark_shadow">
                     
+                    <!--<a href="single-post-right-sidebar.html" class="nicdark_zoom nicdark_btn_icon nicdark_bg_blue nicdark_border_bluedark white medium nicdark_radius_circle nicdark_absolute_left"><i class="icon-link-outline"></i></a>
+                    -->                 
                     <div class="nicdark_margin20">
-                        <h4 class="white"> HEALTH</h4>                        
+                        <h4 class="white"> <img alt=""  src="{{$content_s[$i][2]}}"></h4>
                         <div class="nicdark_space20"></div>
                         <div class="nicdark_divider left small"><span class="nicdark_bg_white nicdark_radius"></span></div>
                         <div class="nicdark_space20"></div>
-                        <p class="white">Lorem ipsum dolor sit amet, consectetur adcing elit Lorem ipsum dolor sit amet, consectetur adip iscing elit psum dolor sit amet.</p>
+                        <p class="white">{{$content_s[$i][1]}}</p>
                         <div class="nicdark_space20"></div>
-                        <a href="single-post-right-sidebar.html" class="white nicdark_btn"><i class="icon-doc-text-1 "></i> Read More</a>
+                        <a href="show_story?id={{$content_s[$i][0]}}" class="white nicdark_btn"><i class="icon-doc-text-1 "></i> View</a>                        
                     </div>
 
-                    <i class="icon-pencil-1 nicdark_iconbg right medium green"></i>
+                   
+                    
 
                 </div>
             </div>
-            <div class="grid grid_4 nicdark_masonry_item educational">
-                <div class="nicdark_archive1 nicdark_bg_violet nicdark_radius nicdark_shadow">
-                    
-                    <a href="single-post-right-sidebar.html" class="nicdark_zoom nicdark_btn_icon nicdark_bg_violet nicdark_border_violetdark white medium nicdark_radius_circle nicdark_absolute_left"><i class="icon-link-outline"></i></a>
 
-                    <img alt=""  src="img/blog/img2.jpg">
+
+<?php 
+$indexs++;
+    if($indexs==7){
+        $indexs=0;
+    }
+
+}?>
+
+
+
+
+<?php 
+$indexs =0;
+for($i=0;$i<sizeof($content_a);$i++) {?>
+
+            <div class="grid grid_2 nicdark_masonry_item audio">
+                <div class="nicdark_archive1 {{$cs[$indexs]}} nicdark_radius nicdark_shadow">
                     
+                    <!--<a href="single-post-right-sidebar.html" class="nicdark_zoom nicdark_btn_icon nicdark_bg_blue nicdark_border_bluedark white medium nicdark_radius_circle nicdark_absolute_left"><i class="icon-link-outline"></i></a>
+                    -->                 
                     <div class="nicdark_margin20">
-                        <h4 class="white">SAY HALLO TO OUR TEACHERS</h4>                        
-                    </div>
-
-                    <i class="icon-picture-outline nicdark_iconbg right medium violet"></i>
-
-                </div>
-            </div>
-            <div class="grid grid_4 nicdark_masonry_item excursions">
-                <div class="nicdark_archive1 nicdark_bg_orange nicdark_radius nicdark_shadow">
-                    
-                    <a href="single-post-right-sidebar.html" class="nicdark_zoom nicdark_btn_icon nicdark_bg_orange nicdark_border_orangedark white medium nicdark_radius_circle nicdark_absolute_left"><i class="icon-link-outline"></i></a>
-
-                    <img alt=""  src="img/blog/img4.jpg">
-                    
-                    <div class="nicdark_margin20">
-                        <h4 class="white">MUSIC ACTIVITIES FOR ALL</h4>                        
-                    </div>
-
-                    <i class="icon-camera-outline nicdark_iconbg right medium orange"></i>
-
-                </div>
-            </div>
-            <div class="grid grid_4 nicdark_masonry_item excursions">
-                <div class="nicdark_archive1 nicdark_bg_red nicdark_radius nicdark_shadow">
-                    
-                    <a href="single-post-right-sidebar.html" class="nicdark_zoom nicdark_btn_icon nicdark_bg_red nicdark_border_reddark white medium nicdark_radius_circle nicdark_absolute_left"><i class="icon-link-outline"></i></a>
-
-                    <img alt=""  src="img/blog/img3.jpg">
-                    
-                    <div class="nicdark_margin20">
-                        <h4 class="white">CHRISTMAS PARTY !</h4>
+                        <h4 class="white"> <img alt=""  src="{{$content_a[$i][2]}}" style="width:90px;height: 100px"> </h4>
                         <div class="nicdark_space20"></div>
                         <div class="nicdark_divider left small"><span class="nicdark_bg_white nicdark_radius"></span></div>
                         <div class="nicdark_space20"></div>
-                        <p class="white">Lorem ipsum dolor sit amet, consectetur adcing elit Lorem ipsum dolor sit amet, consectetur adip iscing elit psum dolor sit amet.</p>
+                        <p class="white">{{$content_a[$i][1]}}</p>
                         <div class="nicdark_space20"></div>
-                        <a href="single-post-right-sidebar.html" class="white nicdark_btn"><i class="icon-doc-text-1 "></i> Read More</a>                        
+                        <a href="single_view_song?id={{$content_a[$i][0]}}" class="white nicdark_btn"><i class="icon-doc-text-1 "></i> View</a>                        
                     </div>
 
-                    <i class="icon-pencil-1 nicdark_iconbg right medium red"></i>
+                   
+                    
 
                 </div>
             </div>
-            <div class="grid grid_4 nicdark_masonry_item excursions">
-                <div class="nicdark_archive1 nicdark_bg_green nicdark_radius nicdark_shadow">
-                    
-                    <a href="single-post-right-sidebar.html" class="nicdark_zoom nicdark_btn_icon nicdark_bg_green nicdark_border_greendark white medium nicdark_radius_circle nicdark_absolute_left"><i class="icon-link-outline"></i></a>
 
-                    <img alt=""  src="img/blog/img5.jpg">
+
+<?php 
+$indexs++;
+    if($indexs==7){
+        $indexs=0;
+    }
+
+}?>
+
+
+
+<?php 
+$indexs =0;
+for($i=0;$i<sizeof($content_q);$i++) {?>
+
+            <div class="grid grid_2 nicdark_masonry_item quiz">
+                <div class="nicdark_archive1 {{$cs[$indexs]}} nicdark_radius nicdark_shadow">
                     
+                    <!--<a href="single-post-right-sidebar.html" class="nicdark_zoom nicdark_btn_icon nicdark_bg_blue nicdark_border_bluedark white medium nicdark_radius_circle nicdark_absolute_left"><i class="icon-link-outline"></i></a>
+                    -->                 
                     <div class="nicdark_margin20">
-                        <h4 class="white">BIO SPECIAL MEAL</h4>
+                        <h4 class="white">Question bundle {{$content_q[$i][1]}}</h4>
                         <div class="nicdark_space20"></div>
                         <div class="nicdark_divider left small"><span class="nicdark_bg_white nicdark_radius"></span></div>
                         <div class="nicdark_space20"></div>
-                        <p class="white">Lorem ipsum dolor sit amet, consectetur adcing elit Lorem ipsum dolor sit amet, consectetur adip iscing elit psum dolor sit amet.</p>
+                        <p class="white">Bundle Number : {{$content_q[$i][1]}}</p>
                         <div class="nicdark_space20"></div>
-                        <a href="single-post-right-sidebar.html" class="white nicdark_btn"><i class="icon-doc-text-1 "></i> Read More</a>                        
+                        <a href="show_question?id={{$content_q[$i][1]}}" class="white nicdark_btn"><i class="icon-doc-text-1 "></i> View</a>                        
                     </div>
 
-                    <i class="icon-picture-outline nicdark_iconbg right medium green"></i>
+                   
+                    
 
                 </div>
             </div>
-            <div class="grid grid_4 nicdark_masonry_item educational">
-                <div class="nicdark_archive1 nicdark_bg_yellow nicdark_radius nicdark_shadow">
-                    
-                    <a href="single-post-right-sidebar.html" class="nicdark_zoom nicdark_btn_icon nicdark_bg_yellow nicdark_border_yellowdark white medium nicdark_radius_circle nicdark_absolute_left"><i class="icon-link-outline"></i></a>
 
-                    <img alt=""  src="img/blog/img7.jpg">
+
+<?php 
+$indexs++;
+    if($indexs==7){
+        $indexs=0;
+    }
+
+}?>
+
+@if(empty($content_q) && empty($content_a) && empty($content_s) && empty($content_v))
+
+   <div class="grid grid_2 nicdark_masonry_item quiz">
+                <div class="nicdark_archive1 {{$cs[$indexs]}} nicdark_radius nicdark_shadow">
                     
+                    <!--<a href="single-post-right-sidebar.html" class="nicdark_zoom nicdark_btn_icon nicdark_bg_blue nicdark_border_bluedark white medium nicdark_radius_circle nicdark_absolute_left"><i class="icon-link-outline"></i></a>
+                    -->                 
                     <div class="nicdark_margin20">
-                        <h4 class="white">BEST COOKING ACTIVITIES !</h4>
+                        <h4 class="white">NO ANY SCHEDULED CONTENT </h4>
                         <div class="nicdark_space20"></div>
                         <div class="nicdark_divider left small"><span class="nicdark_bg_white nicdark_radius"></span></div>
                         <div class="nicdark_space20"></div>
-                        <p class="white">Lorem ipsum dolor sit amet, consectetur adcing elit Lorem ipsum dolor sit amet, consectetur adip iscing elit psum dolor sit amet.</p>
+                        <p class="white">Content not set</p>
                         <div class="nicdark_space20"></div>
-                        <a href="single-post-right-sidebar.html" class="white nicdark_btn"><i class="icon-doc-text-1 "></i> Read More</a>                        
+                                              
                     </div>
 
-                    <i class="icon-picture-outline nicdark_iconbg right medium yellow"></i>
 
-                </div>
-            </div>
-            <div class="grid grid_4 nicdark_masonry_item excursions">
-                <div class="nicdark_archive1 nicdark_bg_blue nicdark_radius nicdark_shadow">
+                   
                     
-                    <a href="single-post-right-sidebar.html" class="nicdark_zoom nicdark_btn_icon nicdark_bg_blue nicdark_border_bluedark white medium nicdark_radius_circle nicdark_absolute_left"><i class="icon-link-outline"></i></a>
-
-                    <img alt=""  src="img/blog/img8.jpg">
-                    
-                    <div class="nicdark_margin20">
-                        <h4 class="white">END OF THE SCHOOL YEAR</h4>
-                        <div class="nicdark_space20"></div>
-                        <div class="nicdark_divider left small"><span class="nicdark_bg_white nicdark_radius"></span></div>
-                        <div class="nicdark_space20"></div>
-                        <p class="white">Lorem ipsum dolor sit amet, consectetur adcing elit Lorem ipsum dolor sit amet, consectetur adip iscing elit psum dolor sit amet.</p>
-                        <div class="nicdark_space20"></div>
-                        <a href="single-post-right-sidebar.html" class="white nicdark_btn"><i class="icon-doc-text-1 "></i> Read More</a>                        
-                    </div>
-
-                    <i class="icon-camera-outline nicdark_iconbg right medium blue"></i>
 
                 </div>
             </div>
 
-            <div class="grid grid_4 nicdark_masonry_item excursions">
-                <div class="nicdark_archive1 nicdark_bg_orange nicdark_radius nicdark_shadow">
-                    
-                    <a href="single-post-right-sidebar.html" class="nicdark_zoom nicdark_btn_icon nicdark_bg_orange nicdark_border_orangedark white medium nicdark_radius_circle nicdark_absolute_left"><i class="icon-link-outline"></i></a>
 
-                    <img alt=""  src="img/blog/img6.jpg">
-                    
-                    <div class="nicdark_margin20">
-                        <h4 class="white">EXCURSION PRESENTATION</h4>
-                    </div>
+@endif
 
-                    <i class="icon-picture-outline nicdark_iconbg right medium orange"></i>
 
-                </div>
-            </div>
+           
 
-            <div class="grid grid_4 nicdark_masonry_item excursions">
-                <div class="nicdark_archive1 nicdark_bg_red nicdark_radius nicdark_shadow">
-                    
-                    <div class="nicdark_margin20">
-                        <h4 class="white">DOCTOR IN THE SCHOOL</h4>                        
-                        <div class="nicdark_space20"></div>
-                        <div class="nicdark_divider left small"><span class="nicdark_bg_white nicdark_radius"></span></div>
-                        <div class="nicdark_space20"></div>
-                        <p class="white">Lorem ipsum dolor sit amet, consectetur adcing elit Lorem ipsum dolor sit amet, consectetur adip iscing elit psum dolor sit amet.</p>
-                        <div class="nicdark_space20"></div>
-                        <a href="single-post-right-sidebar.html" class="white nicdark_btn"><i class="icon-doc-text-1 "></i> Read More</a>
-                    </div>
-
-                    <i class="icon-pencil-1 nicdark_iconbg right medium red"></i>
-
-                </div>
-            </div>
 
         </div>
+    
         <!--end nicdark_masonry_container-->
 
     </div>
@@ -671,22 +641,7 @@
 <section class="nicdark_section">
 
 
-    <!--start nicdark_container-->
-    <div class="nicdark_container nicdark_clearfix">
-
-        <div class="nicdark_space30"></div>
-
-        <div class="grid grid_12">
-            <div class="nicdark_textevidence center">
-                <a href="blog-masonry.html" class="nicdark_zoom nicdark_btn nicdark_bg_blue medium nicdark_shadow nicdark_radius white nicdark_margin10"><i class="icon-th-outline"></i>&nbsp;&nbsp;&nbsp;VIEW MORE</a>
-            </div>
-        </div>
-
-        <div class="nicdark_space40"></div>
-
-    </div>
-    <!--end nicdark_container-->
-
+   
             
 </section>
 <!--end section--><!--end-->

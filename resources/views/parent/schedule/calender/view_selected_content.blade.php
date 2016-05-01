@@ -43,6 +43,12 @@ $cs = array("nicdark_bg_green","nicdark_bg_orange","nicdark_bg_blue","nicdark_bg
             <div class="nicdark_margin10">
                 <a data-filter=".story" class="nicdark_bg_grey2_hover nicdark_transition nicdark_btn nicdark_bg_grey small nicdark_shadow nicdark_radius grey">STORIES</a>
             </div>
+            <div class="nicdark_margin10">
+                <a data-filter=".audio" class="nicdark_bg_grey2_hover nicdark_transition nicdark_btn nicdark_bg_grey small nicdark_shadow nicdark_radius grey">Songs</a>
+            </div>
+             <div class="nicdark_margin10">
+                <a data-filter=".quiz" class="nicdark_bg_grey2_hover nicdark_transition nicdark_btn nicdark_bg_grey small nicdark_shadow nicdark_radius grey">Question bundles</a>
+            </div>
             <div class="nicdark_space10"></div>
         </div>
 
@@ -113,7 +119,6 @@ for($i=0;$i<sizeof($content_s);$i++) {?>
 
                 </div>
             </div>
-           
 
 
 <?php 
@@ -127,7 +132,82 @@ $indexs++;
 
 
 
+<?php 
+$indexs =0;
+for($i=0;$i<sizeof($content_a);$i++) {?>
 
+            <div class="grid grid_2 nicdark_masonry_item audio">
+                <div class="nicdark_archive1 {{$cs[$indexs]}} nicdark_radius nicdark_shadow">
+                    
+                    <!--<a href="single-post-right-sidebar.html" class="nicdark_zoom nicdark_btn_icon nicdark_bg_blue nicdark_border_bluedark white medium nicdark_radius_circle nicdark_absolute_left"><i class="icon-link-outline"></i></a>
+                    -->                 
+                    <div class="nicdark_margin20">
+                        <h4 class="white"> <img alt=""  src="{{$content_a[$i][2]}}" style="width:90px;height: 100px"> </h4>
+                        <div class="nicdark_space20"></div>
+                        <div class="nicdark_divider left small"><span class="nicdark_bg_white nicdark_radius"></span></div>
+                        <div class="nicdark_space20"></div>
+                        <p class="white">{{$content_a[$i][1]}}</p>
+                        <div class="nicdark_space20"></div>
+                        <a href="single_view_song?id={{$content_a[$i][0]}}" class="white nicdark_btn"><i class="icon-doc-text-1 "></i> View</a>                        
+                    </div>
+
+                   
+                    
+
+                </div>
+            </div>
+
+
+<?php 
+$indexs++;
+    if($indexs==7){
+        $indexs=0;
+    }
+
+}?>
+
+
+
+<?php 
+$indexs =0;
+for($i=0;$i<sizeof($content_q);$i++) {?>
+
+            <div class="grid grid_2 nicdark_masonry_item quiz">
+                <div class="nicdark_archive1 {{$cs[$indexs]}} nicdark_radius nicdark_shadow">
+                    
+                    <!--<a href="single-post-right-sidebar.html" class="nicdark_zoom nicdark_btn_icon nicdark_bg_blue nicdark_border_bluedark white medium nicdark_radius_circle nicdark_absolute_left"><i class="icon-link-outline"></i></a>
+                    -->                 
+                    <div class="nicdark_margin20">
+                        <h4 class="white">Question bundle {{$content_q[$i][1]}}</h4>
+                        <div class="nicdark_space20"></div>
+                        <div class="nicdark_divider left small"><span class="nicdark_bg_white nicdark_radius"></span></div>
+                        <div class="nicdark_space20"></div>
+                        <p class="white">Bundle Number : {{$content_q[$i][1]}}</p>
+                        <div class="nicdark_space20"></div>
+                        <a href="show_question?id={{$content_q[$i][1]}}" class="white nicdark_btn"><i class="icon-doc-text-1 "></i> View</a>                        
+                    </div>
+
+                   
+                    
+
+                </div>
+            </div>
+
+
+<?php 
+$indexs++;
+    if($indexs==7){
+        $indexs=0;
+    }
+
+}?>
+
+
+
+
+           
+
+<input type="text" value="{{$selected_date}}" id="Sdate" hidden>
 
 
 
@@ -143,7 +223,11 @@ $indexs++;
 
    <div class="content" style="padding-left: 70%;padding-bottom: 1%">
      <button  type = "button" onclick="confirm()" class = "btn btn-success">Create Schedule</button>
-    </div>    
+    </div>  
+
+     <div class="content" style="padding-left: 70%;padding-bottom: 1%">
+     <button  type = "button" onclick="deleteS()" class = "btn btn-danger">Delete Schedule</button>
+    </div>      
 </section>
 
 <script type="text/javascript">
@@ -151,7 +235,7 @@ $indexs++;
 function confirm(){
 
 
- swal({   title: "Are you sure?",   text: "We gonna set this content as your new schedule queue!",   type: "warning",   showCancelButton: true,   confirmButtonColor: "#DD6B55",   confirmButtonText: "Yes",   cancelButtonText: "No, cancel ",   closeOnConfirm: false,   closeOnCancel: false }, function(isConfirm){   
+ swal({   title: "Are you sure?",   text: "This content wil set as your new schedule queue!",   type: "warning",   showCancelButton: true,   confirmButtonColor: "#DD6B55",   confirmButtonText: "Yes",   cancelButtonText: "No, cancel ",   closeOnConfirm: false,   closeOnCancel: false }, function(isConfirm){   
     if (isConfirm) {   
 
 
@@ -173,6 +257,65 @@ function confirm(){
 
 
 </script>
+<script type="text/javascript">
+    
 
+
+    
+function deleteS(){
+
+    var date = document.getElementById('Sdate').value;
+
+
+ swal({   title: "Are you sure?",   text: "",   type: "warning",   showCancelButton: true,   confirmButtonColor: "#DD6B55",   confirmButtonText: "Yes",   cancelButtonText: "No, cancel ",   closeOnConfirm: false,   closeOnCancel: false }, function(isConfirm){   
+    if (isConfirm) {   
+
+        $.ajax({
+                type: "get",
+                url: "delete_schedule",
+                data:{
+                    date:date
+                },
+           
+                success: function (data) {
+               
+                 if(data== 1){
+
+                        swal("successfully!", "Schedule deleted!", "success");
+                        setTimeout(function(){
+  
+                             window.location.href = "past_schedule";
+                      
+
+                        },2000);
+                 return true;
+             }
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    
+                  sweetAlert("Sorry!", "Something went wrong!", "error");
+                  return false;
+                }
+            });
+
+
+
+
+      
+
+      } 
+    else {  
+ 
+    swal({   title: "Canceled!",   text: "",   timer: 1000,   showConfirmButton: false });
+    
+    
+       } 
+
+
+   });
+
+
+}
+</script>
 
 @endsection

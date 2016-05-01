@@ -13,13 +13,13 @@ class ParentVideosContoller extends Controller
 
 	 
     
-public function view_all_videos(){
+ public function viewAllVideos(){
 
 	$video_records = DB::select("select * from video");
     return view('parent.videos.all_videos')->with('videos',$video_records );
 
-}
-public function view_video(Request $request){
+ }
+ public function viewVideo(Request $request){
 
 	$id = $request->input('id');
 	$status="no";
@@ -38,12 +38,14 @@ public function view_video(Request $request){
 	$cat = $request->input('cat');
 	$pid = $_SESSION['USERID'];
 
-	$video_record = DB::select("select * from videos a where a.id='$id' ");
-	$video_records = DB::select("select * from videos a where a.cat = '$cat'");
+	$video_record = DB::select("select * from video a where a.id='$id' ");
+	$video_records = DB::select("select * from video a where a.agegroupid = '$cat'");
 	//$check = DB::select("select * from collector a where a.pid = '$pid' and a.item_id = '$id' and type='video' ");
 
-	$comments  = DB::select("select a.text,a.date,k.l_name,k.f_name,k.img_path from comment12 a,parent_registration k where a.pid = k.user_id and a.item_id = '$id' and a.type = 'video'");
-	//var_dump($comments);
+	$comments  = DB::select("select a.text,a.comment_date,k.lastname as l_name,k.firstname as f_name,k.img_path 
+from comment a,user k 
+where a.parent_id = k.id and a.item_id = '$id' and a.type_id = 1");
+	
 		if($status == "yes"){
 
 			$msg = "has";
@@ -55,13 +57,11 @@ public function view_video(Request $request){
 
 
 
-		
-
 	return view('parent.videos.view_videos')->with('selected_video',$video_record )->with('all_videos',$video_records)->with('msg',$msg)->with('comment',$comments);;
 
-}
+    }
 
-public function view_video_cat(Request $request){
+  public function viewVideoCat(Request $request){
 
 	$id = $request->input('id');
 	$cat = $request->input('cat');
@@ -71,10 +71,9 @@ public function view_video_cat(Request $request){
 
 
 
-}
+  }
 
-
-public function add_to_collector_video(Request $request){
+  public function addToCollectorVideo(Request $request){
 
 		$id = $request->input('id');
 
@@ -85,26 +84,12 @@ public function add_to_collector_video(Request $request){
 		$_SESSION['video_que'] = $vedio_items;
 		
 		echo 1;
-		/* $pid = $_SESSION['USERID'];
-		 $check = DB::select("select * from collector a where a.pid='$pid' and a.item_id='$id' and a.type='video' " );
-
-
-		 if(empty($check)){
-		 DB::statement(DB::raw(
-                       "INSERT INTO  collector(pid,item_id,type)   values ('$pid','$id','video') "));  
-		 echo 1;
-		}
-		else{
-			echo 0;
-		}
-			 	 
-	*/
-
+	
 
 
 	}
 
-	public function delete_from_collector_video(Request $request){
+	public function deleteFromCollectorVideo(Request $request){
 
 		$id = $request->input('id');
 		
@@ -118,14 +103,6 @@ public function add_to_collector_video(Request $request){
 			}
 		$_SESSION['video_que'] = $vedio_items;
 
-		
-		// $pid = $_SESSION['USERID'];
-		 
-	
-		/*DB::statement(DB::raw(
-                       "DELETE FROM  collector where pid = '$pid' and item_id = '$id' and type='video'"));  
-		
-		*/
 		echo 1;
 
 	}
@@ -141,7 +118,7 @@ public function add_to_collector_video(Request $request){
   		return view('parent.videos.all_videos')->with('videos',$data );
 
 	}
-	public function search_cat_videos(){
+	public function searchCatVideos(){
 		
 		$cat = $_REQUEST['cat'];
 		$key = $_REQUEST['search'];

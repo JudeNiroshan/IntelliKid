@@ -24,20 +24,20 @@ $date = $data[0]->dat_of_birth;
 $date = explode("/",$date)
 
 ?>
-   <link rel="stylesheet" href="{{ URL::asset('assets/css/bootstrap.min.css')}}">
-   <script src="{{ URL::asset('assets/baby/upload/js/jquery-pack.js') }}"></script>
-     <script src="{{ URL::asset('assets/baby/upload/js/jquery.imgareaselect.min.js') }}"></script>
+   <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+   <script src="assets/baby/upload/js/jquery-pack.js"></script>
+     <script src="assets/baby/upload/js/jquery.imgareaselect.min.js"></script>
 
 
 
 
     <!-- profile js/css -->
-     <link rel="stylesheet" href="{{ URL::asset('assets/parent/profile/css/animate.min.css')}}">
-     <link rel="stylesheet" href="{{ URL::asset('assets/parent/profile/css/custom.css')}}">
-     <link rel="stylesheet" href="{{ URL::asset('assets/parent/profile/css/icheck/flat/green.css')}}">
-     <link rel="stylesheet" href="{{ URL::asset('assets/parent/profile/css/bootstrap.min.css')}}">
+     <link rel="stylesheet" href="assets/parent/profile/css/animate.min.css">
+     <link rel="stylesheet" href="assets/parent/profile/css/custom.css">
+     <link rel="stylesheet" href="assets/parent/profile/css/icheck/flat/green.css">
+     <link rel="stylesheet" href="assets/parent/profile/css/bootstrap.min.css">
 
-     <script src="{{ URL::asset('assets/parent/profile/js/jquery.min.js') }}"></script>
+     <script src="assets/parent/profile/js/jquery.min.js"></script>
  <!--start section-->
 <section id="nicdark_parallax_title" class="nicdark_section nicdark_imgparallax nicdark_parallaxx_img5">
 
@@ -490,10 +490,6 @@ return false;
 
 function delete_ac(){
 
-
-	
-	
-
            document.getElementById("load").innerHTML = '<div class="block"> <div class="loading"><span class="ball1"></span><span class="ball2"></span> Loading....</div></div>';
       
            
@@ -508,7 +504,7 @@ function delete_ac(){
            
                 success: function (data) {
                  if(data== 1){
-swal("successfully!", "Account deleted!", "success");
+                        swal("successfully!", "Account deleted!", "success");
                         setTimeout(function(){
 
                        document.getElementById("load").innerHTML = "";

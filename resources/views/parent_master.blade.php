@@ -10,11 +10,8 @@
 
 
 
-
-
-
 @if(isset($_SESSION['STATUS']) )
-    @if($_SESSION['STATUS']== "PENDING")
+    @if($_SESSION['STATUS']== "P")
 
 <script> 
     location.href = "email_verification_notiece";
@@ -159,7 +156,7 @@
                 <div class="grid grid_6">
                     <div class="nicdark_focus">
                      <h6 class="white">
-                       <i class="icon-plus-outline"></i>&nbsp;&nbsp;<a class="white nicdark_mpopup_ajax" href="#">COLLECTOR</a>
+                      
                        </h6>
                     </div>
                 </div>
@@ -212,7 +209,7 @@
                                     
                                 </li>
                                 <li class="red">
-                                    <a href="#">ACCOUNTS</a>
+                                    <a href="">ACCOUNTS</a>
                                     <ul class="sub-menu">
                                     <li><a href="profile">My Account</a></li>
                                      <li><a href="new_child">Create Child Accounts</a></li>
@@ -222,15 +219,18 @@
                                     </ul>
                                 </li>
                                 <li class="blue">
-                                    <a >CONTENT</a>
+                                    <a href="">CONTENT</a>
                                     <ul class="sub-menu">
                                         <li> <a href="videos">Videos</a></li>
                                         <li> <a href="stories">Story</a></li>
+                                        <li> <a href="audio">Songs</a></li>
+                                        <li> <a href="quiz">Quiz</a></li>
+
                                         
                                     </ul>
                                 </li>
                                 <li class="yellow nicdark_megamenu">
-                                    <a href="schedule">SCHEDULE</a>
+                                    <a href="#">SCHEDULE</a>
                                     <ul class="sub-menu">
                                         <li class="mm_grid mm_grid_3">
                                             <a >Schedule content</a>
@@ -243,7 +243,7 @@
                                         <li class="mm_grid mm_grid_3">
                                             <a href="#">Delete Created Schedules</a>
                                             <ul class="sub-menu">
-                                                <li><a href="delete_schedule">View and Delete</a></li>
+                                                <li><a href="past_schedule">View and Delete</a></li>
                                               
                                             </ul>
                                         </li>
@@ -325,18 +325,8 @@
 
         <div class="grid grid_6">
             <div class="nicdark_focus right nicdark_aligncenter_iphoneland nicdark_aligncenter_iphonepotr">
-                <div class="nicdark_margin10">
-                    <a href="#" class="nicdark_facebook nicdark_press right nicdark_btn_icon small nicdark_radius white"><i class="icon-facebook-1"></i></a>
-                </div>
-                <div class="nicdark_margin10">
-                    <a href="#" class="nicdark_press right nicdark_btn_icon nicdark_bg_red nicdark_shadow small nicdark_radius white"><i class="icon-gplus"></i></a>
-                </div>
-                <div class="nicdark_margin10">
-                    <a href="#" class="nicdark_press right nicdark_btn_icon nicdark_bg_blue nicdark_shadow small nicdark_radius white"><i class="icon-twitter-1"></i></a>
-                </div>
-                <div class="nicdark_margin10">
-                    <a href="#start_nicdark_framework" class="nicdark_zoom nicdark_internal_link right nicdark_btn_icon nicdark_bg_greydark2 small nicdark_radius white"><i class="icon-up-outline"></i></a>
-                </div>
+               
+               
             </div>
         </div>
 
