@@ -222,25 +222,25 @@
 
         <div class="nicdark_section nicdark_bg_greydark nicdark_displaynone_responsive">
             <div class="nicdark_container nicdark_clearfix">
+
                 <div class="grid grid_6">
                     <div class="nicdark_focus">
-                        <h6 class="white">
-                            <i class="icon-calendar-outlilne"></i>&nbsp;&nbsp;<a class="white" href="events.html">OUR EVENTS</a>
-                            &nbsp;&nbsp;&nbsp;&nbsp;<span class="grey">·</span>&nbsp;&nbsp;&nbsp;&nbsp;
-                            <i class="icon-pencil-1"></i>&nbsp;&nbsp;<a class="white" href="blog-masonry.html">NEWS</a>
-                            &nbsp;&nbsp;&nbsp;&nbsp;<span class="grey">·</span>&nbsp;&nbsp;&nbsp;&nbsp;
-                            <i class="icon-phone-outline"></i>&nbsp;&nbsp;(00) +51278934
-                        </h6>
+                     <h6 class="white">
+                      
+                       </h6>
                     </div>
                 </div>
-                <div class="grid grid_6 right">
+                  <div class="grid grid_6 right">
                     <div class="nicdark_focus right">
                         <h6 class="white">
-                            <i class="icon-globe-alt-outline"></i>&nbsp;&nbsp;<a class="white nicdark_mpopup_window" href="#nicdark_window">LANGUAGES</a>
-                            &nbsp;&nbsp;&nbsp;&nbsp;<span class="grey">·</span>&nbsp;&nbsp;&nbsp;&nbsp;
-                            <i class="icon-plus-outline"></i>&nbsp;&nbsp;<a class="white nicdark_mpopup_ajax" href="form-register.html">REGISTER</a>
-                            &nbsp;&nbsp;&nbsp;&nbsp;<span class="grey">·</span>&nbsp;&nbsp;&nbsp;&nbsp;
-                            <i class="icon-lock-1"></i>&nbsp;&nbsp;<a class="white nicdark_mpopup_ajax" href="form-login.html">LOG IN</a>
+
+                      
+                           
+                    @if ((isset( $_SESSION['USERID']))==true   ) 
+
+                           </i>&nbsp;&nbsp;<?php echo $_SESSION['NAME'];?>
+                    @endif
+                          
                         </h6>
                     </div>
                 </div>
@@ -248,45 +248,8 @@
                 <!--info window for languages-->
                 <div id="nicdark_window" class="nicdark_bg_white nicdark_radius zoom-anim-dialog mfp-hide">
                     
-                    <div class="nicdark_textevidence nicdark_bg_red nicdark_radius_top">
-                        <div class="nicdark_margin20">
-                            <h4 class="white">LANGUAGES</h4>
-                        </div>
-                    </div>
 
-                    <div class="nicdark_margin20">
-                        
-                        <ul class="nicdark_list border">
-                        
-                            <li class="nicdark_border_grey">
-                                <p><a class="grey" href="index-2.html">ENGLISH</a><a href="index-2.html" class="nicdark_btn right nicdark_opacity">
-                                <img alt="" width="30"  src="{{ URL::asset('assets/adminPage_assets/forum_style/img/flag/img1.png') }}"></a></p>
-                                <div class="nicdark_space15"></div>
-                            </li>
-
-                            <li class="nicdark_border_grey">
-                                <div class="nicdark_space15"></div>
-                                <p><a class="grey" href="index-2.html">RUSSIAN</a><a href="index-2.html" class="nicdark_btn right nicdark_opacity">
-                                <img alt="" width="30"  src="{{ URL::asset('assets/adminPage_assets/forum_style/img/flag/img2.png') }}"></a></p>  
-                                <div class="nicdark_space15"></div>
-                            </li>
-                                
-                            <li class="nicdark_border_grey">
-                                <div class="nicdark_space15"></div>
-                                <p><a class="grey" href="index-2.html">ARABIC</a><a href="index-2.html" class="nicdark_btn right nicdark_opacity">
-                                <img alt="" width="30"  src="{{ URL::asset('assets/adminPage_assets/forum_style/img/flag/img3.png') }}"></a></p>
-                                <div class="nicdark_space15"></div>
-                            </li>
-
-                            <li class="nicdark_border_grey">
-                                <div class="nicdark_space15"></div>
-                                <p><a class="grey" href="index-2.html">ITALIAN</a><a href="index-2.html" class="nicdark_btn right nicdark_opacity">
-                                <img alt="" width="30"  src="{{ URL::asset('assets/adminPage_assets/forum_style/img/flag/img4.png') }}"></a></p>   
-                            </li>
-                                
-                        </ul>
-
-                    </div>
+                   
                 </div>
                 <!--end window-->
 
@@ -302,103 +265,78 @@
                         
                         <div class="nicdark_space20"></div>
 
-                        <div class="nicdark_logo nicdark_marginleft10">
-                            <a href="index-2.html"><img alt="" src="{{ URL::asset('assets/adminPage_assets/forum_style/img/logo.png') }}"></a>
+                        <div class="nicdark_logo nicdark_marginleft10" style="margin-top:-2%">
+                            <a href=""><img alt="" src="{{ URL::asset('assets/images/logoto.png')}}" height="60" width="0"></a>
                         </div>
 
-                        <a class="nicdark_btn_icon nicdark_zoom nicdark_bg_yellow_hover nicdark_right_sidebar_btn_open nicdark_marginright10 nicdark_bg_orange extrasmall nicdark_radius white right"><i class="icon-basket-1"></i></a>
-                        
+                     <!--    <a class="nicdark_btn_icon nicdark_zoom nicdark_bg_yellow_hover nicdark_right_sidebar_btn_open nicdark_marginright10 nicdark_bg_orange extrasmall nicdark_radius white right"><i class="icon-mic-outline"></i></a>
+                         -->
+                         
                         <nav>
                             <ul class="nicdark_menu nicdark_margin010 nicdark_padding50">
 
                                 <li class="orange">
-                                    <a href="index-2.html">HOME</a>
-                                    <ul class="sub-menu">
-                                        <li><a href="index-2.html">Home Default</a></li>
-                                        <li><a href="index-3.html">Color Sections</a></li>
-                                    </ul>
+                                    <a href="default_home">HOME</a>
+                                    
                                 </li>
                                 <li class="red">
-                                    <a href="#">PAGES</a>
+                                    <a href="">ACCOUNTS</a>
                                     <ul class="sub-menu">
-                                        <li><a href="prices.html">Prices</a></li>
-                                        <li>
-                                            <a href="teachers.html">Teachers</a>
-                                            <ul class="sub-menu">
-                                                <li><a href="teachers.html">All Teachers</a></li>
-                                                <li><a href="single-teacher.html">Single Teacher</a></li>
-                                            </ul>
-                                        </li>
-                                        <li>
-                                            <a href="excursions.html">Excursion</a>
-                                            <ul class="sub-menu">
-                                                <li><a href="excursions.html">All Excursion</a></li>
-                                                <li><a href="single-excursion.html">Single Excursion</a></li>
-                                            </ul>
-                                        </li>
-                                        <li>
-                                            <a href="courses.html">Courses</a>
-                                            <ul class="sub-menu">
-                                                <li><a href="courses.html">All Courses</a></li>
-                                                <li><a href="single-course.html">Single Course</a></li>
-                                            </ul>
-                                        </li>
-                                        <li>
-                                            <a href="events.html">Events</a>
-                                            <ul class="sub-menu">
-                                                <li><a href="events.html">All Events</a></li>
-                                                <li><a href="single-event.html">Single Event</a></li>
-                                            </ul>
-                                        </li>
-                                        <li><a href="faq.html">Faq</a></li>
-                                        <li><a href="404.html">404</a></li>
+                                    <!-- <li><a href="profile">My Account</a></li> -->
+                                     <li><a href="new_child">Create Child Accounts</a></li>
+                                        <li><a href="veca">Created Child Accounts</a></li>
+                                      
+                                     
                                     </ul>
                                 </li>
                                 <li class="blue">
-                                    <a href="courses.html">COURSES</a>
+                                    <a href="">CONTENT</a>
                                     <ul class="sub-menu">
-                                        <li><a href="courses.html">All Courses</a></li>
-                                        <li><a href="single-course.html">Single Course</a></li>
+                                        <li> <a href="videos">Videos</a></li>
+                                        <li> <a href="stories">Story</a></li>
+                                        <li> <a href="audio">Songs</a></li>
+                                        <li> <a href="quiz">Quiz</a></li>
+
+                                        
                                     </ul>
                                 </li>
                                 <li class="yellow nicdark_megamenu">
-                                    <a href="#">MEGA MENU</a>
+                                    <a href="#">SCHEDULE</a>
                                     <ul class="sub-menu">
                                         <li class="mm_grid mm_grid_3">
-                                            <a href="#">Lorem Ipsum Dolor</a>
+                                            <a >Schedule content</a>
                                             <ul class="sub-menu">
-                                                <li><a href="#">Lorem Ipsum Dolor</a></li>
-                                                <li><a href="#">Lorem Ipsum Dolor</a></li>
-                                                <li><a href="#">Lorem Ipsum Dolor</a></li>
+                                                <li><a href="schedule">View and edit Content</a></li>
+                                                
+                                            </ul>
+                                        </li>
+                                        
+                                        <li class="mm_grid mm_grid_3">
+                                            <a href="#">Delete Created Schedules</a>
+                                            <ul class="sub-menu">
+                                                <li><a href="past_schedule">View and Delete</a></li>
+                                              
                                             </ul>
                                         </li>
                                         <li class="mm_grid mm_grid_3">
-                                            <a href="#">Lorem Ipsum Dolor</a>
+                                            <a>Create Schedule</a>
                                             <ul class="sub-menu">
-                                                <li><a href="#">Lorem Ipsum Dolor</a></li>
-                                                <li><a href="#">Lorem Ipsum Dolor</a></li>
-                                                <li><a href="#">Lorem Ipsum Dolor</a></li>
+                                                <li><a href="make_schedule">New Schedule</a></li>
+                                                <li><a href="past_schedule">Create from past records</a></li>
+                                               
                                             </ul>
                                         </li>
-                                        <li class="mm_grid mm_grid_3">
-                                            <a href="#">Lorem Ipsum Dolor</a>
-                                            <ul class="sub-menu">
-                                                <li><a href="#">Lorem Ipsum Dolor</a></li>
-                                                <li><a href="#">Lorem Ipsum Dolor</a></li>
-                                                <li><a href="#">Lorem Ipsum Dolor</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="mm_grid mm_grid_3">
-                                            <a href="#">Lorem Ipsum Dolor</a>
-                                            <ul class="sub-menu">
-                                                <li><a href="#">Lorem Ipsum Dolor</a></li>
-                                                <li><a href="#">Lorem Ipsum Dolor</a></li>
-                                                <li><a href="#">Lorem Ipsum Dolor</a></li>
-                                            </ul>
-                                        </li>
+                                        
                                     </ul>
                                 </li>
-                                <li class="green">
+                                 <li class="blue">
+                                    <a href="">FORUM</a>
+                                    <ul class="sub-menu">
+                                        <li> <a href="parent_forum">Forum</a></li>
+                                       
+                                    </ul>
+                                </li>
+                                <!--<li class="green">
                                     <a href="blog-masonry.html">BLOG</a>
                                     <ul class="sub-menu">
                                         <li><a href="blog-masonry.html">Masonry Layout</a></li>
@@ -413,14 +351,15 @@
                                     </ul>
                                 </li>
                                 <li class="orange">
-                                    <a href="events.html">EVENTS</a>
+                                    <a href="events.html">SCHEDULER</a>
                                     <ul class="sub-menu">
-                                        <li><a href="events.html">All Events</a></li>
-                                        <li><a href="single-event.html">Single Event</a></li>
+                                        <li><a href="schedule">Schedule</a></li>
+                                        <li><a href="make_schedule">Make Schedules</a></li>
                                     </ul>
-                                </li>
+                                </li>-->
                                 <li class="grey">
-                                    <a href="contact-1.html">CONTACTS</a>
+
+                                    <a href=" logout">LOGOUT</a>
                                 </li>
                             </ul>
                         </nav>
@@ -450,9 +389,9 @@
             <div class="grid grid_12">
                 <div class="nicdark_space100"></div>
                 <div class="nicdark_space100"></div>
-                <h1 class="white subtitle">SINGLE POST</h1>
+                <h1 class="white subtitle">FORUM | ARTICLES</h1>
                 <div class="nicdark_space10"></div>
-                <h3 class="subtitle white">SINGLE POST WITH RIGHT SIDEBAR</h3>
+                <h3 class="subtitle white">RIGHT PLACE TO DISCUSS YOUR THOUGHTS</h3>
                 <div class="nicdark_space20"></div>
                 <div class="nicdark_divider left big"><span class="nicdark_bg_white nicdark_radius"></span></div>
                 <div class="nicdark_space40"></div>
@@ -818,142 +757,7 @@
 
 <div class="nicdark_space3 nicdark_bg_gradient"></div>
 
-<!--start section-->
-<section class="nicdark_section nicdark_bg_greydark">
 
-    <!--start nicdark_container-->
-    <div class="nicdark_container nicdark_clearfix">
-
-        <div class="nicdark_space30"></div>
-
-        <div class="grid grid_3 nomargin percentage">
-
-            <div class="nicdark_space20"></div>
-
-            <div class="nicdark_margin10">
-                <h4 class="white">OUR PRIMARY SCHOOL</h4>
-                <div class="nicdark_space20"></div>
-                <div class="nicdark_divider left small"><span class="nicdark_bg_white nicdark_radius"></span></div>
-                <div class="nicdark_space20"></div>
-                <p class="white">Lorem ipsum dolor sit amet, ipsum dolor sit amet, ipsum dolor sit amet, ipsum dolor sit amet. Lorem ipsum dolor sit amet.</p>
-                <div class="nicdark_space20"></div>
-                <div class="nicdark_divider left small"><span class="nicdark_bg_white nicdark_radius"></span></div>
-                <div class="nicdark_space20"></div>
-                <a href="contact-1.html" class="nicdark_btn_icon nicdark_bg_orange small nicdark_shadow nicdark_radius white"><i class="icon-mail-1 nicdark_rotate"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;
-                <a href="contact-1.html" class="nicdark_btn_icon nicdark_bg_yellow small nicdark_shadow nicdark_radius white"><i class="icon-home nicdark_rotate"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;
-                <a href="contact-1.html" class="nicdark_btn_icon nicdark_bg_red small nicdark_shadow nicdark_radius white"><i class="icon-phone-outline nicdark_rotate"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;
-            </div>
-        </div>
-
-        <div class="grid grid_3 nomargin percentage">
-            
-            <div class="nicdark_space30"></div>
-
-            <div class="nicdark_marginleft10">
-                <h4 class="white">OUR TAGS</h4>
-                <div class="nicdark_space20"></div>
-                <div class="nicdark_divider left small"><span class="nicdark_bg_white nicdark_radius"></span></div>
-            </div>
-            <div class="nicdark_space10"></div>
-
-            <a href="#" class="nicdark_btn nicdark_bg_greydark2 small nicdark_shadow nicdark_radius white subtitle nicdark_margin10">Teacher</a>
-            <a href="#" class="nicdark_btn nicdark_bg_greydark2 small nicdark_shadow nicdark_radius white subtitle nicdark_margin10">Baby</a>
-            <a href="#" class="nicdark_btn nicdark_bg_greydark2 small nicdark_shadow nicdark_radius white subtitle nicdark_margin10">Kids</a>
-            <a href="#" class="nicdark_btn nicdark_bg_greydark2 small nicdark_shadow nicdark_radius white subtitle nicdark_margin10">Teacher</a>
-            <a href="#" class="nicdark_btn nicdark_bg_greydark2 small nicdark_shadow nicdark_radius white subtitle nicdark_margin10">Teacher</a>
-            <a href="#" class="nicdark_btn nicdark_bg_greydark2 small nicdark_shadow nicdark_radius white subtitle nicdark_margin10">Baby</a>
-            <a href="#" class="nicdark_btn nicdark_bg_greydark2 small nicdark_shadow nicdark_radius white subtitle nicdark_margin10">Kids</a>
-            <a href="#" class="nicdark_btn nicdark_bg_greydark2 small nicdark_shadow nicdark_radius white subtitle nicdark_margin10">Teacher</a>
-            <a href="#" class="nicdark_btn nicdark_bg_greydark2 small nicdark_shadow nicdark_radius white subtitle nicdark_margin10">Teacher</a>
-            <a href="#" class="nicdark_btn nicdark_bg_greydark2 small nicdark_shadow nicdark_radius white subtitle nicdark_margin10">Baby</a>
-            <a href="#" class="nicdark_btn nicdark_bg_greydark2 small nicdark_shadow nicdark_radius white subtitle nicdark_margin10">Kids</a>
-            <a href="#" class="nicdark_btn nicdark_bg_greydark2 small nicdark_shadow nicdark_radius white subtitle nicdark_margin10">Teacher</a>
-
-        </div>
-
-        <div class="grid grid_3 nomargin percentage">
-
-            <div class="nicdark_space20"></div>
-            
-            <div class="nicdark_margin10">
-                <h4 class="white">GALLERY OF SCHOOL</h4>
-                <div class="nicdark_space20"></div>
-                <div class="nicdark_divider left small"><span class="nicdark_bg_white nicdark_radius"></span></div>
-            </div>
-            
-
-            <div class="grid nomargin grid_4 percentage">
-                <div class="nicdark_margin10">
-                    <img alt="" class="nicdark_radius nicdark_opacity nicdark_focus" 
-                    src="{{ URL::asset('assets/adminPage_assets/forum_style/img/footer/img1.jpg') }}" >
-                </div>
-            </div>
-            
-            <div class="grid nomargin grid_4 percentage">
-                <div class="nicdark_margin10">
-                    <img alt="" class="nicdark_radius nicdark_opacity nicdark_focus" 
-                    src="{{ URL::asset('assets/adminPage_assets/forum_style/img/footer/img2.jpg') }}" >
-                </div>
-            </div>
-            
-            <div class="grid nomargin grid_4 percentage">
-                <div class="nicdark_margin10">
-                    <img alt="" class="nicdark_radius nicdark_opacity nicdark_focus" 
-                    src="{{ URL::asset('assets/adminPage_assets/forum_style/img/footer/img3.jpg') }}" >
-                </div>
-            </div>
-            
-            <div class="grid nomargin grid_4 percentage">
-                <div class="nicdark_margin10">
-                    <img alt="" class="nicdark_radius nicdark_opacity nicdark_focus" 
-                    src="{{ URL::asset('assets/adminPage_assets/forum_style/img/footer/img4.jpg') }}" >
-                </div>
-            </div>
-            
-            <div class="grid nomargin grid_4 percentage">
-                <div class="nicdark_margin10">
-                    <img alt="" class="nicdark_radius nicdark_opacity nicdark_focus" 
-                    src="{{ URL::asset('assets/adminPage_assets/forum_style/img/footer/img5.jpg') }}" >
-                </div>
-            </div>
-            
-            <div class="grid nomargin grid_4 percentage">
-                <div class="nicdark_margin10">
-                    <img alt="" class="nicdark_radius nicdark_opacity nicdark_focus" 
-                    src="{{ URL::asset('assets/adminPage_assets/forum_style/img/footer/img6.jpg') }}" >
-                </div>
-            </div>
-            
-
-        </div>
-
-        <div class="grid grid_3 nomargin percentage">
-
-            <div class="nicdark_space20"></div>
-
-            <div class="nicdark_margin10">
-                <h4 class="white">CONTACT US</h4>
-                <div class="nicdark_space20"></div>
-                <div class="nicdark_divider left small"><span class="nicdark_bg_white nicdark_radius"></span></div>
-                <div class="nicdark_space20"></div>
-                
-
-                <input class="nicdark_bg_greydark2 nicdark_radius nicdark_shadow white small subtitle" type="text" value="" placeholder="EMAIL">
-                <div class="nicdark_space20"></div>
-                <textarea rows="3" class="nicdark_bg_greydark2 nicdark_radius nicdark_shadow white small subtitle" placeholder="MESSAGE"></textarea>
-                <div class="nicdark_space20"></div>
-                <!--<input class="nicdark_btn nicdark_bg_green small nicdark_shadow nicdark_radius white nicdark_press" type="submit" value="SEND">-->
-                <a href="submit-message.html" class="nicdark_mpopup_ajax nicdark_btn nicdark_bg_green small nicdark_shadow nicdark_radius white nicdark_press">SEND</a>
-            </div>
-        </div> 
-
-        <div class="nicdark_space50"></div> 
-
-    </div>
-    <!--end nicdark_container-->
-            
-</section>
-<!--end section-->
 
 
 <!-- Modal -->

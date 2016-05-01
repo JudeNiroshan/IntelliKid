@@ -22,7 +22,7 @@
                     <a href="events">Events</a>
                   </li>
                   <li>
-                    <a href="#">Achievments</a>
+                    <a href="achievments">Achievments</a>
                   </li>
                   <li>
                     <a href="todoList">To Do List</a>
@@ -100,7 +100,7 @@
                             <div><hr/></div>
                             
                             <div class="banner_link">
-                              <a href="#" class="button1">Home</a>
+                              <a href="playground" class="button1">Home</a>
                             </div>
                           </div>
                         </div>

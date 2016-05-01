@@ -13,20 +13,20 @@
                 <span class="icon-bar"></span>
               </a>
               <div class="nav-collapse nav-collapse_ collapse">
-                <ul class="nav sf-menu clearfix">
+                 <ul class="nav sf-menu clearfix">
                   <li>
-                    <a href="#">Home</a>
+                    <a href="playground">Home</a>
                   </li>
                   <li>
-                    <a href="#">My Profile</a>
+                    <a href="profile">My Profile</a>
                   <li class="active">
-                    <a href="#">Events</a>
+                    <a href="events">Events</a>
                   </li>
                   <li>
-                    <a href="#">Achievments</a>
+                    <a href="achievments">Achievments</a>
                   </li>
                   <li>
-                    <a href="#">To Do List</a>
+                    <a href="todoList">To Do List</a>
                   </li>
                 </ul>
               </div>

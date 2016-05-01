@@ -124,7 +124,7 @@
                                 <img src="{{asset('assets/kids_assets/images/banner3.jpg')}}"" alt="" class="img">
                                 <div class="txt2"></div>
                                   <div class="banner_link">
-                                    <a href="#" class="button1">Go</a>
+                                    <a href="quiz_page" class="button1">Go</a>
                                   </div>
                                 </div>
                               </div>

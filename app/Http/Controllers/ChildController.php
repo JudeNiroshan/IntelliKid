@@ -420,21 +420,25 @@ if(move_uploaded_file($fileTmpLoc,$img_path)){
    * @created : 22/02/2016
    */
 
-	  public function loginChild(){
+	public function login_child(){
 
 		$un = $_REQUEST['un'];
 		$pw = $_REQUEST['pw'];
 
-		//$data = DB::select("select c_id from child_Accounts where nik_name = '$un' and kid_password = '$pw' ");
+		$data = DB::select("select c.id from child c,user u where c.id = u.id and c.nick_name = '$un' and u.password = '$pw' ");
 
-		$data = DB::select(" select u.id as c_id from user u,child c where u.id = c.id and u.password = '$pws' and c.nick_name = '$un' ");
 
 		if(empty($data)){
 			return 0;
 		}
 		else{
+
+		$child_id = DB::table('child')->where('nick_name','=',$un)->select('id')->first();
+
+		$_SESSION['child_id'] = $child_id->id;
+
 		return 1;
-	}
+		}
 	}
 
 

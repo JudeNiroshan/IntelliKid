@@ -45,7 +45,7 @@
 
 
         <!-- Jquery Gritter -->
-        <!--<link rel="stylesheet" href="{{ URL::asset('assets/adminPage_assets/css/jquery.gritter.css') }}">-->
+        <link rel="stylesheet" href="{{ URL::asset('assets/adminPage_assets/css/jquery.gritter.css') }}">
 
         <!-- Color Picker -->
         <link rel="stylesheet" href="{{ URL::asset('assets/adminPage_assets/css/colorpicker.css') }}">
@@ -370,7 +370,7 @@
         <!-- calendar page-->
         <script src="{{ URL::asset('assets/adminPage_assets/js/unicorn.calendar.js') }}"></script>
 
-        <!--<script src="{{ URL::asset('assets/adminPage_assets/js/jquery.gritter.min.js') }}"></script>-->
+        <script src="{{ URL::asset('assets/adminPage_assets/js/jquery.gritter.min.js') }}"></script>
         <script src="{{ URL::asset('assets/adminPage_assets/js/jquery-ui.custom.min.js') }}"></script>
         <script src="{{ URL::asset('assets/adminPage_assets/js/respond.min.js') }}"></script>
 

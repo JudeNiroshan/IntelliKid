@@ -15,6 +15,11 @@ class Kids_QuizController extends Controller{
         $this->url = $url;
     }
 
+    /**
+    *@author: fazeel
+    *@desc: get quiz details for quiz page 
+    *@created: 21/02/16
+    */
     public function getQuiz(){
 
         $date_time_now = Carbon::now();
@@ -31,11 +36,22 @@ class Kids_QuizController extends Controller{
         //$date_now = Carbon::parse('04/06/2016');            
 
         
+        $child_results = DB::table('user')->join('child','user.id','=','child.id')
+                            ->where('child.id','=',$_SESSION['child_id'])->first();         
+
+        
         return view('kids_views.quiz')->with('quizCategory',$result)
-                                      ->with('date_now',$date_now);  
+                                      ->with('date_now',$date_now)
+                                      ->with('child',$child_results)
+                                      ->with('title','Quiz');   
           
     }
 
+    /**
+    *@author: fazeel
+    *@desc: create quiz for quiz page 
+    *@created: 21/03/16
+    */
     public function createQuiz(Request $request){
 
         $exam_id = $request->input('id');
@@ -51,18 +67,16 @@ class Kids_QuizController extends Controller{
                                          
     }    
 
-    /*public function createQuiz(){
 
-        $quizAndAns = DB::table('quiz')->get();
-        print_r(count($quizAndAns));
-        print_r("<br/>");
-        print_r($quizAndAns);
-
-        return view('kids_views.template')->with('quizAndAns',$quizAndAns)
-                                          ->with('noOfQuestion',count($quizAndAns));    
-    }*/
-    
+    /**
+    *@author: fazeel
+    *@desc: create quiz for quiz page 
+    *@created: 21/03/16
+    */
     public function answer(Request $request){
+
+        $cid = $_SESSION['child_id'] ;
+
         $numCorrectAns = $request->input('numCorrect');
         $numQuestions = $request->input('numQuestions');
         $exam_id = $request->input('exam_id');
@@ -82,9 +96,6 @@ class Kids_QuizController extends Controller{
             $madal = "3rd";
         }
 
-        print_r("category is : "+$category->name);
-
-        $cid = $_SESSION['child_id'] ;
         
         $id = DB::table('exam_result')->insertGetId(
             array('num_question' => $numQuestions, 'num_correct_ans' => $numCorrectAns,
@@ -95,6 +106,15 @@ class Kids_QuizController extends Controller{
             ->where('exam_id', $_SESSION['exam_id'])
             ->where('schedule_id', $_SESSION['schedule_id'])
             ->update(['taken_status' => 1]);
+
+        
+        $points_plan = DB::table('points_plan')->where('id','=',1)->first();    
+
+        $res = $points_plan->quesion*$numCorrectAns;
+
+        DB::table('points')->insertGetId(
+            array('child_id' => $cid, 'points' => $res,'date' => date('Y-m-d'),'content_id' => 4)
+        ); 
 
 
         $_SESSION['quiz_id'] = $id;
@@ -108,8 +128,15 @@ class Kids_QuizController extends Controller{
         $result = DB::table('exam_result')->where('id','=',$_SESSION['quiz_id'])->where('cid','=',$cid)->get();
         $child_result = DB::table('user')->where('id','=',$cid)->get();
 
-        //print_r($result);
-        return view('kids_views.kids_certificate')->with('result',$result)->with('child_result',$child_result); 
+        $child_details = DB::table('user')->join('child','user.id','=','child.id')
+                            ->where('child.id','=',$_SESSION['child_id'])->first();
+
+        
+        return view('kids_views.kids_certificate')
+            ->with('result',$result)
+            ->with('child_result',$child_result)
+            ->with('child',$child_details)
+            ->with('title','Quiz');
     }
 
     /**

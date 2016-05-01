@@ -52,34 +52,16 @@ class Kids_QuizMaker extends Controller{
             $i++;                      
         } 
 
-        /*$quizDetails = DB::table('quiz')->where('exam_id','=',$exam_id)->first(); 
+        
 
-        //print_r($quizArray[0]['question']);
-
-        if(!isset($quizDetails)){
-                for($v=0;$v<$track_Num_Que;$v++) {
-            
-                        $result = DB::table('quiz')->insert(
-                            array('exam_id' => $exam_id, 'question_id' => $quizArray[$v]['id'],
-                                  'category' => $exam->name,'question'=> $quizArray[$v]['question'],
-                                  'option1' => $quizArray[$v]['option1'],'option2' => $quizArray[$v]['option2'],
-                                  'option3' => $quizArray[$v]['option3'],'option4' => $quizArray[$v]['option4'],
-                                  'option5' => $quizArray[$v]['option5'],
-                                  'image_path' => $quizArray[$v]['image_path'],
-                                  'answer' => $quizArray[$v]['answer'])
-                        ); 
-                }
-        }       
-
-        $quizAndAns = DB::table('quiz')->where('exam_id','=',$exam_id)->get();
-
-       // print_r(count($quizAndAns));
-        //print_r("<br/>");
-        //print_r($quizArray);*/
+       $child_results = DB::table('user')->join('child','user.id','=','child.id')
+                            ->where('child.id','=',$_SESSION['child_id'])->first(); 
 
         return view('kids_views.template')->with('quizAndAns',$quizArray)
                                           ->with('exam_id',$exam_id)
-                                          ->with('noOfQuestion',$track_Num_Que);   
+                                          ->with('noOfQuestion',$track_Num_Que)
+                                          ->with('child',$child_results)
+                                      ->with('title','Quiz');    
 
     }
 }
