@@ -259,6 +259,13 @@
                                         
                                     </ul>
                                 </li>
+                                 <li class="blue">
+                                    <a href="">FORUM</a>
+                                    <ul class="sub-menu">
+                                        <li> <a href="parent_forum">Forum</a></li>
+                                       
+                                    </ul>
+                                </li>
                                 <!--<li class="green">
                                     <a href="blog-masonry.html">BLOG</a>
                                     <ul class="sub-menu">
