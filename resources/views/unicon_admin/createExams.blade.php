@@ -15,13 +15,13 @@ function loadQuestions(){
 						
 						data: {sub_id:selected_subject, age_id:selected_ageCat}, 
 						success: function(resultData){
-         					
+
          					for(var k=0; k<resultData.length; k++){
 
          						var myElement = document.getElementById("question_table_body");
          						var str = '<tr class="gradeA"> <td id="question_row_'+ resultData[k].id +'" onclick="addToSession('+resultData[k].id +')">'+ resultData[k].question +'</td></tr>';
 
-								myElement.innerHTML = str;
+								myElement.innerHTML = myElement.innerHTML + str;
          						
          					}
          					
@@ -54,7 +54,19 @@ function submitOfCreateExam(){
 		
 		var uploadForm = document.getElementById('create_exam_form');
 
-		uploadForm.submit();
+		alert(document.getElementById('examNameID').value);
+		if(document.getElementById('examNameID').value != ""){
+			uploadForm.submit();
+		}else{
+			var error_message = "Please enter a name";
+			document.getElementById('display_error').innerHTML = error_message;
+			document.getElementById('display_error').style.display = "block";
+			var delay=100; //1 seconds
+
+			setTimeout(function(){
+				$('#display_error').effect("shake");
+			}, delay); 
+		}
 }
 
 
@@ -105,7 +117,7 @@ function submitOfCreateExam(){
 							<div class="form-group">
 								<label class="col-sm-3 col-md-3 col-lg-2 control-label">Subject</label>
 								<div class="col-sm-3 col-md-3 col-lg-2">
-									<select name="subject"id="subjectDrop">
+									<select name="subject" id="subjectDrop">
 										@foreach($sub as $rowSub)
 										<option value=<?php echo '"'.$rowSub->id.'" '; ?> >{{ $rowSub->subject }}</option>
 										@endforeach 
@@ -127,11 +139,17 @@ function submitOfCreateExam(){
 							<div class="form-group">
 								<label class="col-sm-3 col-md-3 col-lg-2 control-label">Exam Name</label>
 								<div class="col-sm-3 col-md-3 col-lg-8">
-									<input type="text" require="yes" name="examName" id="examName" class="col-sm-3 col-md-3 col-lg-10" placeholder="Enter the name for the exam here"></input>
+									<input type="text" required="yes" name="examName" id="examNameID" class="col-sm-3 col-md-3 col-lg-10" placeholder="Enter the name for the exam here"></input>
 								</div>
 
 								<div   class="col-sm-3 col-md-3 col-lg-2"></div>
 
+							</div>
+							<div class="form-group">
+								<div   class="col-sm-3 col-md-3 col-lg-2"></div>
+								<div id="display_error" style="display:none;" class=" col-sm-3 col-md-3 col-lg-4 alert alert-danger alert-block">
+									
+								</div>
 							</div>
 						
 							<div class="form-group">
@@ -143,18 +161,10 @@ function submitOfCreateExam(){
 									</thead>
 									<tbody id="question_table_body">
 										<tr id="question_row_"class="gradeA">
-											
+											<td></td>
 										</tr>
 									</tbody>
 								</table>
-							</div>
-
-							
-							<div class="form-group">
-								<div   class="col-sm-3 col-md-3 col-lg-2"></div>
-								<div id="display_error_ans_missing" style="display:none;" class=" col-sm-3 col-md-3 col-lg-4 alert alert-danger alert-block">
-									Answers cannot be empty
-								</div>
 							</div>
 							
 							<div  class="form-group">

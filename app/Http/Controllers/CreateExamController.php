@@ -38,7 +38,7 @@ class CreateExamController extends Controller
         $sub_id = $request->sub_id;
         $age_cat = $request->age_id;
 
-        $matchThese = ['subjectid' => $sub_id, 'agegroupid' => $age_cat];
+        $matchThese = ['subjectid' => $sub_id, 'agegroupid' => $age_cat, 'active' => '1'];
         $question_list = DB::table('question')->where($matchThese)->get();
 
         return $question_list;
@@ -76,11 +76,16 @@ class CreateExamController extends Controller
     */
     public static function createExam(Request $request){
         try{
-            $sub_id = $request->sub_id;
-            $age_cat = $request->age_id;
+            $sub_id = $request->subject;
+            $age_cat = $request->ageCategory;
 
             $exam_name = $request->examName;
 
+            echo "$sub_id \n";
+            echo "$age_cat \n";
+            echo "$exam_name \n";
+
+            
             $exam_id = DB::table('exam')->insertGetId(array(
                 'name' => $exam_name, 
                 'subject_id' => $sub_id, 
@@ -102,11 +107,11 @@ class CreateExamController extends Controller
             $subjects = DB::table('subject')->get();
             $age_groups = DB::table('age_group')->get();
             
-            return view('unicon_admin.createExams')
+            /*return view('unicon_admin.createExams')
                     ->with('sub',$subjects)
                     ->with('agecat', $age_groups)
                     ->with('title','Create | Exams')
-                    ->with('upload_status_success', 'OK');
+                    ->with('upload_status_success', 'OK');*/
         }catch(Exception $e){
             $subjects = DB::table('subject')->get();
             $age_groups = DB::table('age_group')->get();
