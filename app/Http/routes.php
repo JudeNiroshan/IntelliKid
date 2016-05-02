@@ -159,7 +159,7 @@ Route::get('events', 'child_controller@viewChildEvents');
 
 
     
-Route::get('profile','child_controller@viewChildProfileDetails');   
+Route::get('child_profile','child_controller@viewChildProfileDetails');   
 
  
 
@@ -187,7 +187,7 @@ Route::post('points','achievment_controller@viewPoints');
 
 
 
-Route::get('videos','videos_controller@loadVideoPage'); 
+Route::get('child_videos','videos_controller@loadVideoPage'); 
 
 Route::get('play_btn_update_db_onPlay','videos_controller@updateDb_onPlay'); 
 
@@ -197,7 +197,7 @@ Route::get('like_video','videos_controller@likeVideo');
 
 
 
-Route::get('audio','audio_controller@loadAudioPage');
+Route::get('child_audio','audio_controller@loadAudioPage');
 
 Route::get('audio_play_btn_update_db_onPlay','audio_controller@updateDb_onPlay'); 
 

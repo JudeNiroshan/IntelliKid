@@ -20,7 +20,7 @@
                       <a href="playground">Home</a>
                     </li>
                     <li>
-                     <a href="profile">My Profile</a>
+                     <a href="child_profile">My Profile</a>
                     </li>
                     <li class="active">
                       <a href="events">Events</a>

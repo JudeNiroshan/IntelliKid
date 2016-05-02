@@ -19,7 +19,7 @@
                   </li>
                   <li class="active">
                  
-                    <a href="profile">My Profile</a>
+                    <a href="child_profile">My Profile</a>
                   <li>
                     <a href="events">Events</a>
                   </li>

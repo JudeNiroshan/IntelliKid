@@ -18,7 +18,7 @@
                     <a href="playground">Home</a>
                   </li>
                   <li>
-                    <a href="profile">My Profile</a>
+                    <a href="child_profile">My Profile</a>
                   <li class="active">
                     <a href="events">Events</a>
                   </li>
@@ -62,7 +62,7 @@
                           <img src="{{asset('assets/kids_assets/images/banner1.jpg')}}" alt="" class="img img-circle">
                           <div class="txt2"></div>
                             <div class="banner_link">
-                              <a href="videos" class="button1">Go</a>
+                              <a href="child_videos" class="button1">Go</a>
                             </div>
                           </div>
                         </div>
@@ -80,7 +80,7 @@
                             <img src="{{asset('assets/kids_assets/images/banner3.jpg')}}" alt="" class="img">
                             <div class="txt2"></div>
                               <div class="banner_link">
-                                <a href="audio" class="button1">Go</a>
+                                <a href="child_audio" class="button1">Go</a>
                               </div>
                             </div>
                           </div>
