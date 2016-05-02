@@ -48,7 +48,7 @@ class EmailController extends Controller
      $_SESSION['STATUS'] = $result[0]->status;
 
 
-     return view('parent.home');
+     return redirect()->action('RegistrationController@defaultHome');
 
 	}
 

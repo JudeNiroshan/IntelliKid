@@ -59,11 +59,11 @@ class RegistrationController extends Controller
                        "INSERT INTO  parent_registration(f_name,l_name,email,u_password,dat_of_birth,age,user_type,craeted_date,status,reset_token,img_path)   values ('$f_name ','$l_name','$email','$password','$date_of_birth','$age','PARENT',now(),'PENDING','0','assets/parent/profile/img/baby.png') ")); 
 					*/
 
-
+          $key = md5(microtime().rand());
 
 			 	 	$Iids = DB::table('user')->insertGetId($dataArray);
 
-			 	 	DB::table('parent')->insert(['email'=>$email,'user_id'=>$Iids,'reset_token'=>'0']);
+			 	 	DB::table('parent')->insert(['email'=>$email,'user_id'=>$Iids,'reset_token'=>$key]);
 
 			 	/*  DB::statement(DB::raw(
                        "INSERT INTO  user(firstname,lastname,dateOfBirth,age,user_type,acc_created,acc_updated,img_path,password,status,gender)   values ('$f_name','$l_name','$date_of_birth','$age','PARENT',now(),null,'assets/parent/profile/img/baby.png','$password','PENDING','$gender') "));
@@ -334,6 +334,7 @@ class RegistrationController extends Controller
            //$content_a[$k][3]= $data[0]->agegroupid;
 
         }
+
 
 
           
