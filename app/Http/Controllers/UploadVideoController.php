@@ -24,8 +24,8 @@ class UploadVideoController extends Controller
         foreach ($path_list_for_name as $row) {
             $video_tile_obj = array('id' => $row->id,
                                     'name' => $row->name,
-                                    'path' => strstr($row->path, 'assets'),
-                                    'img_path' => strstr($row->img_path, 'assets'));
+                                    'path' => $row->path,
+                                    'img_path' => $row->img_path);
             array_push($videos, $video_tile_obj);
         }
 
@@ -49,8 +49,8 @@ class UploadVideoController extends Controller
         foreach ($path_list_for_name as $row) {
             $video_tile_obj = array('id' => $row->id,
                                     'name' => $row->name,
-                                    'path' => strstr($row->path, 'assets'),
-                                    'img_path' => strstr($row->img_path, 'assets'),
+                                    'path' => $row->path,
+                                    'img_path' => $row->img_path,
                                     );
             array_push($videos, $video_tile_obj);
         }
@@ -137,8 +137,8 @@ class UploadVideoController extends Controller
         foreach ($path_list_for_name as $row) {
             $video_tile_obj = array('id' => $row->id,
                                     'name' => $row->name,
-                                    'path' => strstr($row->path, 'assets'),
-                                    'img_path' => strstr($row->img_path, 'assets'));
+                                    'path' => $row->path,
+                                    'img_path' => $row->img_path, 'assets');
             array_push($videos, $video_tile_obj);
         }
 

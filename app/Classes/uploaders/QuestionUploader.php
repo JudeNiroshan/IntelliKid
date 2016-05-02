@@ -45,7 +45,7 @@ class QuestionUploader implements Uploader{
 		$selected_age = $request->input('ageCategory');
 		
 
-		$target_path = "\assets\uploads\question\img\\"; //Declaring Path for uploaded images
+		$target_path = "assets\uploads\question\img\\"; //Declaring Path for uploaded images
         $j = 0; //Variable for indexing uploaded image 
         $user_id = 100;
         $name = $request->input('fileName');
@@ -79,7 +79,7 @@ class QuestionUploader implements Uploader{
                 if (($_FILES["file"]["size"][$i] < 10000000) //Approx. 10MB files can be uploaded.
                 && in_array($file_extension, UploadConstants::$g_valid_img_extensions)) {
 
-                    if (move_uploaded_file($_FILES['file']['tmp_name'][$i], public_path() . $new_img_name)) {//if file moved to uploads folder
+                    if (move_uploaded_file($_FILES['file']['tmp_name'][$i], public_path() . '\\' . $new_img_name)) {//if file moved to uploads folder
                         
                         array_push($unique_img_path_arr, $new_img_name);
 

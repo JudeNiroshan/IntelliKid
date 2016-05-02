@@ -25,8 +25,8 @@ class UploadSongController extends Controller
         $songs = array();
         foreach ($path_list_for_name as $row) {
             $song_tile_obj = array('name' => $row->name,
-                                    'path' => strstr($row->path, 'assets'),
-                                    'img_path' => strstr($row->img_path, 'assets'));
+                                    'path' => $row->path,
+                                    'img_path' => $row->img_path);
             array_push($songs, $song_tile_obj);
         }
 
@@ -46,8 +46,8 @@ class UploadSongController extends Controller
         $songs = array();
         foreach ($path_list_for_name as $row) {
             $song_tile_obj = array('name' => $row->name,
-                                    'path' => strstr($row->path, 'assets'),
-                                    'img_path' => strstr($row->img_path, 'assets') );
+                                    'path' => $row->path,
+                                    'img_path' => $row->img_path );
             array_push($songs, $song_tile_obj);
         }
 

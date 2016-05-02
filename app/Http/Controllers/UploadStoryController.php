@@ -31,7 +31,7 @@ class UploadStoryController extends Controller
             $story_tile_obj = array(
                                     'id' => $row->id,
                                     'name' => $row->name,
-                                    'path' => strstr($story_img, 'assets')
+                                    'path' => $story_img
                                     );
             array_push($story, $story_tile_obj);
         }
@@ -72,7 +72,7 @@ class UploadStoryController extends Controller
             $story_img = $temp_id[0]->path;
 
             $story_tile_obj = array('name' => $row->name,
-                'path' => strstr($story_img, 'assets')
+                'path' => $story_img
                 );
             array_push($story, $story_tile_obj);
         }
@@ -181,7 +181,7 @@ class UploadStoryController extends Controller
             $story_tile_obj = array(
                                     'id' => $row->id,
                                     'name' => $row->name,
-                                    'path' => strstr($story_img, 'assets')
+                                    'path' => $story_img
                                     );
             array_push($story, $story_tile_obj);
         }
