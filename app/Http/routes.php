@@ -258,7 +258,7 @@ Route::get('logout', function () {
 
     session_unset();
     session_destroy();
-    return view('login');
+    return view('IntelliKidWelcome');
 
 });
 Route::get('laravel',function(){
