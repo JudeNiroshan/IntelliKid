@@ -167,7 +167,7 @@
                                             <div class="nicdark_archive1 nicdark_relative">
                                               <div class="nicdark_margin100 nicdark_relative">
                                                 <img alt="" class="nicdark_displaynone_ipadpotr nicdark_radius_circle nicdark_absolute"
-                                                style="width:50px;" <?php echo 'src="'.$path.''.$forumDetails[0]->img_path.'"';?> >
+                                                style="width:50px;" <?php echo 'src="'.$path.''.$row->img_path.'"';?> >
                                                 <div class="nicdark_activity nicdark_marginleft70 nicdark_disable_marginleft_ipadpotr">
                                                   <div class="nicdark_space20"></div>
                                                   <h4 class="subtitle greydark">{{strtoupper($row->lastname)}} SAYS: {{$row->comment_date}} AT {{$row->comment_time}}</h4>

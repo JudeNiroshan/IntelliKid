@@ -61,138 +61,8 @@
                   <strong>Intellikid Admin page</strong>. You can manage Intellikid contents!
                   <a href="#" data-dismiss="alert" class="close">×</a>
                 </div>
-                <div class="widget-box">
-                  <div class="widget-title">
-                    <span class="icon">
-                      <i class="fa fa-signal"></i>
-                    </span>
-                    <h5>Site Statistics</h5>
-                    <div class="buttons">
-                      <a href="#" class="btn"><i class="fa fa-refresh"></i> <span class="text">Update stats</span></a>
-                    </div>
-                  </div>
-                  <div class="widget-content">
-                    <div class="row">
-                     
-                      <div class="col-xs-12 col-sm-9">
-                        <!-- Login cart will display here -->
-                        <div class="panel panel-default">
-                        <div class="panel-heading">
-                          <i class="fa fa-bar-chart-o fa-fw"></i> Bar Chart | Daily loggedin time
-                          <div class="pull-right">
-                            <div class="btn-group">
-                              <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
-                                Actions
-                                <span class="caret"></span>
-                              </button>
-                              <ul class="dropdown-menu pull-right" role="menu">
-                                <li><a href="#">Action</a>
-                                </li>
-                                <li><a href="#">Another action</a>
-                                </li>
-                                <li><a href="#">Something else here</a>
-                                </li>
-                                <li class="divider"></li>
-                                <li><a href="#">Separated link</a>
-                                </li>
-                              </ul>
-                            </div>
-                          </div>
-                        </div>
-                        <!-- /.panel-heading -->
-                        <div class="panel-body">
-                          <div class="row">
-                             <div class="col-lg-4">
-                                    <div class="table-responsive">
-                                        <table class="table table-bordered table-hover table-striped">
-                                            <thead>
-                                                <tr>
-                                                    <th>ID</th>
-                                                    <th>First Name</th>
-                                                    <th>  </th>
 
-                                                    
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                            <?php $i=1; ?>
-                                              @foreach($loginResult as $result)
-                                                <tr>
-                                                      <td>{{$result->id}}</td>
-                                                      <td>{{$result->firstname}}</td>
-                                                      <td>
-                                                          <a href={{'unicon_admin_index?id='.$result->id}}> >> </a>
-                                                      </td>
-                                                </tr>
-                                                <!--
-                                                <script type="text/javascript">
-                                                    function showChart(){
 
-                                                        var hidden_userID = document.getElementById("idvalue1").value;
-                                                        alert(hidden_userID);
-                                                        
-                                                          $.ajax({
-                                                              type: "get",
-                                                              url: "unicon_admin_index",
-                                                              data: { 
-                                                                  h_userID:hidden_userID
-                                                                 
-
-                                                                   
-                                                              },
-                                                              success: function (data)
-                                                              {
-                                                                
-                                                                  //alert(data);
-
-                                                              },
-                                                              error: function (xhr, ajaxOptions, thrownError) 
-                                                              {
-
-                                                                 
-                                                              
-                                                              }
-                                                          });
-                                                  
-                                                        
-                                                    
-                                                    
-                                                    return false;
-                                                    
-                                                    
-                                                    }
-                                                </script>
-                                                -->
-                                               
-                                                <?php $i++; ?>
-                                              @endforeach  
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                    <!-- /.table-responsive -->
-                                </div>
-                            
-                            <!-- /.col-lg-4 (nested) -->
-                            <div class="col-lg-8">
-                              
-                                <div id="bar-example"></div>
-                                <div>
-                                  y-axis = Logged in Time <br/>
-                                  x-axis = From Previous 7 day to Current day. 
-                                </div>
-                              
-                            </div>
-                            <!-- /.col-lg-8 (nested) -->
-                          </div>
-                          <!-- /.row -->
-                        </div>
-                        <!-- /.panel-body -->
-                      </div>
-                      <!-- /.panel -->
-                    </div>
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
           
@@ -268,7 +138,7 @@
       
       <!-- End Modal -->
       
-
+      <br/><br/><br/>
       <script type="text/javascript">
     /*
      * Play with this code and it'll update in the panel opposite.
