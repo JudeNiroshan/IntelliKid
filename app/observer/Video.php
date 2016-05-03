@@ -33,7 +33,7 @@ include_once 'Observe.php';
     		   $u_id   = $_SESSION['USERID'];
 
     		   $vedio_items = array();
-               $vedio_items = $_SESSION['video_que'];
+           $vedio_items = $_SESSION['video_que'];
 
             
     		  
@@ -44,7 +44,7 @@ include_once 'Observe.php';
                $lastInsertedID = DB::select(" SELECT id FROM shedule ORDER BY id DESC LIMIT 1 ");
                	   $lastID =  $lastInsertedID[0]->id;
 
-               foreach($vedio_items as $vid){
+           foreach($vedio_items as $vid){
     		   DB::statement(DB::raw("INSERT INTO  video_shedule(shedule_id,video_id,isActive)  values ('$lastID','$vid','yes')")); 
                   }
                 }

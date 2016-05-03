@@ -262,6 +262,7 @@ div.pannel {
             </div>
       </form>
        <p><a href="reset_password">fogot password?</a></p>
+        <p><a href="WelcomeIntellikid">Welcome Screen</a></p>
     </div>
   </div>
   </div>

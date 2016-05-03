@@ -219,6 +219,7 @@
                          <div class="form-group">
                             <div id="error" name="error" class="alert-link" style="color:red" ></div>
                             <div id="load"></div>
+                             <p><a href="WelcomeIntellikid">Welcome Screen</a></p>
                      </div>
                     </div>
                 </div>
