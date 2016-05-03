@@ -8,7 +8,8 @@
 
 
   <link rel="icon" href="{{ URL::asset('assets/kids_assets/images/favicon.html') }}" type="image/x-icon">
-  <link rel="shortcut icon" href="{{ URL::asset('assets/kids_assets/images/favicon.html') }}" type="image/x-icon">
+  <link rel="shortcut icon" href="{{ URL::asset('assets/kids_assets/images/favicon.html') }}" type="image/x-icon">gallery
+
   <link rel="stylesheet" href="{{ URL::asset('assets/kids_assets/css/bootstrap.css') }}">
   <link rel="stylesheet" href="{{ URL::asset('assets/kids_assets/css/bootstrap-responsive.css') }}">
   <link rel="stylesheet" href="{{ URL::asset('assets/kids_assets/css/camera.css') }}">
@@ -108,7 +109,7 @@
             <div class="top1 clearfix">
               <div class="social_wrapper">
                 <div class="col-md-4">
-                  <img src="{{asset('assets/kids_assets/images/gallery07.jpg')}}"  class="center-block img-circle img-responsive" height="160" width="160">
+                  <img src="{{ asset($child->img_path) }}"  class="center-block img-circle img-responsive" height="160" width="160">
                   <h4 class="text-center">
                     <ul style="list-style-type:none">
                       <li class="dropdown sub-menu ">

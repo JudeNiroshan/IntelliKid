@@ -25,18 +25,18 @@ class videos_controller extends Controller{
 		
 
 		$child_results = DB::table('user')->join('child','user.id','=','child.id')
-										  ->where('user.id','=',104)->first();//child details
+										  ->where('user.id','=',$_SESSION['child_id'])->first();//child details
 		
 
 	    $video_list = DB::table('video_shedule')->join('video','video_shedule.video_id','=','video.id')
 										->join('shedule','video_shedule.shedule_id','=','shedule.id')	
 										->where('shedule.fk_child_id','=',$_SESSION['child_id'])
-										->where('shedule.dueTime','>',date('Y-m-d H:i:s'))
+										->where('shedule.dueTime','<',date('Y-m-d H:i:s'))
 										->where('video_shedule.status',0)
 										->select('video.*')
 										->get();	
 				
-		
+	print_r($_SESSION['child_id']);	
 	
 		if(isset($video_list[0])!=null){
 			return view('kids_views.videos')->with('title','Videos')
@@ -108,9 +108,9 @@ class videos_controller extends Controller{
 
 				
 
-				DB::table('video_shedule')->where('shedule_id',$video_shedule_id)->update(['status'=>1]);   //update the video status to 'seen'
+				DB::table('video_shedule')->where('shedule_id',$video_shedule_id)->where('video_shedule.video_id','=',$video_id)->update(['status'=>1]);   //update the video status to 'seen'
 	
-				DB::table('video_shedule')->where('shedule_id',$video_shedule_id)->update(['seen_date'=>date('Y-m-d H:i:s')]);   //update the video seen date to current date
+				DB::table('video_shedule')->where('shedule_id',$video_shedule_id)->where('video_shedule.video_id','=',$video_id)->update(['seen_date'=>date('Y-m-d H:i:s')]);   //update the video seen date to current date
 
 				$video_points = DB::table('points_plan')->get();
 				$points = $video_points[0]->video;
@@ -148,7 +148,7 @@ class videos_controller extends Controller{
 
 		if($video_like_status != 1){
 
-			DB::table('video_shedule')->where('shedule_id',$video_shedule_id)->update(['isLike'=>1]);
+			DB::table('video_shedule')->where('shedule_id',$video_shedule_id)->where('video_shedule.video_id','=',$video_id)->update(['isLike'=>1]);
 
 			$likes = DB::table('video')->where('id','=',$video_id)->get();
 

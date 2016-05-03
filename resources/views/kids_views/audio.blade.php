@@ -160,6 +160,7 @@
                 {
 
                   swal("Good job!", "You earned 2 points", "success");
+                  
 
 
                 },

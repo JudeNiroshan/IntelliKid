@@ -169,7 +169,7 @@ Route::get('playground','child_controller@viewChildHome');
 
 
 
-Route::get('todoList', 'todolist_Controller@viewTodoList');
+Route::get('todoList', 'todoList_controller@viewTodoList');
 
 Route::post('addTodoList','todoList_controller@addTodoList');  
 

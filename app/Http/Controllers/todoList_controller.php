@@ -9,7 +9,7 @@ use DB;
 
 
 
-class todolist_Controller extends Controller
+class todolist_controller extends Controller
 {
 
 /**

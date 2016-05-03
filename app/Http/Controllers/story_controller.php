@@ -90,9 +90,9 @@ class story_controller extends Controller{
 		if($read_status == 0)
 		{
 
-		   DB::table('story_schedule')->where('schedule_id',$story_schedule_id)->update(['read_status'=>1]);
+		   DB::table('story_schedule')->where('schedule_id',$story_schedule_id)->where('story_schedule.story_id','=',$story_id)->update(['read_status'=>1]);
 	
-		   DB::table('story_schedule')->where('schedule_id',$story_schedule_id)->update(['read_date_time'=>date('Y-m-d H:i:s')]);  
+		   DB::table('story_schedule')->where('schedule_id',$story_schedule_id)->where('story_schedule.story_id','=',$story_id)->update(['read_date_time'=>date('Y-m-d H:i:s')]);  
 
 		   $story_points = DB::table('points_plan')->get();
 		   $points = $story_points[0]->story;
@@ -137,7 +137,7 @@ class story_controller extends Controller{
 
 		if($story_like_status != 1){
 
-			DB::table('story_schedule')->where('schedule_id',$story_shedule_id)->update(['isLike'=>1]);
+			DB::table('story_schedule')->where('schedule_id',$story_shedule_id)->where('story_schedule.story_id','=',$story_id)->update(['isLike'=>1]);
 
 			$likes = DB::table('story')->where('id','=',$story_id)->get();
 

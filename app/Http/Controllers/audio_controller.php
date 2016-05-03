@@ -26,7 +26,7 @@ class audio_controller extends Controller{
 		$audio_list = DB::table('audio_shedule')->join('audio','audio_shedule.audio_id','=','audio.id')
 										->join('shedule','audio_shedule.shedule_id','=','shedule.id')	
 										->where('shedule.fk_child_id','=',$_SESSION['child_id'])
-										->where('shedule.dueTime','>',date('Y-m-d H:i:s'))
+										->where('shedule.dueTime','<',date('Y-m-d H:i:s'))
 										->where('audio_shedule.status',0)
 										->select('audio.*')
 										->get();
@@ -106,9 +106,9 @@ class audio_controller extends Controller{
 
 			if($audio_status == 0){
 
-				DB::table('audio_shedule')->where('shedule_id',$audio_shedule_id)->update(['status'=>1]);   //update the audio status to 'seen'
+				DB::table('audio_shedule')->where('shedule_id',$audio_shedule_id)->where('audio_shedule.audio_id','=',$audio_id)->update(['status'=>1]);   //update the audio status to 'seen'
 	
-				DB::table('audio_shedule')->where('shedule_id',$audio_shedule_id)->update(['seen_date'=>date('Y-m-d H:i:s')]);   //update the audio seen date to current date
+				DB::table('audio_shedule')->where('shedule_id',$audio_shedule_id)->where('audio_shedule.audio_id','=',$audio_id)->update(['seen_date'=>date('Y-m-d H:i:s')]);   //update the audio seen date to current date
 
 				$audio_points = DB::table('points_plan')->get();
 				$points = $audio_points[0]->audio;
@@ -150,7 +150,7 @@ class audio_controller extends Controller{
 			
 		if($audio_like_status != 1){
 
-			DB::table('audio_shedule')->where('shedule_id',$audio_shedule_id)->update(['isLike'=>1]);
+			DB::table('audio_shedule')->where('shedule_id',$audio_shedule_id)->where('audio_shedule.audio_id','=',$audio_id)->update(['isLike'=>1]);
 
 			$likes = DB::table('audio')->where('id','=',$audio_id)->get();
 
