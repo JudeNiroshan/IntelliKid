@@ -38,9 +38,12 @@ function addToSession(question_id){
 						data: {q_id:question_id}, 
 						success: function(resp){
 
-         					if(resp == 'OK' || resp == 'ALREADY'){
+         					if(resp == 'OK'){
          						var question_row = document.getElementById('question_row_'+question_id);
          						question_row.style.backgroundColor = "#9fdf9f";	
+         					}else if(resp == 'REMOVED'){
+         						var question_row = document.getElementById('question_row_'+question_id);
+         						question_row.style.backgroundColor = "transparent";	
          					}else if (resp == 'EXCEED'){
          						alert('You have already selected 15 questions.');
          					}else{

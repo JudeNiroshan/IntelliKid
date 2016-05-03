@@ -17,40 +17,40 @@ use DB;
 */
 
 class VideoUploader implements Uploader{
-	
-	//@Override
-	function upload($request){
+    
+    //@Override
+    function upload($request){
 
 
-		$validator = new ContentValidator(new VideoValidator());
+        $validator = new ContentValidator(new VideoValidator());
 
-		$validState  = $validator->doValidate($request);
+        $validState  = $validator->doValidate($request);
 
-		switch ($validState) {
+        switch ($validState) {
 
-			case UploadConstants::$VIDEO_FILE_NOT_ATTACHED_TO_REQUEST:
+            case UploadConstants::$VIDEO_FILE_NOT_ATTACHED_TO_REQUEST:
             $reason = "Video file is not available";
             return UploadVideoController::loadWithFailedReason($reason); break;
 
             case UploadConstants::$IMAGE_FILE_NOT_ATTACHED_TO_REQUEST:
             $reason = "Image file is not available";
-            return UploadVideoController::loadWithFailedReason($reason); break;	
+            return UploadVideoController::loadWithFailedReason($reason); break; 
 
             case UploadConstants::$FILE_NAME_NOT_ATTACHED_TO_REQUEST:
             $reason = "Video file name is not available";
-            return UploadVideoController::loadWithFailedReason($reason); break;	
+            return UploadVideoController::loadWithFailedReason($reason); break; 
 
             case UploadConstants::$INVALID_VIDEO_FORMAT:
             $reason = "Invalid video file format. Please use only .mp4/.ogg/.webm";
-            return UploadVideoController::loadWithFailedReason($reason); break;	
+            return UploadVideoController::loadWithFailedReason($reason); break; 
 
             case UploadConstants::$INVALID_IMAGE_FORMAT:
             $reason = "Invalid image format. Please use only .jpeg/.jpg/.png";
-            return UploadVideoController::loadWithFailedReason($reason); break;	
+            return UploadVideoController::loadWithFailedReason($reason); break; 
 
             case UploadConstants::$FILE_ALREADY_EXISTS:
             $reason = "File already exists";
-            return UploadVideoController::loadWithFailedReason($reason); break;	
+            return UploadVideoController::loadWithFailedReason($reason); break; 
 
         }
 
@@ -66,17 +66,17 @@ class VideoUploader implements Uploader{
         $user_id = 100;
         $name = $request->filename;
 
-        $img_file_path = "assets\uploads\\video\img\\";
-        $img_file->move(public_path() . '\\' . $img_file_path, $img_file->getClientOriginalName());
+        $img_file_path = "assets/uploads/video/img/";
+        $img_file->move($img_file_path, $img_file->getClientOriginalName());
 
 
-        $destinationPath = "assets\uploads\\video\\";
+        $destinationPath = "assets/uploads/video/";
 
         $temp_id = DB::table('content_type')->select('id')->where('type', '=', 'video')->get();
         $content_type_id = $temp_id[0]->id;
         $timestamp = date('y-m-d H:i:s');
         $content_id = DB::table('content')->insertGetId(array('contenttypeid' => $content_type_id, 'creator' => $user_id, 'datetime' => $timestamp)); 
-        $file->move(public_path() . '\\' . $destinationPath, $file->getClientOriginalName());
+        $file->move($destinationPath, $file->getClientOriginalName());
 
         DB::table('video')->insert(
             array(

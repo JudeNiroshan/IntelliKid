@@ -17,11 +17,11 @@ use DB;
 */
 
 class StoryUploader implements Uploader{
-	
-	//@Override
-	function upload($request){
+    
+    //@Override
+    function upload($request){
 
-		$validator = new ContentValidator(new StoryValidator());
+        $validator = new ContentValidator(new StoryValidator());
 
         $validState  = $validator->doValidate($request);
 
@@ -41,11 +41,11 @@ class StoryUploader implements Uploader{
 
         }
 
-		$selected_subject = $request->input('subject');
-		$selected_age = $request->input('ageCategory');
+        $selected_subject = $request->input('subject');
+        $selected_age = $request->input('ageCategory');
 
         
-        $target_path = "assets\uploads\stry\Img\\"; //Declaring Path for uploaded images
+        $target_path = "assets/uploads/stry/Img/"; //Declaring Path for uploaded images
         $j = 0; //Variable for indexing uploaded image 
         $user_id = 100;
         $name = $request->input('fileName');
@@ -64,19 +64,22 @@ class StoryUploader implements Uploader{
             if (($_FILES["file"]["size"][$i] < 10000000) //Approx. 10MB files can be uploaded.
                 && in_array($file_extension, UploadConstants::$g_valid_img_extensions)) {
 
-                if (move_uploaded_file($_FILES['file']['tmp_name'][$i], public_path() . '\\' .$new_img_name)) {//if file moved to uploads folder
+                if (move_uploaded_file($_FILES['file']['tmp_name'][$i], $new_img_name)) {//if file moved to uploads folder
                     
                     array_push($unique_img_path_arr, $new_img_name);
 
                 }
-            } 
+            }else{
+                $reason = "Invalid file format";
+                return UploadStoryController::loadWithFailedReason($reason);
+            }
 
          }// End of for loop for multiple images
 
          if(count($unique_img_path_arr) > 0){
 
             $path_list_for_name = DB::table('story')->select('path')->where('name', '=', $name)->get();
-            $destinationPath = "assets\uploads\stry\\";
+            $destinationPath = "assets/uploads/stry/";
             
             $outWriteFile = UploadStoryController::writeToFile($name, $story);
 
@@ -111,5 +114,5 @@ class StoryUploader implements Uploader{
 
           return UploadStoryController::loadWithDefaultData();
 
-	}
+    }
 }

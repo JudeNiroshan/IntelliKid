@@ -49,7 +49,7 @@ class CreateExamController extends Controller
     * This method used to set the question ids into the session
     */
     public static function addToSession(Request $request){
-        $q_arr = array();
+         
 
         if(isset($_SESSION["selected_question_arr"])){
            $q_arr = $_SESSION["selected_question_arr"];
@@ -59,14 +59,23 @@ class CreateExamController extends Controller
 
            foreach ($q_arr as $element) {
                if($element == $request->q_id){
-                    return "ALREADY";
+
+                    unset( $_SESSION['selected_question_arr'][$element] );
+
+                    return "REMOVED";
                }
 
            }
            array_push($q_arr,$request->q_id);
+           $_SESSION["selected_question_arr"] = $q_arr;
+
+        }else{
+            array_push($q_arr,$request->q_id);
+
+            $_SESSION["selected_question_arr"] = $q_arr;
         }
 
-        $_SESSION["selected_question_arr"] = $q_arr;
+        
 
         return "OK";
     }
@@ -107,6 +116,7 @@ class CreateExamController extends Controller
             $subjects = DB::table('subject')->get();
             $age_groups = DB::table('age_group')->get();
             
+            unset( $_SESSION['selected_question_arr']);
             /*return view('unicon_admin.createExams')
                     ->with('sub',$subjects)
                     ->with('agecat', $age_groups)
@@ -115,7 +125,8 @@ class CreateExamController extends Controller
         }catch(Exception $e){
             $subjects = DB::table('subject')->get();
             $age_groups = DB::table('age_group')->get();
-            
+            unset( $_SESSION['selected_question_arr']);
+
             return view('unicon_admin.createExams')
                     ->with('sub',$subjects)
                     ->with('agecat', $age_groups)

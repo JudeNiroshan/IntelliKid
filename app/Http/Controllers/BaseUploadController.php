@@ -29,8 +29,6 @@ class BaseUploadController extends Controller
 
         }else if($request->hasFile('songFile')){
 
-
-            echo "JUDE ADDED INSIDE THE IF CONDITION";
             //Get the Uploader
             $uploader = $Factory->getUploader("song");
 

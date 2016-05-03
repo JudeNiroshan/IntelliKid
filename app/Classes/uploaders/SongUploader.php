@@ -17,9 +17,9 @@ use DB;
 */
 
 class SongUploader implements Uploader{
-	
-	//@Override
-	function upload($request){
+    
+    //@Override
+    function upload($request){
 
         $validator = new ContentValidator(new SongValidator());
 
@@ -53,9 +53,9 @@ class SongUploader implements Uploader{
 
         }
 
-		$selected_subject = $request->input('subject');
+        $selected_subject = $request->input('subject');
         $selected_age = $request->input('ageCategory');
-		$file = $request->file('songFile');
+        $file = $request->file('songFile');
         $img_file = $request->file('songImageFile');
 
         $ext_song = explode('.', $file->getClientOriginalName());//explode file name from dot(.)
@@ -64,17 +64,17 @@ class SongUploader implements Uploader{
         $user_id = 100;
         $name = $request->filename;
 
-        $img_file_path = "assets\uploads\\audio\img\\";
-        $img_file->move(public_path() . '\\' . $img_file_path, str_replace(' ', '_', $img_file->getClientOriginalName()));
+        $img_file_path = "assets/uploads/audio/img/";
+        $img_file->move( $img_file_path, str_replace(' ', '_', $img_file->getClientOriginalName()));
 
 
-        $destinationPath = "assets\uploads\audio\\";
+        $destinationPath = "assets/uploads/audio/";
         $temp_id = DB::table('content_type')->select('id')->where('type', '=', 'audio')->get();
         $content_type_id = $temp_id[0]->id;
         $timestamp = date('y-m-d H:i:s');
         $content_id = DB::table('content')->insertGetId(array('contenttypeid' => $content_type_id, 'creator' => $user_id, 'datetime' => $timestamp));
 
-        $file->move(public_path() . '\\' . $destinationPath, str_replace(' ', '_', $file->getClientOriginalName()));
+        $file->move( $destinationPath, str_replace(' ', '_', $file->getClientOriginalName()));
 
         DB::table('audio')->insert(
             array(
@@ -114,5 +114,5 @@ class SongUploader implements Uploader{
         ->with('gallery_data', $songs);
 
         
-	}
+    }
 }
